@@ -1,0 +1,18 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tarot API",
+        "description": "Choose a data source. For krates98/tarotcardapi, run the Node app (e.g. in a VM or container) and set the base URL to that server (port is usually 3000). Images are served at /tarotdeck/ on the same host.",
+        "data": {
+          "provider": "API / deck source",
+          "base_url": "Server base URL"
+        }
+      }
+    },
+    "error": {
+      "invalid_url": "URL must start with http:// or https://",
+      "krates_need_own_url": "Enter the URL of your Tarot Card API server (not tarotapi.dev). Example: http://192.168.1.50:3000"
+    }
+  }
+}

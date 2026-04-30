@@ -1,0 +1,8 @@
+# Normalize text files for Git + HACS (avoid CRLF / editor quirks on Windows)
+* text=auto
+
+*.json text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf

@@ -1,0 +1,29 @@
+# Dashboard: Tarot picture + draw button
+#
+# Current HA "Picture entity" cards only use the ENTITY field for a camera, image, or
+# person — not a sensor. Your sensor holds the card *name*; the new IMAGE entity holds
+# the *picture* (same integration, device "Tarot draw").
+#
+# Find exact IDs under Developer tools → States:
+#   image.*tarot_card_face*   ← use this as `entity` on picture-entity
+#   sensor.*tarot_card*       ← card title / meaning
+#   button.*draw*             ← draw button
+#
+# UI: Add Picture entity → Entity picker → choose "Tarot card face" (domain image), NOT the sensor.
+# You can turn off "Show state" on the image card (state is a timestamp) and add a small
+# Entity card below for the sensor if you want the drawn name in the footer.
+
+type: vertical-stack
+cards:
+  - type: picture-entity
+    entity: image.REPLACE_TAROT_CARD_FACE_ENTITY
+    name: Tarot
+    show_state: false
+    show_name: true
+    fit_mode: cover
+  - type: entity
+    entity: sensor.REPLACE_TAROT_CARD_SENSOR
+    name: Current card
+  - type: button
+    entity: button.REPLACE_DRAW_BUTTON
+    name: Draw a card

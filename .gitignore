@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.so
+.venv/
+venv/
+.env
+.env.*
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Home Assistant / local
+.storage/
+.cloud/
+deps/
+tts/
+*.log
+hacs.repositories
+**/hacs.repositories
