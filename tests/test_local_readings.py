@@ -222,7 +222,7 @@ class AsyncIntegrationTests(unittest.IsolatedAsyncioTestCase):
             await tarot_api.async_setup_entry(hass, first)
             self.assertIs(first_catalog, hass.data[DOMAIN]["first"].readings)
             get_session.assert_not_called()
-        self.assertEqual(hass.executor_jobs, 1)
+        self.assertEqual(hass.executor_jobs, 2)  # Tarot and practice catalogs, each loaded once.
         self.assertEqual(hass.config_entries.async_forward_entry_setups.await_count, 3)
 
     async def test_provider_draws_make_one_request_and_keep_selected_orientation(self):

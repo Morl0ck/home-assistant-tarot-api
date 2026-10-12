@@ -1,0 +1,1166 @@
+{
+  "schema_version": 1,
+  "voice": "original-modern-reflective",
+  "affirmation": [
+    {
+      "id": "affirmation-01",
+      "name": "I honor who I am",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "You do not have to earn your place in your own life. Let the person you are today receive a little tenderness.",
+      "reflection": "What part of myself can I welcome without trying to improve it?",
+      "practice": "Rest a hand on your heart and repeat the affirmation slowly three times."
+    },
+    {
+      "id": "affirmation-02",
+      "name": "I am allowed to begin again",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "A difficult moment does not decide the shape of the whole day. Your next small choice can be a fresh beginning.",
+      "reflection": "Where would a fresh start feel kindest?",
+      "practice": "Choose one task and approach it as if you are meeting it for the first time."
+    },
+    {
+      "id": "affirmation-03",
+      "name": "My needs deserve attention",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Noticing a need is an act of care. You can make room for yourself while still caring about others.",
+      "reflection": "What have I been asking myself to go without?",
+      "practice": "Meet one simple need: water, food, rest, quiet, or connection."
+    },
+    {
+      "id": "affirmation-04",
+      "name": "I trust my own pace",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "You are not late to your own life. Some things grow steadily beneath the surface before they become visible.",
+      "reflection": "Whose timeline have I been measuring myself against?",
+      "practice": "Do one familiar activity a little more slowly."
+    },
+    {
+      "id": "affirmation-05",
+      "name": "I can be gentle and strong",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Softness does not erase your boundaries. You can speak with kindness and still mean what you say.",
+      "reflection": "Where could I hold a boundary with less harshness?",
+      "practice": "Practice one clear sentence that begins with 'I need'."
+    },
+    {
+      "id": "affirmation-06",
+      "name": "I make room for joy",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Pleasure need not wait until every task is finished. A small bright moment can belong inside an ordinary day.",
+      "reflection": "What brings me delight without needing a reason?",
+      "practice": "Spend five minutes with a song, a color, a scent, or something you love."
+    },
+    {
+      "id": "affirmation-07",
+      "name": "Rest belongs in my life",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "You are a person, not a list of tasks. A pause can be worthwhile even when it does not make you more productive.",
+      "reflection": "What would restful enough look like today?",
+      "practice": "Put down your phone and take a quiet two-minute pause."
+    },
+    {
+      "id": "affirmation-08",
+      "name": "I listen to my inner voice",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "You can hear advice without giving away your own judgment. Give yourself enough quiet to notice what feels honest.",
+      "reflection": "What do I already know but keep talking myself out of?",
+      "practice": "Write one honest sentence before asking anyone else what they think."
+    },
+    {
+      "id": "affirmation-09",
+      "name": "I welcome small progress",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "A little movement still counts. You can appreciate an unfinished effort without pretending the work is complete.",
+      "reflection": "What small step have I overlooked?",
+      "practice": "Name one thing you did today that helped your future self."
+    },
+    {
+      "id": "affirmation-10",
+      "name": "I deserve relationships with care",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Being close to someone can include being heard, respected, and free to be yourself. Your comfort matters in connection.",
+      "reflection": "Where do I feel most able to be myself?",
+      "practice": "Reach out to someone who makes room for your real voice."
+    },
+    {
+      "id": "affirmation-11",
+      "name": "I release what is not mine to carry",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Caring does not require taking responsibility for every outcome. You can offer support without holding the whole world.",
+      "reflection": "Which worry belongs to a choice I cannot make for someone else?",
+      "practice": "Write a worry down and place the page aside for the afternoon."
+    },
+    {
+      "id": "affirmation-12",
+      "name": "My voice has a place",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Your thoughts do not need to be perfect before they are worth hearing. You can take up a little space in the conversation.",
+      "reflection": "What would I say if I trusted that I belonged here?",
+      "practice": "Share one preference clearly, without apologizing for having it."
+    },
+    {
+      "id": "affirmation-13",
+      "name": "I am more than what I finish",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Your value is not a score kept by your calendar. Kindness, curiosity, and presence also make a life.",
+      "reflection": "What do I appreciate about myself beyond achievement?",
+      "practice": "List three qualities you value in yourself."
+    },
+    {
+      "id": "affirmation-14",
+      "name": "I can choose one thing at a time",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "You do not have to solve the entire week in this moment. Attention can rest on the next manageable choice.",
+      "reflection": "What actually needs my attention next?",
+      "practice": "Choose one task and close the tabs or distractions around it."
+    },
+    {
+      "id": "affirmation-15",
+      "name": "I welcome the person I am becoming",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Change can be quiet and uneven. You can remain curious about yourself while you are still finding your way.",
+      "reflection": "What new part of myself is asking for space?",
+      "practice": "Try one small thing that your earlier self might have hesitated to do."
+    },
+    {
+      "id": "affirmation-16",
+      "name": "I allow myself to receive",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Accepting care does not make you a burden. You can be part of an exchange without immediately balancing every kindness.",
+      "reflection": "What kindness have I been brushing away?",
+      "practice": "Accept a compliment with a simple thank you."
+    },
+    {
+      "id": "affirmation-17",
+      "name": "I notice beauty around me",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "The day may hold something lovely alongside its difficulties. Noticing it does not deny what is hard.",
+      "reflection": "What detail would I miss if I rushed past?",
+      "practice": "Look closely at a leaf, a patch of light, or the evening sky."
+    },
+    {
+      "id": "affirmation-18",
+      "name": "I can leave room for uncertainty",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "You do not need a complete map to take a careful next step. It is possible to be unsure and still act with care.",
+      "reflection": "What question can remain open for now?",
+      "practice": "Write 'I do not know yet' beside something you are still working out."
+    },
+    {
+      "id": "affirmation-19",
+      "name": "I respect my own boundaries",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "A limit can protect what makes your life sustainable. You can say no without building a courtroom around your reasons.",
+      "reflection": "Where would a clear limit give me breathing room?",
+      "practice": "Decline or postpone one nonessential request."
+    },
+    {
+      "id": "affirmation-20",
+      "name": "My creativity deserves room",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Making something need not prove anything. There is value in exploring with your hands, your voice, or your imagination.",
+      "reflection": "What would I make if nobody needed to judge it?",
+      "practice": "Doodle, hum, arrange flowers, or write for five minutes."
+    },
+    {
+      "id": "affirmation-21",
+      "name": "I can ask for support",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "An honest request gives other people a chance to meet you. You do not have to wait until you are exhausted to ask.",
+      "reflection": "What would be easier with another pair of hands?",
+      "practice": "Ask someone for one specific, manageable kind of help."
+    },
+    {
+      "id": "affirmation-22",
+      "name": "I meet myself with patience",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "You have learned habits over a long time. Meeting them with patience can make the next choice easier to see.",
+      "reflection": "What am I expecting myself to change overnight?",
+      "practice": "Replace one self-critical sentence with a practical next step."
+    },
+    {
+      "id": "affirmation-23",
+      "name": "I belong in this moment",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "You do not have to become someone else before participating in your life. Start with the breath and the room you are in.",
+      "reflection": "What helps me feel present where I am?",
+      "practice": "Notice three colors and two sounds around you."
+    },
+    {
+      "id": "affirmation-24",
+      "name": "I celebrate my quiet courage",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Courage sometimes looks like an ordinary action nobody else notices. Give that effort a little recognition.",
+      "reflection": "What have I done despite feeling unsure?",
+      "practice": "Write down one brave thing you did this week."
+    },
+    {
+      "id": "affirmation-25",
+      "name": "I give myself room to change my mind",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "New information can lead to a new choice. Revising a plan can be an act of honesty rather than a failure.",
+      "reflection": "What decision no longer fits what I know now?",
+      "practice": "Revisit one small plan and adjust it to your current needs."
+    },
+    {
+      "id": "affirmation-26",
+      "name": "I care for the life I have",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Care can begin with what is already here. You do not have to wait for a different home, body, or season to be kind to yourself.",
+      "reflection": "What in my everyday life would benefit from a little care?",
+      "practice": "Tend one small corner of your home."
+    },
+    {
+      "id": "affirmation-27",
+      "name": "I let enough be enough today",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Some days call for a good-enough finish. You can stop before every edge is polished and still respect your effort.",
+      "reflection": "Where am I adding work that nobody needs?",
+      "practice": "Finish one task at a sensible stopping point."
+    },
+    {
+      "id": "affirmation-28",
+      "name": "I choose words that care for me",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "The way you speak to yourself is part of your daily surroundings. Give that voice the warmth you would offer a friend.",
+      "reflection": "What sentence do I need to hear from myself?",
+      "practice": "Write yourself one encouraging note and leave it where you will see it."
+    },
+    {
+      "id": "affirmation-29",
+      "name": "I honor the seasons of my life",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Energy and attention change. You can respond to the season you are in rather than demand the same effort every day.",
+      "reflection": "What is this season asking me to make room for?",
+      "practice": "Adjust one expectation to match the energy you have today."
+    },
+    {
+      "id": "affirmation-30",
+      "name": "I make space for connection",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Connection can begin with a small honest gesture. You do not need the perfect words to let someone know they matter.",
+      "reflection": "Who would I like to feel a little closer to?",
+      "practice": "Send a warm message without waiting for a special occasion."
+    },
+    {
+      "id": "affirmation-31",
+      "name": "I welcome moments of stillness",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "A quiet moment does not need to produce an answer. You can pause simply because you are here.",
+      "reflection": "What changes when I stop filling every silence?",
+      "practice": "Sit quietly for one minute and let the room be enough."
+    },
+    {
+      "id": "affirmation-32",
+      "name": "I can hold hope gently",
+      "symbol": "☾",
+      "keywords": [
+        "self-kindness",
+        "presence",
+        "care"
+      ],
+      "interpretation": "Hope can coexist with uncertainty. You can care about what comes next without promising yourself a particular outcome.",
+      "reflection": "What possibility would I like to nurture?",
+      "practice": "Take one small action in the direction of something you hope for."
+    }
+  ],
+  "oracle": [
+    {
+      "id": "threshold",
+      "name": "The Threshold",
+      "symbol": "☽",
+      "keywords": [
+        "beginnings",
+        "choice",
+        "courage"
+      ],
+      "interpretation": "A doorway is a place to pause as well as a place to cross. Notice what you are ready to enter, and what you can leave behind.",
+      "reflection": "Which small beginning feels worth choosing?",
+      "practice": "Take one concrete step toward a change you have been considering."
+    },
+    {
+      "id": "roots",
+      "name": "Deep Roots",
+      "symbol": "✧",
+      "keywords": [
+        "grounding",
+        "belonging",
+        "care"
+      ],
+      "interpretation": "Stability grows through ordinary acts of tending. Return to a habit, place, or person that helps you feel supported.",
+      "reflection": "What helps me feel steady without needing to impress anyone?",
+      "practice": "Make a familiar drink and enjoy it without multitasking."
+    },
+    {
+      "id": "tide",
+      "name": "The Turning Tide",
+      "symbol": "≈",
+      "keywords": [
+        "change",
+        "release",
+        "movement"
+      ],
+      "interpretation": "Some movement cannot be forced, but you can notice its direction. Let a changing situation teach you what needs a different approach.",
+      "reflection": "What am I still treating as fixed even though it has changed?",
+      "practice": "Update one plan to reflect the way things are now."
+    },
+    {
+      "id": "lantern",
+      "name": "The Lantern",
+      "symbol": "✶",
+      "keywords": [
+        "clarity",
+        "attention",
+        "guidance"
+      ],
+      "interpretation": "You only need enough light for the next few steps. A useful question may guide you further than a rushed answer.",
+      "reflection": "What do I need to understand before I move?",
+      "practice": "Write down one question and seek one reliable piece of information."
+    },
+    {
+      "id": "garden",
+      "name": "The Quiet Garden",
+      "symbol": "❀",
+      "keywords": [
+        "patience",
+        "growth",
+        "nurture"
+      ],
+      "interpretation": "Growth asks for care and time. Attend to one thing you can nourish without demanding immediate proof that it is working.",
+      "reflection": "What deserves steady care rather than constant checking?",
+      "practice": "Spend ten minutes tending an ongoing project."
+    },
+    {
+      "id": "mirror",
+      "name": "The Clear Mirror",
+      "symbol": "◇",
+      "keywords": [
+        "honesty",
+        "awareness",
+        "acceptance"
+      ],
+      "interpretation": "Look at yourself with curiosity rather than a verdict. Seeing a pattern clearly can open space for a kinder choice.",
+      "reflection": "Which story about myself could I examine more gently?",
+      "practice": "Describe one feeling without calling it good or bad."
+    },
+    {
+      "id": "hearth",
+      "name": "The Hearth",
+      "symbol": "△",
+      "keywords": [
+        "warmth",
+        "home",
+        "welcome"
+      ],
+      "interpretation": "A sense of home can be built in small gestures. Offer warmth to yourself and to the people who share your everyday life.",
+      "reflection": "What makes a space feel welcoming to me?",
+      "practice": "Create one comfortable spot for resting this evening."
+    },
+    {
+      "id": "wildflower",
+      "name": "The Wildflower",
+      "symbol": "✿",
+      "keywords": [
+        "expression",
+        "freedom",
+        "delight"
+      ],
+      "interpretation": "There is room for a form of beauty that does not follow a plan. Let yourself enjoy something simply because it feels alive.",
+      "reflection": "Where could I let my own preferences show?",
+      "practice": "Choose a color, song, or outfit for your own enjoyment."
+    },
+    {
+      "id": "bridge",
+      "name": "The Bridge",
+      "symbol": "⌒",
+      "keywords": [
+        "connection",
+        "repair",
+        "understanding"
+      ],
+      "interpretation": "A bridge begins from both sides. Offer a clear, kind invitation while leaving space for another person to respond freely.",
+      "reflection": "What could help a conversation feel more open?",
+      "practice": "Ask someone a question and listen without preparing your reply."
+    },
+    {
+      "id": "shelter",
+      "name": "The Shelter",
+      "symbol": "⌂",
+      "keywords": [
+        "boundaries",
+        "rest",
+        "safety"
+      ],
+      "interpretation": "A protected pause can help you return to the world with more choice. Notice what would make your day less exposed or crowded.",
+      "reflection": "Which limit would give me space to breathe?",
+      "practice": "Reserve a short period of uninterrupted quiet."
+    },
+    {
+      "id": "spark",
+      "name": "The First Spark",
+      "symbol": "✦",
+      "keywords": [
+        "inspiration",
+        "play",
+        "possibility"
+      ],
+      "interpretation": "An idea does not have to become a commitment immediately. Give a small spark room to exist before deciding what it should become.",
+      "reflection": "What idea have I dismissed before exploring it?",
+      "practice": "Spend five playful minutes trying something new."
+    },
+    {
+      "id": "river",
+      "name": "The River Path",
+      "symbol": "∿",
+      "keywords": [
+        "adaptation",
+        "continuity",
+        "ease"
+      ],
+      "interpretation": "You can keep moving while changing your route. Try a gentler approach to a task that has become a struggle.",
+      "reflection": "Where could flexibility serve me better than force?",
+      "practice": "Find a simpler way to do one recurring task."
+    },
+    {
+      "id": "harvest",
+      "name": "The Harvest",
+      "symbol": "✺",
+      "keywords": [
+        "gratitude",
+        "completion",
+        "recognition"
+      ],
+      "interpretation": "Pause to notice what your effort has made possible. Let appreciation sit beside whatever remains unfinished.",
+      "reflection": "What can I acknowledge before reaching for the next goal?",
+      "practice": "Celebrate a finished step with a small enjoyable ritual."
+    },
+    {
+      "id": "horizon",
+      "name": "The Open Horizon",
+      "symbol": "☼",
+      "keywords": [
+        "perspective",
+        "hope",
+        "space"
+      ],
+      "interpretation": "A wider view can soften the urgency of a single moment. Step back enough to see more than the problem nearest to you.",
+      "reflection": "What else is true beyond my immediate worry?",
+      "practice": "Look out of a window or step outside for a few minutes."
+    },
+    {
+      "id": "thread",
+      "name": "The Golden Thread",
+      "symbol": "∞",
+      "keywords": [
+        "meaning",
+        "continuity",
+        "values"
+      ],
+      "interpretation": "Your values can connect choices that otherwise feel scattered. Follow the quality you want to bring to the day.",
+      "reflection": "Which value would I like my next choice to express?",
+      "practice": "Choose one action guided by kindness, honesty, or curiosity."
+    },
+    {
+      "id": "rain",
+      "name": "The Gentle Rain",
+      "symbol": "⋮",
+      "keywords": [
+        "renewal",
+        "softness",
+        "release"
+      ],
+      "interpretation": "You do not have to hold every feeling tightly. Let a little softness enter a place where you have been bracing.",
+      "reflection": "What feeling could I make room for without solving it?",
+      "practice": "Write freely for three minutes, then close the notebook."
+    },
+    {
+      "id": "nest",
+      "name": "The Woven Nest",
+      "symbol": "◉",
+      "keywords": [
+        "support",
+        "preparation",
+        "belonging"
+      ],
+      "interpretation": "Support often comes from many small strands. Notice the practical comforts and trusted people that help hold your life together.",
+      "reflection": "Which strand of support could I strengthen today?",
+      "practice": "Prepare one small comfort for your future self."
+    },
+    {
+      "id": "moon",
+      "name": "The Patient Moon",
+      "symbol": "☾",
+      "keywords": [
+        "cycles",
+        "reflection",
+        "renewal"
+      ],
+      "interpretation": "You need not feel equally bright every day. Make a choice that respects the energy and attention you actually have.",
+      "reflection": "What would honoring my current energy look like?",
+      "practice": "Scale one task down to a manageable version."
+    }
+  ],
+  "deity": [
+    {
+      "id": "athena",
+      "name": "Athena",
+      "symbol": "◇",
+      "keywords": [
+        "wisdom",
+        "discernment",
+        "craft"
+      ],
+      "interpretation": "Let wisdom include both clear thinking and patient skill. You can approach a difficult choice by gathering facts and making space for your own judgment.",
+      "reflection": "Where would a thoughtful plan help more than a quick reaction?",
+      "practice": "Separate what you know from what you are assuming.",
+      "tradition": "Greek",
+      "lore": "Greek stories describe Athena emerging fully armed from Zeus's head. The owl and olive tree became familiar symbols of this goddess of wisdom and craft.",
+      "source": "https://mint.bankofgreece.gr/en/numismatic-programmes-collections/greek-mythology-olympian-gods/"
+    },
+    {
+      "id": "artemis",
+      "name": "Artemis",
+      "symbol": "☽",
+      "keywords": [
+        "independence",
+        "nature",
+        "boundaries"
+      ],
+      "interpretation": "Give your independence room to breathe. Time outside and a clear personal boundary can help you hear what matters to you.",
+      "reflection": "What part of my life needs a little more freedom?",
+      "practice": "Spend a few minutes outdoors on your own terms.",
+      "tradition": "Greek",
+      "lore": "Artemis and her twin Apollo were born on Delos. Often shown with a bow and a deer, she belongs to the wild places of Greek mythology.",
+      "source": "https://mint.bankofgreece.gr/en/numismatic-programmes-collections/greek-mythology-olympian-gods/"
+    },
+    {
+      "id": "aphrodite",
+      "name": "Aphrodite",
+      "symbol": "♡",
+      "keywords": [
+        "love",
+        "beauty",
+        "delight"
+      ],
+      "interpretation": "Allow affection and beauty to be part of an ordinary day. Notice what you enjoy without turning pleasure into something you must earn.",
+      "reflection": "How could I offer myself a small act of affection?",
+      "practice": "Choose one sensory pleasure and give it your full attention.",
+      "tradition": "Greek",
+      "lore": "In Hesiod's account, Aphrodite rises from the sea's foam. Other Greek traditions tell a different origin for this goddess of love and beauty.",
+      "source": "https://mint.bankofgreece.gr/en/numismatic-programmes-collections/greek-mythology-olympian-gods/"
+    },
+    {
+      "id": "hestia",
+      "name": "Hestia",
+      "symbol": "△",
+      "keywords": [
+        "home",
+        "warmth",
+        "presence"
+      ],
+      "interpretation": "Return to the quiet center of your everyday life. A welcoming space can begin with one considerate gesture rather than a perfect home.",
+      "reflection": "What helps me feel at home in my own life?",
+      "practice": "Clear a small surface and place something meaningful there.",
+      "tradition": "Greek",
+      "lore": "Hestia represents the hearth at the center of family life. Greek households honored her through small offerings at the fire, making everyday meals part of her story.",
+      "source": "https://mint.bankofgreece.gr/en/numismatic-programmes-collections/greek-mythology-olympian-gods/"
+    },
+    {
+      "id": "freyja",
+      "name": "Freyja",
+      "symbol": "✦",
+      "keywords": [
+        "desire",
+        "worth",
+        "courage"
+      ],
+      "interpretation": "Make room for the things you care about with your whole heart. Respecting your desires can coexist with thoughtful choices and care for others.",
+      "reflection": "What do I want to name honestly to myself?",
+      "practice": "Write down a wish without immediately explaining why it is impractical.",
+      "tradition": "Norse",
+      "lore": "Freyja's place in Norse stories includes love, magic, and battle. In the tale of Thor's stolen hammer, she refuses the demand that she marry the giant who took it.",
+      "source": "https://www.worldhistory.org/Freyja/"
+    },
+    {
+      "id": "frigg",
+      "name": "Frigg",
+      "symbol": "∞",
+      "keywords": [
+        "care",
+        "relationships",
+        "patience"
+      ],
+      "interpretation": "Care can be steady without trying to control every outcome. Offer warmth to a relationship while remembering that you also need support.",
+      "reflection": "How can I care without taking over?",
+      "practice": "Ask a loved one what kind of support would help them today.",
+      "tradition": "Norse",
+      "lore": "Frigg tries to protect her son Baldr by seeking promises that nothing will harm him. The overlooked mistletoe becomes the tragic exception in his story.",
+      "source": "https://www.worldhistory.org/Frigg/"
+    },
+    {
+      "id": "isis",
+      "name": "Isis",
+      "symbol": "✶",
+      "keywords": [
+        "devotion",
+        "repair",
+        "connection"
+      ],
+      "interpretation": "When life feels scattered, begin with one piece you can tend. Patient acts of care can help you rebuild a sense of connection.",
+      "reflection": "What small repair would make my day feel more whole?",
+      "practice": "Reconnect with a neglected habit, object, or relationship.",
+      "tradition": "Egyptian",
+      "lore": "Isis appears alongside Osiris and their son Horus throughout Egyptian religious art. Statuettes often show her holding and nursing the young Horus, giving care a visible place in her story.",
+      "source": "https://www.metmuseum.org/art/collection/search/570683"
+    },
+    {
+      "id": "sekhmet",
+      "name": "Sekhmet",
+      "symbol": "☼",
+      "keywords": [
+        "strength",
+        "protection",
+        "restraint"
+      ],
+      "interpretation": "Let strength serve what you want to protect. You can be firm without letting urgency choose every word or action.",
+      "reflection": "What deserves my protection, and how can I act with care?",
+      "practice": "Pause before a difficult response and name the boundary you want to hold.",
+      "tradition": "Egyptian",
+      "lore": "The lion-headed Sekhmet could be both fierce and protective. Egyptian physicians also served as her priests, linking her powerful presence with the work of healing.",
+      "source": "https://www.metmuseum.org/art/collection/search/544484"
+    },
+    {
+      "id": "odin",
+      "name": "Odin",
+      "symbol": "ᚨ",
+      "keywords": [
+        "learning",
+        "perspective",
+        "inquiry"
+      ],
+      "interpretation": "Stay curious about what you have not yet understood. Seek a wider perspective while considering the cost of the choices in front of you.",
+      "reflection": "What could I learn by listening to a different viewpoint?",
+      "practice": "Read or listen to something that challenges one assumption.",
+      "tradition": "Norse",
+      "lore": "Odin's search for wisdom takes him to Mimir's well, where he gives an eye in exchange for a drink. The story makes knowledge something pursued at a cost.",
+      "source": "https://www.worldhistory.org/odin/"
+    },
+    {
+      "id": "thor",
+      "name": "Thor",
+      "symbol": "ᚦ",
+      "keywords": [
+        "resolve",
+        "protection",
+        "action"
+      ],
+      "interpretation": "Put your strength into a practical act of care. A grounded action can help more than a dramatic promise.",
+      "reflection": "Where could I make a useful difference today?",
+      "practice": "Complete one task that makes life easier for someone you care about.",
+      "tradition": "Norse",
+      "lore": "Thor carries the hammer Mjolnir in stories of the gods' struggles with giants. His journeys often place enormous strength alongside very human frustrations and surprises.",
+      "source": "https://www.worldhistory.org/Thor/"
+    },
+    {
+      "id": "demeter",
+      "name": "Demeter",
+      "symbol": "✺",
+      "keywords": [
+        "nourishment",
+        "seasons",
+        "care"
+      ],
+      "interpretation": "Attend to what sustains you through changing seasons. Nourishment can be physical, emotional, or found in a familiar rhythm.",
+      "reflection": "What has been feeding me, and what needs more care?",
+      "practice": "Prepare or share something nourishing.",
+      "tradition": "Greek",
+      "lore": "When Persephone was taken to the underworld, Demeter searched for her daughter and the earth ceased to flourish. Their reunion became part of a story about loss, return, and the changing seasons.",
+      "source": "https://mint.bankofgreece.gr/en/numismatic-programmes-collections/greek-mythology-olympian-gods/"
+    },
+    {
+      "id": "persephone",
+      "name": "Persephone",
+      "symbol": "❀",
+      "keywords": [
+        "transition",
+        "depth",
+        "renewal"
+      ],
+      "interpretation": "Give yourself patience during a transition. You can acknowledge what a change has cost while remaining open to what may grow next.",
+      "reflection": "What am I learning in this in-between season?",
+      "practice": "Write down one thing you are leaving and one thing you are welcoming.",
+      "tradition": "Greek",
+      "lore": "Persephone's story moves between the underworld and her mother Demeter's world above. Her divided year gives the myth its rhythm of separation and return.",
+      "source": "https://mint.bankofgreece.gr/en/numismatic-programmes-collections/greek-mythology-olympian-gods/"
+    }
+  ],
+  "rune": [
+    {
+      "id": "fehu",
+      "name": "Fehu",
+      "symbol": "ᚠ",
+      "keywords": [
+        "resources",
+        "gratitude",
+        "sharing"
+      ],
+      "interpretation": "Notice the resources already within reach. Consider how time, skills, and practical comforts can support a generous, sustainable life.",
+      "reflection": "What resource could I use more thoughtfully?",
+      "practice": "Appreciate something useful you already own."
+    },
+    {
+      "id": "uruz",
+      "name": "Uruz",
+      "symbol": "ᚢ",
+      "keywords": [
+        "strength",
+        "steadiness",
+        "effort"
+      ],
+      "interpretation": "Strength can be built through small repeated acts. Choose an effort that suits your present capacity rather than testing your limits for their own sake.",
+      "reflection": "What would steady strength look like today?",
+      "practice": "Take one manageable step toward a task you have avoided."
+    },
+    {
+      "id": "thurisaz",
+      "name": "Thurisaz",
+      "symbol": "ᚦ",
+      "keywords": [
+        "boundaries",
+        "pause",
+        "protection"
+      ],
+      "interpretation": "Pause before a strong reaction becomes your next action. A clear boundary can protect your time and attention without needing conflict.",
+      "reflection": "What am I trying to protect?",
+      "practice": "Draft a difficult message and reread it before sending."
+    },
+    {
+      "id": "ansuz",
+      "name": "Ansuz",
+      "symbol": "ᚨ",
+      "keywords": [
+        "voice",
+        "listening",
+        "learning"
+      ],
+      "interpretation": "Give words your attention: both those you speak and those you hear. A useful exchange makes room for honesty and listening.",
+      "reflection": "What needs to be said more clearly?",
+      "practice": "Ask a sincere question and listen to the whole answer."
+    },
+    {
+      "id": "raidho",
+      "name": "Raidho",
+      "symbol": "ᚱ",
+      "keywords": [
+        "journey",
+        "rhythm",
+        "direction"
+      ],
+      "interpretation": "Consider the rhythm of the path you are on. A sustainable pace can matter as much as the destination.",
+      "reflection": "Is my routine supporting the direction I want to travel?",
+      "practice": "Adjust one recurring habit to make your day easier."
+    },
+    {
+      "id": "kenaz",
+      "name": "Kenaz",
+      "symbol": "ᚲ",
+      "keywords": [
+        "insight",
+        "craft",
+        "curiosity"
+      ],
+      "interpretation": "Bring a little light to something you want to understand. Skill grows when curiosity becomes patient practice.",
+      "reflection": "What would I enjoy learning more deeply?",
+      "practice": "Spend ten minutes practicing a useful or creative skill."
+    },
+    {
+      "id": "gebo",
+      "name": "Gebo",
+      "symbol": "ᚷ",
+      "keywords": [
+        "exchange",
+        "generosity",
+        "balance"
+      ],
+      "interpretation": "Notice the give and take in your relationships. A gift can be offered freely while still respecting the needs of the giver.",
+      "reflection": "Where could giving and receiving become more balanced?",
+      "practice": "Offer one kindness that does not overextend you."
+    },
+    {
+      "id": "wunjo",
+      "name": "Wunjo",
+      "symbol": "ᚹ",
+      "keywords": [
+        "joy",
+        "belonging",
+        "ease"
+      ],
+      "interpretation": "Let a small moment of pleasure count. Shared warmth or an uncomplicated delight can have a place even on a demanding day.",
+      "reflection": "What helps me feel welcome and at ease?",
+      "practice": "Enjoy a familiar pleasure with someone you like."
+    },
+    {
+      "id": "hagalaz",
+      "name": "Hagalaz",
+      "symbol": "ᚺ",
+      "keywords": [
+        "disruption",
+        "adaptation",
+        "perspective"
+      ],
+      "interpretation": "An interrupted plan can ask for a new response. Focus on what remains within your choice while giving yourself space to feel disappointed.",
+      "reflection": "What can I still choose in a situation I did not choose?",
+      "practice": "Make a practical backup plan for one disrupted task."
+    },
+    {
+      "id": "nauthiz",
+      "name": "Nauthiz",
+      "symbol": "ᚾ",
+      "keywords": [
+        "needs",
+        "limits",
+        "resourcefulness"
+      ],
+      "interpretation": "A limit can help reveal what matters most. Start with a real need and consider the smallest workable way to meet it.",
+      "reflection": "What is essential, and what can wait?",
+      "practice": "Remove one nonessential task from today's list."
+    },
+    {
+      "id": "isa",
+      "name": "Isa",
+      "symbol": "ᛁ",
+      "keywords": [
+        "stillness",
+        "patience",
+        "pause"
+      ],
+      "interpretation": "A pause does not always need to be broken. Let a situation settle long enough for you to see it more clearly.",
+      "reflection": "Where might waiting be a thoughtful choice?",
+      "practice": "Delay a nonurgent decision until you have rested."
+    },
+    {
+      "id": "jera",
+      "name": "Jera",
+      "symbol": "ᛃ",
+      "keywords": [
+        "seasons",
+        "effort",
+        "harvest"
+      ],
+      "interpretation": "Consider what patient effort is bringing into your life. Some results arrive through a cycle of tending rather than one dramatic push.",
+      "reflection": "What ongoing effort deserves my recognition?",
+      "practice": "Acknowledge progress on something you have tended over time."
+    },
+    {
+      "id": "eihwaz",
+      "name": "Eihwaz",
+      "symbol": "ᛇ",
+      "keywords": [
+        "endurance",
+        "roots",
+        "change"
+      ],
+      "interpretation": "Stay connected to what supports you while something changes. Endurance can include adapting your approach and accepting help.",
+      "reflection": "What helps me remain steady during change?",
+      "practice": "Return to one supportive routine."
+    },
+    {
+      "id": "perthro",
+      "name": "Perthro",
+      "symbol": "ᛈ",
+      "keywords": [
+        "uncertainty",
+        "possibility",
+        "openness"
+      ],
+      "interpretation": "Leave room for what you cannot yet know. Curiosity may be more useful than demanding an immediate explanation.",
+      "reflection": "Which unknown can I hold more lightly?",
+      "practice": "Explore one possibility without committing to an outcome."
+    },
+    {
+      "id": "algiz",
+      "name": "Algiz",
+      "symbol": "ᛉ",
+      "keywords": [
+        "care",
+        "awareness",
+        "boundaries"
+      ],
+      "interpretation": "Notice the people and practices that help you feel supported. Protective care can be practical, quiet, and shared.",
+      "reflection": "What would make my day feel better supported?",
+      "practice": "Check in with someone you trust."
+    },
+    {
+      "id": "sowilo",
+      "name": "Sowilo",
+      "symbol": "ᛊ",
+      "keywords": [
+        "clarity",
+        "energy",
+        "direction"
+      ],
+      "interpretation": "Bring attention to a choice that feels clear and worthwhile. Use the energy you have where it can make a meaningful difference.",
+      "reflection": "Where is my effort most useful today?",
+      "practice": "Give your best available attention to one important task."
+    },
+    {
+      "id": "tiwaz",
+      "name": "Tiwaz",
+      "symbol": "ᛏ",
+      "keywords": [
+        "integrity",
+        "fairness",
+        "resolve"
+      ],
+      "interpretation": "Let your actions line up with the values you want to live by. A fair choice may ask for courage as well as clarity.",
+      "reflection": "What would acting with integrity require here?",
+      "practice": "Keep one small promise you have made."
+    },
+    {
+      "id": "berkano",
+      "name": "Berkano",
+      "symbol": "ᛒ",
+      "keywords": [
+        "nurture",
+        "growth",
+        "beginnings"
+      ],
+      "interpretation": "Tend a beginning with gentle, practical care. New things need space to be imperfect while they take shape.",
+      "reflection": "What new part of my life needs tending?",
+      "practice": "Give ten minutes of care to something just beginning."
+    },
+    {
+      "id": "ehwaz",
+      "name": "Ehwaz",
+      "symbol": "ᛖ",
+      "keywords": [
+        "trust",
+        "cooperation",
+        "movement"
+      ],
+      "interpretation": "Consider how shared effort can move a task forward. Cooperation becomes easier when expectations are spoken clearly.",
+      "reflection": "Where would teamwork help more than doing everything alone?",
+      "practice": "Agree on one next step with a partner or friend."
+    },
+    {
+      "id": "mannaz",
+      "name": "Mannaz",
+      "symbol": "ᛗ",
+      "keywords": [
+        "humanity",
+        "community",
+        "awareness"
+      ],
+      "interpretation": "You are part of a wider human circle. Notice both what you can contribute and what you can learn from others.",
+      "reflection": "How can I show up as both a helper and a learner?",
+      "practice": "Thank someone whose everyday effort supports your life."
+    },
+    {
+      "id": "laguz",
+      "name": "Laguz",
+      "symbol": "ᛚ",
+      "keywords": [
+        "feeling",
+        "flow",
+        "attention"
+      ],
+      "interpretation": "Give your feelings room without asking them to make every decision. Notice what they are pointing toward, then choose with care.",
+      "reflection": "What feeling have I been too busy to notice?",
+      "practice": "Name your current feeling in a private note."
+    },
+    {
+      "id": "ingwaz",
+      "name": "Ingwaz",
+      "symbol": "ᛜ",
+      "keywords": [
+        "potential",
+        "rest",
+        "preparation"
+      ],
+      "interpretation": "Some work happens quietly before it is ready to be shared. Protect a little space for preparation and unfinished ideas.",
+      "reflection": "What needs more time before I bring it into the open?",
+      "practice": "Work privately on an idea without evaluating it yet."
+    },
+    {
+      "id": "dagaz",
+      "name": "Dagaz",
+      "symbol": "ᛞ",
+      "keywords": [
+        "perspective",
+        "transition",
+        "possibility"
+      ],
+      "interpretation": "Try seeing a familiar situation in different light. A modest shift in perspective may reveal a next step you had missed.",
+      "reflection": "What changes if I describe this situation another way?",
+      "practice": "Write a second, kinder interpretation of a difficult moment."
+    },
+    {
+      "id": "othala",
+      "name": "Othala",
+      "symbol": "ᛟ",
+      "keywords": [
+        "home",
+        "inheritance",
+        "belonging"
+      ],
+      "interpretation": "Reflect on the traditions and places that shaped you. You can choose what to carry forward and what to make anew.",
+      "reflection": "Which inherited habit would I like to keep or change?",
+      "practice": "Honor a meaningful memory while choosing one tradition of your own."
+    }
+  ]
+}

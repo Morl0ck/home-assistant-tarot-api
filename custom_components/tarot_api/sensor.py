@@ -13,6 +13,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from . import TarotHub
 from .const import DOMAIN, PLACEHOLDER_CARD_IMAGE, PROVIDER_KRATES, SIGNAL_CARD_UPDATED
+from .practice import PRACTICES, SIGNAL_PRACTICE_UPDATED
 
 
 async def async_setup_entry(
@@ -22,7 +23,48 @@ async def async_setup_entry(
 ) -> None:
     """Set up Tarot sensor from a config entry."""
     hub: TarotHub = hass.data[DOMAIN][entry.entry_id]
-    async_add_entities([TarotCardSensor(entry, hub)], True)
+    entities = [TarotCardSensor(entry, hub)]
+    if hub.practice is not None:
+        entities.extend(PracticeSensor(entry, hub, kind) for kind in PRACTICES)
+    async_add_entities(entities, True)
+
+
+class PracticeSensor(SensorEntity):
+    """Expose complete local readings for dashboards and automations."""
+
+    _attr_should_poll = False
+
+    def __init__(self, entry: ConfigEntry, hub: TarotHub, kind: str) -> None:
+        self._entry, self._hub, self._kind = entry, hub, kind
+        self._attr_unique_id = f"{entry.unique_id or entry.entry_id}_practice_{kind}"
+        self._attr_name, self._attr_icon, _ = PRACTICES[kind]
+
+    @property
+    def available(self) -> bool:
+        return self._hub.practice.current(self._kind) is not None
+
+    @property
+    def native_value(self) -> str | None:
+        record = self._hub.practice.current(self._kind)
+        return record["name"] if record else None
+
+    @property
+    def extra_state_attributes(self) -> dict[str, Any]:
+        return self._hub.practice.current(self._kind) or {}
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        return DeviceInfo(identifiers={(DOMAIN, self._entry.entry_id)}, name="Tarot draw")
+
+    async def async_added_to_hass(self) -> None:
+        await super().async_added_to_hass()
+
+        @callback
+        def _on_update(data: dict) -> None:
+            if data.get("entry_id") == self._entry.entry_id:
+                self.async_write_ha_state()
+
+        self.async_on_remove(async_dispatcher_connect(self.hass, SIGNAL_PRACTICE_UPDATED, _on_update))
 
 
 class TarotCardSensor(SensorEntity):

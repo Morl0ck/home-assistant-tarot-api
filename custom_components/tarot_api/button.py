@@ -10,6 +10,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from . import TarotHub
 from .const import DOMAIN, PROVIDER_KRATES
+from .practice import PRACTICES
 
 
 async def async_setup_entry(
@@ -19,7 +20,32 @@ async def async_setup_entry(
 ) -> None:
     """Set up Tarot button from a config entry."""
     hub: TarotHub = hass.data[DOMAIN][entry.entry_id]
-    async_add_entities([TarotDrawButton(entry, hub)], True)
+    entities = [TarotDrawButton(entry, hub)]
+    if hub.practice is not None:
+        entities.extend(PracticeDrawButton(entry, hub, kind) for kind in PRACTICES)
+    async_add_entities(entities, True)
+
+
+class PracticeDrawButton(ButtonEntity):
+    """Draw another local practice without making a network request."""
+
+    _attr_has_entity_name = False
+
+    def __init__(self, entry: ConfigEntry, hub: TarotHub, kind: str) -> None:
+        self._entry, self._hub, self._kind = entry, hub, kind
+        self._attr_unique_id = f"{entry.unique_id or entry.entry_id}_practice_draw_{kind}"
+        _, self._attr_icon, self._attr_name = PRACTICES[kind]
+
+    @property
+    def available(self) -> bool:
+        return self._hub.practice.current(self._kind) is not None
+
+    async def async_press(self) -> None:
+        await self._hub.practice.async_draw(self._kind)
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        return DeviceInfo(identifiers={(DOMAIN, self._entry.entry_id)}, name="Tarot draw")
 
 
 class TarotDrawButton(ButtonEntity):

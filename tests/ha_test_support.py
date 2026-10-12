@@ -5,6 +5,7 @@ selection and dashboard rendering use the real integration code under test.
 """
 
 import asyncio
+from datetime import datetime, timezone
 from enum import Enum
 import importlib.util
 import sys
@@ -23,6 +24,8 @@ def install_import_stubs():
         "homeassistant.components", "homeassistant.components.sensor",
         "homeassistant.components.image", "homeassistant.helpers.event",
         "homeassistant.helpers.sun",
+        "homeassistant.helpers.storage", "homeassistant.util", "homeassistant.util.dt",
+        "homeassistant.components.button",
     ):
         module = ModuleType(name)
         module.__path__ = []
@@ -44,6 +47,20 @@ def install_import_stubs():
     sys.modules["homeassistant.helpers.entity"].DeviceInfo = dict
     sys.modules["homeassistant.helpers.entity_platform"].AddEntitiesCallback = object
     sys.modules["homeassistant.components.sensor"].SensorEntity = object
+    sys.modules["homeassistant.components.button"].ButtonEntity = object
+    sys.modules["homeassistant.util.dt"].now = lambda: datetime.now(timezone.utc)
+
+    class Store:
+        def __init__(self, hass, version, key):
+            self.hass, self.key = hass, key
+
+        async def async_load(self):
+            return self.hass.data.get("test_storage", {}).get(self.key)
+
+        async def async_save(self, data):
+            self.hass.data.setdefault("test_storage", {})[self.key] = data
+
+    sys.modules["homeassistant.helpers.storage"].Store = Store
 
     class ImageEntity:
         entity_id = None

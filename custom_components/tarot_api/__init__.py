@@ -29,6 +29,7 @@ from .const import (
 )
 from .image_util import image_url_for_ekelen_card
 from .readings import ReadingCatalog, async_get_readings
+from .practice import PracticeHub, async_get_practices
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -51,6 +52,7 @@ class TarotHub:
     orientation: str | None = None  # "upright" | "reversed"
     readings: ReadingCatalog = field(default_factory=ReadingCatalog)
     face_image: Any = field(default=None, repr=False)
+    practice: PracticeHub | None = field(default=None, repr=False)
 
     async def async_draw_one(self) -> None:
         """Fetch one random card and store it with a random orientation."""
@@ -127,16 +129,24 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     base_url = entry.data.get(CONF_BASE_URL, DEFAULT_BASE_URL)
     provider = entry.data.get(CONF_PROVIDER, PROVIDER_EKELEN)
     readings = await async_get_readings(hass)
+    practice = PracticeHub(hass, entry.entry_id, await async_get_practices(hass))
+    await practice.async_start()
     hub = TarotHub(
         hass=hass,
         entry_id=entry.entry_id,
         base_url=base_url,
         provider=provider,
         readings=readings,
+        practice=practice,
     )
     hass.data.setdefault(DOMAIN, {})[entry.entry_id] = hub
 
-    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
+    try:
+        await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
+    except BaseException:
+        practice.stop()
+        hass.data[DOMAIN].pop(entry.entry_id, None)
+        raise
     return True
 
 
@@ -163,5 +173,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a config entry."""
     unload_ok = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
     if unload_ok:
-        hass.data[DOMAIN].pop(entry.entry_id, None)
+        hub = hass.data[DOMAIN].pop(entry.entry_id, None)
+        if hub is not None and hub.practice is not None:
+            hub.practice.stop()
     return unload_ok

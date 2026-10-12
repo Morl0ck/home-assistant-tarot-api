@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Practice — Home Assistant card preview</title>
+<style>
+  * { box-sizing:border-box; } body { margin:0; background:#111017; color:#d8cbdc; font:14px system-ui,sans-serif; }
+  main { max-width:480px; margin:24px auto; padding:0 12px; }
+  .note { font-size:12px; text-align:center; line-height:1.6; margin:18px 10px; color:#a89aae; }
+  @media(min-width:700px) { main { margin-top:48px; } }
+</style>
+<main><moon-practice-card></moon-practice-card><p class="note">Interactive local preview · Sample Home Assistant states<br>Use the tabs and draw buttons to explore.</p></main>
+<script type="module">
+  import '../frontend/moon-practice-card.js';
+  const [catalog, tarot] = await Promise.all([
+    fetch('../custom_components/tarot_api/practices.json').then(r => r.json()),
+    fetch('../custom_components/tarot_api/readings.json').then(r => r.json()),
+  ]);
+  const card = document.querySelector('moon-practice-card');
+  card.setConfig({ type:'custom:moon-practice-card' });
+  const keys = { affirmation:['daily_affirmation','new_affirmation'], oracle:['oracle_card','draw_oracle_card'], deity:['deity_card','draw_deity_card'], rune:['rune','draw_rune'] };
+  const indexes = { affirmation:0, oracle:0, deity:0, rune:0, tarot:17 };
+  const date = new Date().toLocaleDateString('en-CA');
+  const scenario = new URLSearchParams(location.search).get('scenario');
+  const states = { 'sun.sun': { state:'below_horizon', attributes:{} } };
+  function update(kind) {
+    if (kind === 'tarot') {
+      const id = Object.keys(tarot.cards)[indexes.tarot % 78];
+      const record = tarot.cards[id];
+      states['sensor.tarot_card'] = {state:record.name, attributes:{ ...record.upright, card_name:record.name, orientation:'upright', artwork_url:`../custom_components/tarot_api/artwork/purple_goddess/${id}.png` }};
+      states['button.draw_tarot_card'] = { state:'unknown', attributes:{} };
+    } else {
+      const record = catalog[kind][indexes[kind] % catalog[kind].length];
+      states[`sensor.${keys[kind][0]}`] = { state:record.name, attributes:{...record,date} };
+      states[`button.${keys[kind][1]}`] = { state:'unknown', attributes:{} };
+    }
+  }
+  for (const kind of [...Object.keys(keys),'tarot']) update(kind);
+  if (scenario === 'missing') delete states['sensor.daily_affirmation'];
+  if (scenario === 'unavailable') states['sensor.daily_affirmation'].state = 'unavailable';
+  if (scenario === 'unavailable-button') states['button.new_affirmation'].state = 'unavailable';
+  if (scenario === 'first-tarot') states['sensor.tarot_card'] = {state:'unknown',attributes:{}};
+  if (scenario === 'reversed') states['sensor.tarot_card'].attributes.orientation = 'reversed';
+  if (scenario === 'escaped') {
+    states['sensor.daily_affirmation'].attributes.name = '<img src=x onerror=alert(1)> & a long affirmation that should wrap completely';
+    states['sensor.tarot_card'].attributes.artwork_url = 'javascript:alert(1)';
+  }
+  const hass = { states, async callService(domain, service, {entity_id}) {
+    if (domain !== 'button' || service !== 'press') throw new Error('Unexpected service');
+    if (scenario === 'error') throw new Error('Sample provider failure.');
+    if (scenario === 'slow') await new Promise(resolve => setTimeout(resolve, 1200));
+    const kind = entity_id === 'button.draw_tarot_card' ? 'tarot' : Object.keys(keys).find(key => entity_id === `button.${keys[key][1]}`);
+    indexes[kind]++;
+    update(kind);
+    card.hass = {...hass,states:{...states}};
+  } };
+  card.hass = {...hass, states:{...states}};
+</script>
+</html>

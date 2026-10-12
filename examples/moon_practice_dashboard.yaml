@@ -1,0 +1,30 @@
+# Copy frontend/moon-practice-card.js to config/www/moon-practice-card.js.
+# Add /local/moon-practice-card.js?v=1.4.0 as a JavaScript module resource
+# under Settings -> Dashboards -> Resources (enable Advanced mode if needed).
+# This is a full dashboard for the Raw configuration editor. For a Manual
+# card, copy only the type/config block under cards below.
+title: Daily Practice
+views:
+  - title: Practice
+    path: practice
+    icon: mdi:moon-waning-crescent
+    panel: true
+    cards:
+      - type: custom:moon-practice-card
+        default_tab: affirmation
+        # Check Developer tools -> States and adjust these entity IDs.
+        affirmation:
+          entity: sensor.daily_affirmation
+          button: button.new_affirmation
+        tarot:
+          entity: sensor.tarot_card
+          button: button.draw_tarot_card
+        oracle:
+          entity: sensor.oracle_card
+          button: button.draw_oracle_card
+        deity:
+          entity: sensor.deity_card
+          button: button.draw_deity_card
+        rune:
+          entity: sensor.rune
+          button: button.draw_rune
