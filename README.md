@@ -1,15 +1,15 @@
 # Tarot API — Home Assistant
 
-Custom integration: pull a random Rider–Waite–Smith card over HTTP, expose a native **`image`** entity for Picture cards, plus a **`sensor`** with original bundled upright/reversed readings and a **`button`** to draw again.
+Custom integration: draw a random Rider–Waite–Smith card over HTTP, display **Mother Nature artwork by day and Purple Goddess artwork at night**, and read an original bundled upright/reversed interpretation. Includes a native **`image`** entity for Picture cards, a **`sensor`** for the reading, and a **`button`** to draw again.
 
 **Data sources**
 
-- **Default:** [tarotapi.dev](https://tarotapi.dev) ([ekelen/tarot-api](https://github.com/ekelen/tarot-api)). Card art is resolved from [metabismuth/tarot-json](https://github.com/metabismuth/tarot-json) on GitHub (`name_short` → scan URLs). No image server required.
+- **Default:** [tarotapi.dev](https://tarotapi.dev) ([ekelen/tarot-api](https://github.com/ekelen/tarot-api)) supplies random card metadata. Recognized cards use the bundled artwork; [metabismuth/tarot-json](https://github.com/metabismuth/tarot-json) scan URLs are retained as a fallback. No image server required.
 - **Optional:** [krates98/tarotcardapi](https://github.com/krates98/tarotcardapi) on your network; set its base URL in the flow (not `tarotapi.dev`).
 - **Readings:** all 156 interpretations are bundled in [`readings.json`](custom_components/tarot_api/readings.json). They load once in a background worker; reading text needs no AI service or additional API request. Providers still supply the random card.
 - **Artwork:** two original 78-card decks are bundled locally: Mother Nature by day and Purple Goddess at night. Recognized cards use the original PNGs through Home Assistant's image proxy; external scans are a fallback.
 
-**Requirements:** Home Assistant **2023.8+**. Outbound HTTPS to the API you use and, for default art, `raw.githubusercontent.com`.
+**Requirements:** Home Assistant **2023.8+**, access to your chosen card API, and about **543 MiB** of storage for the artwork. Normal card images and readings load locally. External fallback images need access to their image host; the initial card-back placeholder needs access to Wikimedia.
 
 ## Daytime and nighttime artwork
 
@@ -27,7 +27,9 @@ For a manual update, copy the **entire** `custom_components/tarot_api` folder, i
 
 **HACS:** Integrations → menu → **Custom repositories** → URL `https://github.com/Morl0ck/home-assistant-tarot-api`, category **Integration**. Install, restart Home Assistant, then **Settings → Devices & services → Add integration → Tarot API**.
 
-**Manual:** Copy [`custom_components/tarot_api`](custom_components/tarot_api) to `config/custom_components/tarot_api`, restart, add the integration.
+**Manual:** Copy the complete [`custom_components/tarot_api`](custom_components/tarot_api) directory to `config/custom_components/tarot_api`, including `readings.json` and both `artwork` subdirectories. Restart Home Assistant, then add the integration.
+
+**Updating an existing installation:** Install the repository update through HACS, or replace the complete integration directory manually. Restart Home Assistant and draw a card. Existing entity IDs and the dashboard example remain compatible; automatic artwork switching needs no extra automation. Confirm the integration's `manifest.json` reports version **1.3.0** and set your home location correctly under Home Assistant's system settings.
 
 If HACS errors with **`unexpected character: line 1 column 1`**, it’s usually wrong repo URL (repository root only, not `/tree/main` or raw), JSON saved with a **UTF-8 BOM**, bad HACS storage (`config/.storage/hacs.repositories` — backup, delete while HA stopped, restart), or wrong category (**Integration**). This repo keeps JSON UTF-8 without BOM and LF per [`.gitattributes`](.gitattributes).
 
@@ -36,6 +38,8 @@ If HACS errors with **`unexpected character: line 1 column 1`**, it’s usually 
 ## Configuration
 
 One config entry is enough.
+
+The provider selects where cards are drawn. Both choices use the bundled readings and automatic daytime/nighttime artwork.
 
 | Flow choice | Meaning |
 |-------------|---------|
@@ -56,7 +60,7 @@ Picture Entity card **`entity`** must be **`image.…`**, not the sensor — HA 
 
 The example displays the clean card name and orientation once, then keywords, interpretation, and reflection. It preserves paragraph breaks and shows a brief message if a local reading is unavailable. Copy its updated Markdown card into your actual dashboard and use your entity IDs; editing this repository example does not automatically change a dashboard stored in Home Assistant.
 
-To apply a local update, copy the complete `custom_components/tarot_api` folder (including `readings.py` and `readings.json`) to Home Assistant, restart, and draw a new card. HACS installations do not see local checkout edits until those files are published or copied to Home Assistant.
+For a custom image template, use the sensor's `artwork_url` for the currently displayed image; `image_url` is the original provider image. The `artwork_theme` values are `mother_nature` and `purple_goddess`, or null when the drawn card is unrecognized.
 
 **Reversed (optional):** `orientation` is on the sensor. With [card-mod](https://github.com/thomasloven/lovelace-card-mod) v4 (Jinja in `style:`):
 
@@ -81,6 +85,8 @@ card_mod:
 | Setup fails | Logs; full `tarot_api` tree under `custom_components`; restart after changes. |
 | Picture card empty / wrong | `entity` is **`image.*`**, not `sensor.*`. |
 | No artwork | Copy both bundled artwork directories with the integration; verify API access. External fallback images require access to the provider image host. |
+| Theme stays on day or night | Check `sun.sun` and your configured home location. Without an available Sun entity, allow up to one minute for the location-based check. |
+| Old scans still appear | Restart after updating, draw a card, and confirm both artwork directories are installed. Check logs for missing or invalid bundled PNGs. |
 | Local reading unavailable | Check logs and ensure `readings.json` was copied with the integration. After repairing the file, restart HA to reload the shared catalog. |
 
 **Publishing your own fork:** [`scripts/publish-github.ps1`](scripts/publish-github.ps1) — `gh auth login`, then run from repo root (adjust `$RepoName` if needed). Or `gh repo create … --source=. --push` and align `manifest.json` URLs.

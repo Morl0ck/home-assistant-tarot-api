@@ -3,7 +3,7 @@
 Install the test-only template parsers into your test environment:
 
 ```text
-python -m pip install PyYAML Jinja2
+python -m pip install aiohttp PyYAML Jinja2
 python -m unittest discover -s tests -v
 ```
 
