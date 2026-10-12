@@ -21,6 +21,8 @@ def install_import_stubs():
         "homeassistant.helpers.aiohttp_client", "homeassistant.helpers.dispatcher",
         "homeassistant.helpers.entity", "homeassistant.helpers.entity_platform",
         "homeassistant.components", "homeassistant.components.sensor",
+        "homeassistant.components.image", "homeassistant.helpers.event",
+        "homeassistant.helpers.sun",
     ):
         module = ModuleType(name)
         module.__path__ = []
@@ -43,10 +45,41 @@ def install_import_stubs():
     sys.modules["homeassistant.helpers.entity_platform"].AddEntitiesCallback = object
     sys.modules["homeassistant.components.sensor"].SensorEntity = object
 
+    class ImageEntity:
+        entity_id = None
+
+        def __init__(self, hass):
+            self.hass = hass
+            self.removers = []
+            self.writes = 0
+
+        @property
+        def entity_picture(self):
+            return f"/api/image_proxy/{self.entity_id}?token=test"
+
+        async def async_image(self):
+            self._attr_content_type = "image/jpeg"
+            return b"provider image"
+
+        async def async_added_to_hass(self):
+            pass
+
+        def async_on_remove(self, remover):
+            self.removers.append(remover)
+
+        def async_write_ha_state(self):
+            self.writes += 1
+
+    sys.modules["homeassistant.components.image"].ImageEntity = ImageEntity
+    sys.modules["homeassistant.helpers.event"].async_track_state_change_event = lambda *args: lambda: None
+    sys.modules["homeassistant.helpers.event"].async_track_time_interval = lambda *args: lambda: None
+    sys.modules["homeassistant.helpers.sun"].is_up = lambda hass: True
+
 
 class FakeHass:
     def __init__(self):
         self.data = {}
+        self.states = SimpleNamespace(get=lambda entity_id: SimpleNamespace(state="above_horizon"))
         self.executor_jobs = 0
         self.config_entries = SimpleNamespace(
             async_forward_entry_setups=AsyncMock(),

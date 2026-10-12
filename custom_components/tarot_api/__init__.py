@@ -50,6 +50,7 @@ class TarotHub:
     last_card: dict[str, Any] | None = None
     orientation: str | None = None  # "upright" | "reversed"
     readings: ReadingCatalog = field(default_factory=ReadingCatalog)
+    face_image: Any = field(default=None, repr=False)
 
     async def async_draw_one(self) -> None:
         """Fetch one random card and store it with a random orientation."""

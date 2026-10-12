@@ -48,6 +48,14 @@ class TarotCardSensor(SensorEntity):
             self._attr_entity_picture = PLACEHOLDER_CARD_IMAGE
 
     @property
+    def entity_picture(self) -> str | None:
+        """Mirror the image entity's authenticated proxy, including solar changes."""
+        face = self._hub.face_image
+        if face is not None and face.entity_id:
+            return face.entity_picture
+        return self._attr_entity_picture
+
+    @property
     def native_value(self) -> str | None:
         """Card title, or None if not drawn yet."""
         card = self._hub.last_card
@@ -83,6 +91,9 @@ class TarotCardSensor(SensorEntity):
         attrs.update(
             self._hub.readings.attributes_for(card, self._hub.provider, orientation)
         )
+        if self._hub.face_image is not None:
+            attrs["artwork_theme"] = self._hub.face_image.artwork_theme
+            attrs["artwork_url"] = self.entity_picture
         return attrs
 
     @property

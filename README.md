@@ -6,9 +6,20 @@ Custom integration: pull a random Rider–Waite–Smith card over HTTP, expose a
 
 - **Default:** [tarotapi.dev](https://tarotapi.dev) ([ekelen/tarot-api](https://github.com/ekelen/tarot-api)). Card art is resolved from [metabismuth/tarot-json](https://github.com/metabismuth/tarot-json) on GitHub (`name_short` → scan URLs). No image server required.
 - **Optional:** [krates98/tarotcardapi](https://github.com/krates98/tarotcardapi) on your network; set its base URL in the flow (not `tarotapi.dev`).
-- **Readings:** all 156 interpretations are bundled in [`readings.json`](custom_components/tarot_api/readings.json). They load once in a background worker; reading text needs no AI service or additional API request. Providers still supply the random card and artwork.
+- **Readings:** all 156 interpretations are bundled in [`readings.json`](custom_components/tarot_api/readings.json). They load once in a background worker; reading text needs no AI service or additional API request. Providers still supply the random card.
+- **Artwork:** two original 78-card decks are bundled locally: Mother Nature by day and Purple Goddess at night. Recognized cards use the original PNGs through Home Assistant's image proxy; external scans are a fallback.
 
 **Requirements:** Home Assistant **2023.8+**. Outbound HTTPS to the API you use and, for default art, `raw.githubusercontent.com`.
+
+## Daytime and nighttime artwork
+
+Version **1.3.0** switches automatically with `sun.sun`: above the horizon selects **Mother Nature** and below the horizon selects **Purple Goddess**. A sunrise or sunset changes the artwork of the current card without drawing again or changing its orientation or reading. If Sun is absent or unavailable, the configured home location supplies the solar calculation, checked once a minute; if no solar event can be calculated, the nighttime theme is used.
+
+Both decks contain all 78 canonical card IDs. The Purple Goddess title **The Goddess** maps to The Empress (`ar03`); **The Hanged One** maps to The Hanged Man (`ar12`). Readings retain their traditional card names. Both API providers use the same matching rules as the bundled readings.
+
+The existing `image.*` entity and dashboard remain usable. The sensor picture mirrors the image proxy and adds `artwork_theme` and `artwork_url`; its existing `image_url` retains the provider's URL for compatibility. Local images are read in an executor and cached for the current card/theme. Missing or invalid PNGs and unknown cards fall back to provider artwork, with a warning for missing bundled assets.
+
+For a manual update, copy the **entire** `custom_components/tarot_api` folder, including `artwork/mother_nature`, `artwork/purple_goddess`, and `artwork/index.json`, into Home Assistant's `config/custom_components`, then restart Home Assistant and draw a card. There are 156 original 1024 × 1536 PNGs; allow about 543 MiB for the artwork. Local checkout changes take effect in Home Assistant after copying them or installing a published update.
 
 ---
 
@@ -69,7 +80,7 @@ card_mod:
 |---------|--------|
 | Setup fails | Logs; full `tarot_api` tree under `custom_components`; restart after changes. |
 | Picture card empty / wrong | `entity` is **`image.*`**, not `sensor.*`. |
-| No artwork | HA can reach GitHub raw URLs and your API host. |
+| No artwork | Copy both bundled artwork directories with the integration; verify API access. External fallback images require access to the provider image host. |
 | Local reading unavailable | Check logs and ensure `readings.json` was copied with the integration. After repairing the file, restart HA to reload the shared catalog. |
 
 **Publishing your own fork:** [`scripts/publish-github.ps1`](scripts/publish-github.ps1) — `gh auth login`, then run from repo root (adjust `$RepoName` if needed). Or `gh repo create … --source=. --push` and align `manifest.json` URLs.
@@ -78,6 +89,6 @@ card_mod:
 
 ## Credits
 
-Card metadata / original API text: [ekelen/tarot-api](https://github.com/ekelen/tarot-api). Bundled readings: original traditional, warm, reflective interpretations for this integration. Default scans: [metabismuth/tarot-json](https://github.com/metabismuth/tarot-json). Placeholder back: [Wikimedia — red card back](https://commons.wikimedia.org/wiki/File:Card_back_red.svg). Entertainment only, not professional advice.
+Card metadata / original API text: [ekelen/tarot-api](https://github.com/ekelen/tarot-api). Bundled readings: original traditional, warm, reflective interpretations for this integration. Original Mother Nature and Purple Goddess artwork: created with OpenAI's built-in image generator and reviewed for this project. Fallback scans: [metabismuth/tarot-json](https://github.com/metabismuth/tarot-json). Placeholder back: [Wikimedia — red card back](https://commons.wikimedia.org/wiki/File:Card_back_red.svg). Entertainment only, not professional advice.
 
 **License:** [MIT](LICENSE). Issues/PRs: this repo’s `issue_tracker` in `manifest.json`.
