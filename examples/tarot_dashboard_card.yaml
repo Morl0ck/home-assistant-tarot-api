@@ -13,17 +13,51 @@
 # You can turn off "Show state" on the image card (state is a timestamp) and add a small
 # Entity card below for the sensor if you want the drawn name in the footer.
 
-type: vertical-stack
+type: grid
 cards:
-  - type: picture-entity
-    entity: image.REPLACE_TAROT_CARD_FACE_ENTITY
-    name: Tarot
-    show_state: false
-    show_name: true
+  - type: entities
+    entities:
+      - entity: button.tarot_draw_draw_tarot_card
+        name:
+          type: entity
+    grid_options:
+      rows: auto
+      columns: 12
+  - show_state: false
+    show_name: false
+    camera_view: auto
     fit_mode: cover
-  - type: entity
-    entity: sensor.REPLACE_TAROT_CARD_SENSOR
-    name: Current card
-  - type: button
-    entity: button.REPLACE_DRAW_BUTTON
-    name: Draw a card
+    type: picture-entity
+    entity: image.tarot_draw_tarot_card_face
+    ## add card_mod to the picture-entity card
+    ## if you installed card-mod
+    card_mod:
+      style: |
+        ha-card {
+          {% if state_attr('sensor.tarot_draw_tarot_card', 'orientation') == 'reversed' %}
+          transform: rotate(180deg);
+          {% endif %}
+        }
+  - type: markdown
+    title: Reading
+    content: |
+      {% set card = 'sensor.tarot_draw_tarot_card' %}
+      {% set name = state_attr(card, 'card_name') %}
+      {% if name %}
+      ### {{ name }} — {{ state_attr(card, 'orientation') | title }}
+
+      {% if state_attr(card, 'reading_available') %}
+      *{{ (state_attr(card, 'keywords') or []) | join(' · ') }}*
+
+      {{ state_attr(card, 'interpretation') }}
+
+      **Reflection**
+
+      *{{ state_attr(card, 'reflection') }}*
+      {% else %}
+      A local reading is not available for this card.
+      {% endif %}
+      {% else %}
+      Draw a card to begin.
+      {% endif %}
+column_span: 1

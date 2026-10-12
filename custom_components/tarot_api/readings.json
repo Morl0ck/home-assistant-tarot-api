@@ -1,0 +1,1645 @@
+{
+  "schema_version": 1,
+  "deck": "rider-waite-smith",
+  "voice": "traditional-warm-reflective",
+  "cards": {
+    "ar00": {
+      "name": "The Fool",
+      "upright": {
+        "keywords": [
+          "Beginnings",
+          "Trust",
+          "Openness"
+        ],
+        "interpretation": "The Fool approaches the edge with little baggage and an open heart. This card speaks to the freshness of beginning before every answer is available, when curiosity can carry you beyond familiar limits.\n\nThere is room here for experimentation and a willingness to be a beginner. Trust can accompany attention: look at the ground beneath your feet, gather what you need, and leave space for the journey to surprise you.",
+        "reflection": "What would I explore if I allowed myself to be a beginner?"
+      },
+      "reversed": {
+        "keywords": [
+          "Hesitation",
+          "Risk",
+          "Readiness"
+        ],
+        "interpretation": "The Fool reversed brings the threshold into sharper focus. A new beginning may be held back by fear of looking foolish, or approached so quickly that important details disappear from view.\n\nNotice the difference between a useful warning and a demand for complete certainty. The next step need not be a leap. A small experiment, an honest question, or a little preparation may reveal whether this risk deserves your trust.",
+        "reflection": "What would help me distinguish a worthwhile risk from an avoidable one?"
+      }
+    },
+    "ar01": {
+      "name": "The Magician",
+      "upright": {
+        "keywords": [
+          "Intention",
+          "Skill",
+          "Initiative"
+        ],
+        "interpretation": "The Magician gathers the tools of all four suits and directs them toward a purpose. Ideas gain substance when attention, ability, and action begin working together. This card invites an honest inventory of what is already within reach.\n\nYou need not possess every possible resource to begin. Choose a clear intention and give it a practical form. The useful question is how to work with your abilities, rather than simply admire their potential.",
+        "reflection": "How could I put one of my existing abilities to purposeful use?"
+      },
+      "reversed": {
+        "keywords": [
+          "Distraction",
+          "Integrity",
+          "Unused skill"
+        ],
+        "interpretation": "The Magician reversed asks how skill and intention are being used. Energy may be scattered among impressive possibilities, while the work itself remains unfinished. It can also raise questions about persuasion that promises more than it delivers.\n\nLook closely at the distance between words and actions, including your own. Reclaiming focus may mean choosing fewer commitments, practicing a neglected ability, or refusing a shortcut that would compromise the purpose you began with.",
+        "reflection": "Where do my actions need to catch up with my stated intentions?"
+      }
+    },
+    "ar02": {
+      "name": "The High Priestess",
+      "upright": {
+        "keywords": [
+          "Intuition",
+          "Stillness",
+          "Mystery"
+        ],
+        "interpretation": "The High Priestess sits beside a veil, suggesting that some understanding arrives through quiet attention rather than immediate explanation. Intuition, dreams, and subtle impressions may offer material worth considering without becoming unquestionable instructions.\n\nAllow a little room for what you do not yet know. Listening inward can help you recognize an overlooked feeling or pattern. Keep that listening in conversation with what can be observed, and let understanding develop at its own pace.",
+        "reflection": "What becomes easier to notice when I stop pressing for an immediate answer?"
+      },
+      "reversed": {
+        "keywords": [
+          "Inner noise",
+          "Secrecy",
+          "Discernment"
+        ],
+        "interpretation": "The High Priestess reversed can suggest difficulty hearing your own response beneath other people's opinions or a rush to interpret every sign. Something unspoken may also be creating distance where clarity is needed.\n\nPrivacy can be valuable, but silence has different purposes. Notice whether it protects thoughtful reflection or avoids an honest conversation. Return to the simple facts and your actual feelings before deciding what a hunch means or whose guidance to follow.",
+        "reflection": "What is my silence making room for, and what might it be concealing?"
+      }
+    },
+    "ar03": {
+      "name": "The Empress",
+      "upright": {
+        "keywords": [
+          "Nurture",
+          "Creativity",
+          "Abundance"
+        ],
+        "interpretation": "The Empress's garden speaks of life sustained through care, time, and a welcoming environment. Creativity and growth are not only matters of effort; they also depend on nourishment, pleasure, and enough room to unfold.\n\nThis card invites attention to what you are tending, whether a relationship, a project, or your everyday surroundings. Let care take a tangible form. Receiving comfort and enjoying what is already flourishing can belong alongside the work of helping something grow.",
+        "reflection": "What am I growing, and what kind of nourishment does it need?"
+      },
+      "reversed": {
+        "keywords": [
+          "Depletion",
+          "Overgiving",
+          "Neglected growth"
+        ],
+        "interpretation": "The Empress reversed draws attention to care that has become strained or uneven. Giving may have crowded out receiving, or a creative effort may be struggling in conditions that do not support it.\n\nMore effort is not always the missing ingredient. Examine what needs rest, practical help, or freedom from constant interference. Nurturing includes limits: allowing another person or project room to develop can be as caring as supplying everything yourself.",
+        "reflection": "How could I make the care I give more sustainable?"
+      }
+    },
+    "ar04": {
+      "name": "The Emperor",
+      "upright": {
+        "keywords": [
+          "Structure",
+          "Authority",
+          "Responsibility"
+        ],
+        "interpretation": "The Emperor's stone throne suggests the value of a dependable framework. Clear boundaries, sound decisions, and steady responsibility can make space for others to feel secure and for plans to take shape.\n\nAuthority is most useful when it serves what has been entrusted to it. Consider where a routine, agreement, or firm decision would provide support. Strength here includes being accountable for the consequences of the rules you make and the promises you keep.",
+        "reflection": "What structure would help me act responsibly without becoming rigid?"
+      },
+      "reversed": {
+        "keywords": [
+          "Rigidity",
+          "Control",
+          "Unsteady authority"
+        ],
+        "interpretation": "The Emperor reversed questions the way order is being maintained. Rules may have hardened beyond their usefulness, or a reluctance to take responsibility may be leaving important matters without direction.\n\nLook at who has a voice and who carries the consequences. A stronger foundation might require sharing authority, revising an outdated boundary, or taking ownership of a neglected decision. Stability grows more trustworthy when it can respond to real needs rather than demand obedience for its own sake.",
+        "reflection": "Where does my approach to control need more accountability or flexibility?"
+      }
+    },
+    "ar05": {
+      "name": "The Hierophant",
+      "upright": {
+        "keywords": [
+          "Tradition",
+          "Learning",
+          "Shared values"
+        ],
+        "interpretation": "The Hierophant represents knowledge carried through teachers, communities, and established practices. A tradition can offer language for experience, a place to belong, and guidance that has been tested across many lives.\n\nConsider what you can learn through thoughtful participation. A mentor, ritual, or course of study may provide useful grounding. Respecting inherited wisdom can include asking questions about it, especially when understanding its purpose makes the practice more meaningful than following it automatically.",
+        "reflection": "Which shared practice or teaching helps me live my values more fully?"
+      },
+      "reversed": {
+        "keywords": [
+          "Questioning",
+          "Independence",
+          "Conformity"
+        ],
+        "interpretation": "The Hierophant reversed brings personal conviction into conversation with inherited expectations. A teaching or group may no longer fit, or the pressure to belong may be discouraging questions that deserve a hearing.\n\nQuestioning does not require rejecting everything you have learned. Identify what still offers substance and what asks you to silence your judgment. You might adapt a practice, seek a different teacher, or give yourself permission to form a view that remains open to learning.",
+        "reflection": "What do I believe because I have examined it, and what have I simply inherited?"
+      }
+    },
+    "ar06": {
+      "name": "The Lovers",
+      "upright": {
+        "keywords": [
+          "Connection",
+          "Choice",
+          "Alignment"
+        ],
+        "interpretation": "The Lovers brings relationship and choice together. Meaningful connection asks for openness, mutual recognition, and decisions that reflect what matters deeply, rather than attraction or convenience alone.\n\nThis card can concern a partnership or any choice involving competing desires and values. Pay attention to the commitments a decision would create. Harmony becomes more substantial when people can speak honestly, choose freely, and meet each other without giving up the truths that make them themselves.",
+        "reflection": "What choice would bring my relationships and my values into closer agreement?"
+      },
+      "reversed": {
+        "keywords": [
+          "Misalignment",
+          "Ambivalence",
+          "Unequal commitment"
+        ],
+        "interpretation": "The Lovers reversed draws attention to a gap between desire, agreement, and action. People may want different things, or a decision may be postponed because every option touches something important.\n\nA difficult conversation can reveal more than an appearance of harmony. Explore where expectations differ and whether a commitment has been freely chosen. Repair may be possible through clearer agreements; in other situations, acknowledging a genuine difference is more respectful than forcing everyone toward the same answer.",
+        "reflection": "Where have I agreed outwardly while remaining divided inwardly?"
+      }
+    },
+    "ar07": {
+      "name": "The Chariot",
+      "upright": {
+        "keywords": [
+          "Direction",
+          "Discipline",
+          "Determination"
+        ],
+        "interpretation": "The Chariot brings opposing forces under a shared direction. Progress here depends on holding a purpose steadily while managing impulses, pressures, or responsibilities that pull different ways.\n\nChoose what deserves your effort and give it a workable course. Determination can help you move through resistance, but steering matters as much as speed. Notice whether the goal remains worth pursuing, and whether your method allows you to arrive with your commitments and relationships intact.",
+        "reflection": "What competing demands do I need to bring into a clearer direction?"
+      },
+      "reversed": {
+        "keywords": [
+          "Force",
+          "Lost direction",
+          "Reassessment"
+        ],
+        "interpretation": "The Chariot reversed can suggest motion without a clear destination or an attempt to overcome every obstacle by pushing harder. Conflicting demands may be exhausting the effort needed to steer.\n\nPause long enough to locate the source of the struggle. Some conditions need a different route, while others require a decision about priorities. Releasing an unworkable contest can restore choice. Before accelerating again, ask whether the direction is yours and whether the pace can be sustained.",
+        "reflection": "Where am I pushing for movement before deciding where I want to go?"
+      }
+    },
+    "ar08": {
+      "name": "Strength",
+      "upright": {
+        "keywords": [
+          "Courage",
+          "Patience",
+          "Gentleness"
+        ],
+        "interpretation": "Strength meets the lion with a steady hand rather than a weapon. It speaks of courage that can stay present with anger, fear, or strong desire without letting those feelings dictate every action.\n\nGentleness can require considerable resolve. A patient response, a firm limit, or the willingness to try again may be the strength this situation needs. Treat powerful feelings as something to understand and guide, while remaining honest about the effort that such restraint takes.",
+        "reflection": "How could I meet a difficult feeling with both kindness and firmness?"
+      },
+      "reversed": {
+        "keywords": [
+          "Self-doubt",
+          "Strain",
+          "Reactivity"
+        ],
+        "interpretation": "Strength reversed brings attention to the strain of holding everything together. Confidence may be worn thin, or an effort to suppress strong feelings may be making them harder to manage.\n\nNotice where courage has become a demand to endure without support. Rest, assistance, and an honest limit can be part of a steadier response. You do not have to overpower yourself to regain composure; begin by recognizing what is difficult and what capacity is available today.",
+        "reflection": "What would support my courage without asking me to ignore my limits?"
+      }
+    },
+    "ar09": {
+      "name": "The Hermit",
+      "upright": {
+        "keywords": [
+          "Solitude",
+          "Inquiry",
+          "Inner guidance"
+        ],
+        "interpretation": "The Hermit's lantern lights a small stretch of the path, suggesting that understanding can grow through patient inquiry rather than a complete view of the future. Time apart may help you hear a question more clearly.\n\nChoose solitude with a purpose: study, reflection, or a pause from competing voices. Wisdom can also come from a thoughtful guide. The value of withdrawal lies in what it helps you recognize and eventually bring back into everyday life.",
+        "reflection": "What question deserves some quiet, sustained attention from me?"
+      },
+      "reversed": {
+        "keywords": [
+          "Isolation",
+          "Avoidance",
+          "Reconnection"
+        ],
+        "interpretation": "The Hermit reversed asks whether time alone is deepening understanding or narrowing your world. Reflection may have become repetitive, or constant company may be preventing the quiet needed to hear yourself.\n\nConsider the balance between privacy and contact. A trusted conversation can bring fresh perspective without requiring you to abandon your own judgment. If withdrawal has outlived its purpose, rejoining others in a modest way may help turn an insight into something you can live.",
+        "reflection": "How can I tell when solitude is helping me and when it is keeping me apart?"
+      }
+    },
+    "ar10": {
+      "name": "Wheel of Fortune",
+      "upright": {
+        "keywords": [
+          "Cycles",
+          "Change",
+          "Adaptation"
+        ],
+        "interpretation": "The Wheel of Fortune points to the changing conditions of life: openings, setbacks, and recurring patterns that no single person fully controls. Its turning invites a wider view of the moment you are in.\n\nNotice what is shifting and what remains yours to choose. An opportunity may need a timely response, while a difficult phase may call for patience and adaptation. Remembering that circumstances move can help you participate without treating this moment as the whole story.",
+        "reflection": "What is changing around me, and how can I respond with greater awareness?"
+      },
+      "reversed": {
+        "keywords": [
+          "Resistance",
+          "Setbacks",
+          "Recurring patterns"
+        ],
+        "interpretation": "The Wheel of Fortune reversed can reflect frustration with a turn of events or a sense of meeting the same difficulty again. It asks for a careful distinction between circumstances beyond your influence and patterns you help maintain.\n\nUnwelcome change need not carry a hidden reward. Give the disruption its proper weight, then look for the choices still available. Adjusting expectations or interrupting one familiar response may be more useful than trying to force the entire wheel to stop.",
+        "reflection": "Which part of a recurring difficulty can I influence, and which part needs acceptance?"
+      }
+    },
+    "ar11": {
+      "name": "Justice",
+      "upright": {
+        "keywords": [
+          "Fairness",
+          "Truth",
+          "Accountability"
+        ],
+        "interpretation": "Justice holds scales and a clear blade, bringing careful judgment together with the willingness to act on it. This card concerns fairness, evidence, and the consequences that connect a choice to its effects.\n\nLook beyond what would be convenient for one person. What facts need consideration, and whose perspective is missing? An honest assessment may ask for a difficult correction. Taking responsibility can create a firmer basis for trust, even when a situation cannot be made perfectly equal.",
+        "reflection": "What would a fair assessment require me to acknowledge or change?"
+      },
+      "reversed": {
+        "keywords": [
+          "Bias",
+          "Unfairness",
+          "Evasion"
+        ],
+        "interpretation": "Justice reversed raises questions about partial judgments, unequal treatment, or responsibility being pushed aside. A decision may rely on incomplete information, and the person most affected may have little say in it.\n\nExamine the process as well as the outcome. Being treated unfairly is not proof of a personal failing. Where you have influence, seek clearer facts, name the imbalance, and correct your own contribution. Where you do not, consider what support or documentation would help.",
+        "reflection": "Where is fairness being compromised, and what response is within my reach?"
+      }
+    },
+    "ar12": {
+      "name": "The Hanged Man",
+      "upright": {
+        "keywords": [
+          "Pause",
+          "Perspective",
+          "Surrender"
+        ],
+        "interpretation": "The Hanged Man's suspended position suggests a pause that changes the view. When ordinary effort cannot move a situation forward, stepping out of the usual approach may reveal what urgency has obscured.\n\nThis is an invitation to reconsider what you are willing to release: a timetable, an assumption, or the need to control the outcome. A meaningful pause has attention inside it. Let the interval teach you something, while staying aware of what the waiting costs.",
+        "reflection": "What might I see differently if I stopped trying to force an immediate result?"
+      },
+      "reversed": {
+        "keywords": [
+          "Stalling",
+          "Reluctance",
+          "Costly sacrifice"
+        ],
+        "interpretation": "The Hanged Man reversed asks whether a pause still has a purpose. Waiting may have become avoidance, or a sacrifice may continue out of habit after its meaning has faded.\n\nLook at what the delay protects and what it prevents. You may need more time to understand, but you may also need to act on what is already clear. Reconsider an arrangement that asks you to remain suspended indefinitely, especially when your effort is not freely chosen.",
+        "reflection": "What would help me decide whether to keep waiting or begin moving?"
+      }
+    },
+    "ar13": {
+      "name": "Death",
+      "upright": {
+        "keywords": [
+          "Endings",
+          "Transition",
+          "Release"
+        ],
+        "interpretation": "Death speaks of an ending that changes the shape of what follows. It can concern an identity, relationship pattern, or stage of life that cannot continue in its familiar form; it does not predict a physical death.\n\nAn ending may bring grief alongside relief, and neither feeling needs to cancel the other. Give what is passing its due. Making room for a different life often begins with acknowledging what has finished, before knowing exactly what will replace it.",
+        "reflection": "What ending needs to be acknowledged before I can respond to what comes next?"
+      },
+      "reversed": {
+        "keywords": [
+          "Resistance",
+          "Lingering endings",
+          "Gradual release"
+        ],
+        "interpretation": "Death reversed brings attention to a transition that is resisted, prolonged, or taking place beneath the surface. Familiar arrangements can remain comforting even after they stop sustaining what matters.\n\nLetting go may happen in stages. Identify what truly remains alive in a situation and what is being preserved through fear or habit. You need not rush your grief, but an honest acknowledgement of change can help you stop spending all your energy maintaining something that has already altered.",
+        "reflection": "What am I keeping in place because its ending feels difficult to accept?"
+      }
+    },
+    "ar14": {
+      "name": "Temperance",
+      "upright": {
+        "keywords": [
+          "Balance",
+          "Integration",
+          "Patience"
+        ],
+        "interpretation": "Temperance pours between two cups with care, suggesting the patient work of bringing different needs or experiences into relationship. Balance here is an ongoing adjustment, shaped by attention to proportion and timing.\n\nLook for a pace that allows useful things to combine without losing their character. A conversation, habit, or project may benefit from modest changes made consistently. You can make room for complexity without demanding that every tension be resolved all at once.",
+        "reflection": "What small adjustment would bring more balance to the way I am living?"
+      },
+      "reversed": {
+        "keywords": [
+          "Imbalance",
+          "Excess",
+          "Impatience"
+        ],
+        "interpretation": "Temperance reversed suggests that the mixture or pace needs attention. One demand may be taking up too much room, or attempts to resolve a situation quickly may be producing more friction.\n\nNotice where moderation has been replaced by extremes, including cycles of overdoing and withdrawing. A workable correction may be quite ordinary: fewer commitments, a clearer rhythm, or more time between reactions. Begin with the imbalance you can actually name rather than pursuing an ideal of perfect harmony.",
+        "reflection": "Where has my current pace or proportion stopped supporting me?"
+      }
+    },
+    "ar15": {
+      "name": "The Devil",
+      "upright": {
+        "keywords": [
+          "Attachment",
+          "Compulsion",
+          "Constraint"
+        ],
+        "interpretation": "The Devil's loose chains invite attention to attachments that limit choice: a habit, bargain, appetite, or source of approval that offers something while taking a growing toll. Enjoyment itself is not the problem; the question concerns freedom and cost.\n\nLook honestly at what keeps the arrangement compelling. Some constraints are real and cannot be removed through willpower alone. Naming the pattern and seeking appropriate support can begin to reveal choices that shame or secrecy have made harder to see.",
+        "reflection": "What holds my attention or loyalty, and what does it ask me to give up?"
+      },
+      "reversed": {
+        "keywords": [
+          "Unbinding",
+          "Awareness",
+          "Reclaimed choice"
+        ],
+        "interpretation": "The Devil reversed can mark a growing recognition of an attachment and a desire to loosen its hold. It can also reflect the discomfort that appears when a familiar source of relief or control is questioned.\n\nFreedom may require practical changes, support, and repeated decisions rather than one dramatic break. Notice what makes the pattern easier to return to. A setback need not erase your understanding, but it can show where the conditions around a new choice need strengthening.",
+        "reflection": "What practical support would help me loosen a pattern that limits my choices?"
+      }
+    },
+    "ar16": {
+      "name": "The Tower",
+      "upright": {
+        "keywords": [
+          "Disruption",
+          "Revelation",
+          "Instability"
+        ],
+        "interpretation": "The Tower's lightning exposes the fragility of something that seemed secure. This card can speak to disruption, a difficult revelation, or the collapse of an assumption that has supported familiar arrangements.\n\nSuch experiences can be frightening and costly; there is no need to call them blessings. Attend first to what needs protection and immediate care. Once there is room to assess the damage, consider which foundations were unreliable and what a more honest rebuilding would require.",
+        "reflection": "What needs immediate care when a familiar source of stability is shaken?"
+      },
+      "reversed": {
+        "keywords": [
+          "Warning signs",
+          "Resistance",
+          "Internal upheaval"
+        ],
+        "interpretation": "The Tower reversed turns attention toward cracks that are being managed, denied, or felt privately. You may be considering a necessary change before circumstances force it, or carrying the aftermath of a disruption others cannot see.\n\nAvoid treating every uncertainty as a coming collapse. Instead, examine concrete signs and the cost of maintaining appearances. A deliberate repair, honest admission, or planned departure may reduce further harm, even when it cannot preserve everything in its current form.",
+        "reflection": "Which warning signs or private changes deserve a more honest response?"
+      }
+    },
+    "ar17": {
+      "name": "The Star",
+      "upright": {
+        "keywords": [
+          "Hope",
+          "Renewal",
+          "Openness"
+        ],
+        "interpretation": "The Star's water returns to both earth and pool, suggesting renewal through simple, steady nourishment. Hope here has a quiet quality: an openness to life after strain, without a demand that every difficulty disappear.\n\nLet something restorative have a place in your day. Honest expression, generous attention, or a modest plan may help you reconnect with what feels worth tending. Trust can grow from these ordinary acts, even while unanswered questions remain in the wider landscape.",
+        "reflection": "What gives me a quiet, credible sense of hope?"
+      },
+      "reversed": {
+        "keywords": [
+          "Discouragement",
+          "Diminished trust",
+          "Private renewal"
+        ],
+        "interpretation": "The Star reversed can reflect discouragement or difficulty receiving comfort after disappointment. The language of hope may feel distant when effort has not brought the relief you expected.\n\nYou need not manufacture optimism. Notice what offers even a little nourishment without asking you to pretend. A neglected practice, supportive presence, or manageable commitment may help restore contact with life. Renewal can begin privately and unevenly, before you are ready to describe it as confidence in the future.",
+        "reflection": "What kind of encouragement can I accept without denying how I feel?"
+      }
+    },
+    "ar18": {
+      "name": "The Moon",
+      "upright": {
+        "keywords": [
+          "Uncertainty",
+          "Imagination",
+          "Hidden influences"
+        ],
+        "interpretation": "The Moon illuminates a winding path without revealing every detail. It speaks to uncertainty, strong impressions, and the ways fear or imagination can shape what seems true when information is incomplete.\n\nMove with care through what you cannot yet explain. Feelings deserve attention, but they may not establish the facts of a situation. Give yourself time to observe, ask clear questions, and separate what you know from what you suspect before making a consequential decision.",
+        "reflection": "What do I know directly, and what am I filling in with fear or imagination?"
+      },
+      "reversed": {
+        "keywords": [
+          "Emerging clarity",
+          "Unease",
+          "Untangling"
+        ],
+        "interpretation": "The Moon reversed can suggest that confusion is beginning to loosen, or that a hidden worry is becoming easier to name. Clarity may arrive in fragments rather than as a complete explanation.\n\nCheck new impressions against what can be verified. A feeling of certainty can be relieving without being conclusive. Talking through a concern or revisiting an assumption may help distinguish an actual problem from an imagined one, while leaving room for what is still unresolved.",
+        "reflection": "Which uncertainty is becoming clearer, and what still needs careful checking?"
+      }
+    },
+    "ar19": {
+      "name": "The Sun",
+      "upright": {
+        "keywords": [
+          "Joy",
+          "Clarity",
+          "Vitality"
+        ],
+        "interpretation": "The Sun brings warmth and visibility, suggesting the pleasure of meeting life with fewer disguises. Its open landscape speaks of vitality, straightforward understanding, and moments when enjoyment can be shared without elaborate conditions.\n\nNotice what is working and allow yourself to take part in it. A clear conversation, playful activity, or well-earned success deserves attention. Joy need not prove that everything is settled; it can be a real experience within a life that still holds difficult things.",
+        "reflection": "What can I enjoy openly without needing the rest of my life to be perfect?"
+      },
+      "reversed": {
+        "keywords": [
+          "Muted joy",
+          "Overexposure",
+          "Measured confidence"
+        ],
+        "interpretation": "The Sun reversed asks about joy that feels delayed, diminished, or difficult to receive. It may also suggest confidence running ahead of understanding, when enthusiasm leaves little room for inconvenient details.\n\nLook for a more proportionate view. An achievement can be appreciated without being inflated, and a subdued day need not cancel what is good. Make room for simple pleasure away from the pressure to appear cheerful or to turn every success into a public performance.",
+        "reflection": "What makes it easier or harder for me to receive ordinary pleasure?"
+      }
+    },
+    "ar20": {
+      "name": "Judgement",
+      "upright": {
+        "keywords": [
+          "Awakening",
+          "Review",
+          "Renewal"
+        ],
+        "interpretation": "Judgement's trumpet calls for a fuller response to life. This card concerns looking back honestly, recognizing what experience has taught, and deciding how to answer a responsibility or possibility that now feels difficult to ignore.\n\nReview the past without reducing yourself to your worst decision or best achievement. What needs acknowledgement, repair, or a renewed commitment? A fresh beginning gains substance when it includes what you have learned and a willingness to act differently.",
+        "reflection": "What is asking for a more honest and wholehearted response from me now?"
+      },
+      "reversed": {
+        "keywords": [
+          "Self-judgment",
+          "Avoidance",
+          "Unanswered call"
+        ],
+        "interpretation": "Judgement reversed can suggest a needed review being postponed or drowned out by harsh self-criticism. Replaying mistakes may feel like accountability while leaving little room to understand them or make a repair.\n\nNotice whether you are listening for useful insight or issuing a final verdict on yourself. A response can begin with one specific acknowledgement and one realistic change. You may also need to question a call that comes from others' expectations rather than your considered commitments.",
+        "reflection": "How could I turn a repeated judgment into a specific, useful response?"
+      }
+    },
+    "ar21": {
+      "name": "The World",
+      "upright": {
+        "keywords": [
+          "Completion",
+          "Integration",
+          "Belonging"
+        ],
+        "interpretation": "The World places a moving figure within a wreath, bringing completion together with continuing life. A cycle can reach its proper conclusion as different parts of experience begin to form a more coherent whole.\n\nTake time to recognize what has been accomplished and what it required. Completion may include sharing the result, marking an ending, or letting your understanding settle. You can appreciate arriving somewhere meaningful without expecting that arrival to answer every question forever.",
+        "reflection": "What would help me recognize and honor a meaningful completion?"
+      },
+      "reversed": {
+        "keywords": [
+          "Loose ends",
+          "Delayed closure",
+          "Integration"
+        ],
+        "interpretation": "The World reversed points toward an ending that is near but not fully settled. A practical detail may remain unfinished, or the outward milestone may have arrived before you have absorbed what the experience means.\n\nIdentify the actual loose end rather than endlessly improving work that is ready. Closure might need a final conversation, a completed obligation, or permission to stop. Sometimes the remaining task is simply to accept that an imperfect result can still mark a completed chapter.",
+        "reflection": "What remains unfinished, and what am I reluctant to recognize as complete?"
+      }
+    },
+    "waac": {
+      "name": "Ace of Wands",
+      "upright": {
+        "keywords": [
+          "Inspiration",
+          "Vitality",
+          "Initiative"
+        ],
+        "interpretation": "The budding wand suggests an impulse with life in it: a creative idea, an attraction to a challenge, or the desire to begin. This card offers a starting point whose value becomes clearer through action.\n\nGive the spark something small and concrete to kindle. Make a sketch, begin a conversation, or try the first step. Enthusiasm can open a door, while practice and attention will determine what grows beyond that initial moment.",
+        "reflection": "Which fresh impulse is worth giving a practical first step?"
+      },
+      "reversed": {
+        "keywords": [
+          "False starts",
+          "Low energy",
+          "Incubation"
+        ],
+        "interpretation": "The Ace of Wands reversed can suggest an idea that has not found its conditions, or enthusiasm that fades when it meets the practical work of beginning. Low energy may also make an appealing possibility feel distant.\n\nBefore forcing momentum, ask what is missing: time, interest, support, or a clearer purpose. Some sparks need protection while they develop; others can be allowed to pass. A modest trial may help you tell which kind this is.",
+        "reflection": "What would reveal whether this idea needs more room or a different direction?"
+      }
+    },
+    "wa02": {
+      "name": "Two of Wands",
+      "upright": {
+        "keywords": [
+          "Planning",
+          "Possibility",
+          "Perspective"
+        ],
+        "interpretation": "Holding a globe while looking beyond familiar walls, the Two of Wands considers what might come next. An initial achievement or secure position can become a place from which to imagine a wider life.\n\nExplore the possibilities with enough detail to make them meaningful. What resources, commitments, and uncertainties would accompany expansion? Planning can help you choose deliberately, especially when staying where you are offers real comfort and moving outward asks something new of you.",
+        "reflection": "What wider possibility am I ready to examine more seriously?"
+      },
+      "reversed": {
+        "keywords": [
+          "Indecision",
+          "Limited vision",
+          "Cautious planning"
+        ],
+        "interpretation": "The Two of Wands reversed brings attention to the boundary between planning and postponing. A wider possibility may be tempting, while its uncertainty keeps you circling familiar options. A plan may also overlook practical limits.\n\nBring the imagined future closer through specific information. You might compare costs, ask someone with experience, or identify a first decision. Staying put can be a considered choice, but it helps to know whether you are choosing it or avoiding the alternatives.",
+        "reflection": "What information would help me turn an imagined possibility into a real choice?"
+      }
+    },
+    "wa03": {
+      "name": "Three of Wands",
+      "upright": {
+        "keywords": [
+          "Expansion",
+          "Foresight",
+          "Progress"
+        ],
+        "interpretation": "The Three of Wands watches ships from a vantage point beyond the first decision. Something has been set in motion, and attention now turns to its reach, its response, and the possibilities opening farther afield.\n\nGive your efforts time to travel while remaining engaged with their development. Seek perspectives outside your usual surroundings and prepare for what growth would require. Waiting here can be active: observing results, making connections, and adjusting plans as the wider picture becomes visible.",
+        "reflection": "What should I prepare for as my current efforts begin to reach farther?"
+      },
+      "reversed": {
+        "keywords": [
+          "Delays",
+          "Narrow horizons",
+          "Revised expectations"
+        ],
+        "interpretation": "The Three of Wands reversed can reflect a response that arrives slowly or expansion that encounters limits. What seemed workable from a distance may need adjustment when practical details come into view.\n\nRevisit assumptions about timing, reach, and support. A delay may call for patience, but it can also provide useful information about the plan. Bringing your attention closer to home for a while may strengthen the foundation from which a later attempt can extend.",
+        "reflection": "How do my expectations need to change in light of the response I am receiving?"
+      }
+    },
+    "wa04": {
+      "name": "Four of Wands",
+      "upright": {
+        "keywords": [
+          "Celebration",
+          "Welcome",
+          "Stability"
+        ],
+        "interpretation": "The Four of Wands creates a welcoming threshold decorated for celebration. It honors the stability that lets people gather, acknowledge a milestone, and enjoy belonging without having to earn it again at every moment.\n\nTake notice of the people and arrangements that make a place feel hospitable. A shared meal, small ceremony, or pause to appreciate progress can strengthen those bonds. Celebration need not be grand to recognize that something worthwhile has been built together.",
+        "reflection": "What shared milestone or source of belonging deserves to be celebrated?"
+      },
+      "reversed": {
+        "keywords": [
+          "Uneasy belonging",
+          "Private celebration",
+          "Unsettled foundations"
+        ],
+        "interpretation": "The Four of Wands reversed asks about the welcome beneath the decorations. A gathering may carry tension, a home may feel unsettled, or an achievement may be meaningful without receiving public recognition.\n\nLook at what would make belonging more substantial. That might mean clarifying expectations, including someone overlooked, or marking a milestone in a quieter way. You need not perform harmony for an occasion; a more honest celebration can make room for the relationships as they actually are.",
+        "reflection": "What would make a place or celebration feel more welcoming to me and others?"
+      }
+    },
+    "wa05": {
+      "name": "Five of Wands",
+      "upright": {
+        "keywords": [
+          "Friction",
+          "Competition",
+          "Different approaches"
+        ],
+        "interpretation": "The crossing staffs of the Five of Wands suggest competing efforts without a shared rhythm. Different ideas, ambitions, or styles may be colliding, creating frustration even when no one intends serious harm.\n\nSome disagreement can sharpen a project or reveal overlooked possibilities. It becomes less useful when everyone struggles to be heard at once. Clarify the purpose of the exchange, make room for distinct contributions, and notice when a lively challenge starts turning into a contest for dominance.",
+        "reflection": "What could turn this friction into a more useful exchange?"
+      },
+      "reversed": {
+        "keywords": [
+          "Avoided conflict",
+          "De-escalation",
+          "Hidden rivalry"
+        ],
+        "interpretation": "The Five of Wands reversed can suggest a wish to step out of needless competition. It may also point to disagreement pushed below the surface, where apparent cooperation hides resentment or competing aims.\n\nNotice whether the quieter atmosphere reflects understanding or reluctance to speak. You can decline an exhausting contest while still naming the difference that matters. A clear process, separate responsibilities, or a direct conversation may prevent small tensions from becoming a larger struggle.",
+        "reflection": "Which disagreement needs a clear voice, and which contest can I leave behind?"
+      }
+    },
+    "wa06": {
+      "name": "Six of Wands",
+      "upright": {
+        "keywords": [
+          "Recognition",
+          "Confidence",
+          "Achievement"
+        ],
+        "interpretation": "The Six of Wands' raised wreath marks an achievement seen by others. Recognition can affirm sustained effort, offer encouragement, and help you carry a useful sense of confidence into the next stage.\n\nReceive appreciation without forgetting the people and circumstances that contributed. There is room to take pride in your part and to share credit generously. Let this moment strengthen your commitment to the work, while remembering that applause is one measure of value among several.",
+        "reflection": "How can I receive recognition while honoring what helped me get here?"
+      },
+      "reversed": {
+        "keywords": [
+          "Overlooked effort",
+          "Approval seeking",
+          "Fragile confidence"
+        ],
+        "interpretation": "The Six of Wands reversed questions how much weight public recognition is carrying. An effort may be overlooked, criticism may sting, or the need to maintain a successful image may be crowding out the work's original purpose.\n\nLook for a fair measure of progress beyond praise or disappointment. Honest feedback can help you improve without deciding your entire worth. If credit is uneven, consider naming contributions clearly; if applause has become the goal, revisit what made the effort meaningful.",
+        "reflection": "How am I measuring success when recognition is absent or uncertain?"
+      }
+    },
+    "wa07": {
+      "name": "Seven of Wands",
+      "upright": {
+        "keywords": [
+          "Conviction",
+          "Boundaries",
+          "Resistance"
+        ],
+        "interpretation": "The Seven of Wands holds a position under pressure. It speaks to the effort of defending a commitment, protecting a boundary, or maintaining your footing when competing demands insist on a response.\n\nDecide what is worth standing for before spending energy on every challenge. A clear explanation or consistent limit may serve better than constant argument. There can be courage in maintaining a position, especially when you leave enough room to distinguish a real threat from a different opinion.",
+        "reflection": "Which boundary or conviction deserves my energy to defend?"
+      },
+      "reversed": {
+        "keywords": [
+          "Overwhelm",
+          "Defensiveness",
+          "Selective effort"
+        ],
+        "interpretation": "The Seven of Wands reversed can reflect exhaustion from feeling that every position must be defended. Pressure may make it difficult to hold a necessary boundary, or a defensive stance may persist after the challenge has changed.\n\nReview which demands require a response and which can be allowed to pass. Support, a simpler limit, or a deliberate withdrawal may conserve your strength. Listening to a reasonable objection need not surrender your footing; it may help you stand on firmer ground.",
+        "reflection": "Where could I conserve effort without giving up a boundary that matters?"
+      }
+    },
+    "wa08": {
+      "name": "Eight of Wands",
+      "upright": {
+        "keywords": [
+          "Momentum",
+          "Communication",
+          "Swift movement"
+        ],
+        "interpretation": "The Eight of Wands sends its staffs through open air, suggesting matters moving once a clear path becomes available. Messages, decisions, and efforts may begin connecting more quickly than they did before.\n\nBe ready to respond while keeping the direction in view. A concise message or timely action can help progress continue, especially when several pieces are already in motion. Speed is most useful when everyone understands what is happening and important details travel along with the enthusiasm.",
+        "reflection": "What needs a timely, clear response while things are moving?"
+      },
+      "reversed": {
+        "keywords": [
+          "Delays",
+          "Mixed messages",
+          "Haste"
+        ],
+        "interpretation": "The Eight of Wands reversed brings attention to movement that is interrupted or poorly coordinated. Messages may cross, a response may be delayed, or events may move faster than understanding can keep up.\n\nCheck the destination and the details before sending more energy into the situation. A pause to confirm expectations can save a great deal of confusion. If timing is outside your control, use the interval to prepare rather than filling it with repeated attempts to force a reply.",
+        "reflection": "What needs clarification before another quick response would be useful?"
+      }
+    },
+    "wa09": {
+      "name": "Nine of Wands",
+      "upright": {
+        "keywords": [
+          "Perseverance",
+          "Vigilance",
+          "Experience"
+        ],
+        "interpretation": "The bandaged figure of the Nine of Wands has reason to be watchful. This card recognizes persistence shaped by difficulty, along with the caution that remains when an earlier struggle is still close to mind.\n\nHonor what experience has taught without asking yourself to remain on guard forever. A final effort may need preparation, help, and sensible boundaries. Endurance becomes more sustainable when you can assess the present situation on its own terms and acknowledge the fatigue you carry.",
+        "reflection": "What helps me persevere without staying more guarded than the present requires?"
+      },
+      "reversed": {
+        "keywords": [
+          "Exhaustion",
+          "Guardedness",
+          "Limits"
+        ],
+        "interpretation": "The Nine of Wands reversed can suggest defenses that have become exhausting or persistence that is nearing its limit. Past difficulties may be shaping your response to a situation that now needs a different approach.\n\nAsk what continuing would cost and what support is actually available. Resting, changing a boundary, or leaving an unsustainable effort can be a considered decision. If vigilance has become habitual, small evidence of reliability may help you decide where it is reasonable to lower your guard.",
+        "reflection": "What would tell me that continuing, resting, or stepping away is the wiser choice?"
+      }
+    },
+    "wa10": {
+      "name": "Ten of Wands",
+      "upright": {
+        "keywords": [
+          "Burden",
+          "Responsibility",
+          "Overextension"
+        ],
+        "interpretation": "The Ten of Wands carries a large bundle toward a destination that is hard to see around the load. Responsibilities may be the result of worthwhile commitments, yet their combined weight can still become too much.\n\nExamine what you are carrying and why each part became yours. Completion may be close, but that does not make every burden necessary. Sharing work, setting a limit, or putting down an outdated obligation can help you reach the goal with more room to breathe.",
+        "reflection": "Which responsibilities are truly mine, and which could be shared or released?"
+      },
+      "reversed": {
+        "keywords": [
+          "Unburdening",
+          "Burnout",
+          "Uneven responsibility"
+        ],
+        "interpretation": "The Ten of Wands reversed highlights a load that needs redistributing or has become impossible to sustain. You may be beginning to release obligations, or finding that they are being dropped only after your capacity is exhausted.\n\nMake the weight visible before deciding what happens next. A specific request for help or a clear renegotiation can be more effective than hoping others notice. Relief may also require tolerating an unfinished task or refusing responsibility that should never have rested with you alone.",
+        "reflection": "What would a fairer distribution of this burden look like?"
+      }
+    },
+    "wapa": {
+      "name": "Page of Wands",
+      "upright": {
+        "keywords": [
+          "Curiosity",
+          "Experimentation",
+          "Enthusiasm"
+        ],
+        "interpretation": "The Page of Wands studies a staff with the interest of someone discovering what it might become. This card represents an exploratory approach, a lively invitation, or a person whose enthusiasm makes new possibilities feel worth trying.\n\nLet curiosity lead into a manageable experiment. You can learn through participation without presenting yourself as an expert. A fresh idea gains depth when you ask questions, accept the awkwardness of early attempts, and notice which parts of the experience keep your interest alive.",
+        "reflection": "What small experiment would let me follow my curiosity?"
+      },
+      "reversed": {
+        "keywords": [
+          "Scattered interest",
+          "Discouragement",
+          "Unformed plans"
+        ],
+        "interpretation": "The Page of Wands reversed can suggest enthusiasm without a clear outlet or confidence shaken by an early difficulty. A promising idea may be announced repeatedly while the first practical attempt remains uncertain.\n\nReduce the pressure to make something impressive. Pick one manageable way to explore, and let its results teach you. If interest fades, examine whether the idea truly belongs to you or mainly reflects the excitement of being seen to begin something new.",
+        "reflection": "Which interest would I still want to explore if nobody expected an impressive result?"
+      }
+    },
+    "wakn": {
+      "name": "Knight of Wands",
+      "upright": {
+        "keywords": [
+          "Adventure",
+          "Boldness",
+          "Energy"
+        ],
+        "interpretation": "The Knight of Wands brings a spirited approach to action. It can represent a person or quality willing to travel beyond familiar limits, pursue an exciting idea, and meet a challenge with visible enthusiasm.\n\nUse that energy where movement is genuinely needed. A bold first step can open possibilities, while attention to commitments keeps excitement from becoming disruption. Ask what will carry the effort after the rush of departure, and give your initiative enough direction to become more than a passing adventure.",
+        "reflection": "How can I give my enthusiasm a direction I am willing to sustain?"
+      },
+      "reversed": {
+        "keywords": [
+          "Impulsiveness",
+          "Frustration",
+          "Inconsistency"
+        ],
+        "interpretation": "The Knight of Wands reversed suggests energy that surges, stalls, or reacts sharply to limits. An approach may be exciting but unreliable, especially when the desire for movement outruns attention to consequences.\n\nLook at the promises attached to your actions. A slower decision may protect something you actually care about, and a smaller commitment may be easier to honor. When frustration rises, identify the blocked aim before directing that heat toward people who happen to be nearby.",
+        "reflection": "What commitment needs more steadiness than my current excitement is giving it?"
+      }
+    },
+    "waqu": {
+      "name": "Queen of Wands",
+      "upright": {
+        "keywords": [
+          "Confidence",
+          "Warmth",
+          "Independence"
+        ],
+        "interpretation": "The Queen of Wands pairs a sunflower's warmth with a watchful cat, suggesting confidence that welcomes life while retaining its own judgment. This card can describe a person or approach that encourages others without disappearing into their needs.\n\nLet your interests and abilities be visible. You can participate wholeheartedly, create a lively atmosphere, and keep a clear sense of what is yours to choose. Confidence becomes generous when it leaves room for other people's distinct voices and ambitions.",
+        "reflection": "How could I express my confidence in a way that also makes room for others?"
+      },
+      "reversed": {
+        "keywords": [
+          "Comparison",
+          "Jealousy",
+          "Private confidence"
+        ],
+        "interpretation": "The Queen of Wands reversed asks what happens to confidence when it is measured against other people. Warmth may become possessiveness, or a fear of being judged may keep a capable person from taking part.\n\nReturn attention to the interests that have substance for you. Quietly developing an ability can rebuild confidence without an audience. If envy appears, let it identify a desire worth examining, while taking care not to make someone else's success responsible for your sense of belonging.",
+        "reflection": "What desire is comparison revealing, and how could I pursue it on my own terms?"
+      }
+    },
+    "waki": {
+      "name": "King of Wands",
+      "upright": {
+        "keywords": [
+          "Vision",
+          "Leadership",
+          "Enterprise"
+        ],
+        "interpretation": "The King of Wands represents the ability to give a lively vision direction and invite others into the effort. This may describe a person, a leadership role, or an approach that combines confidence with a broad view of what could be built.\n\nMake the purpose clear and allow people meaningful room to contribute. Effective leadership includes decisions and follow-through, as well as inspiration. Notice how the vision affects those doing the work and whether your example supports the commitment you are asking for.",
+        "reflection": "What kind of example would make my vision easier for others to trust?"
+      },
+      "reversed": {
+        "keywords": [
+          "Domination",
+          "Impatience",
+          "Unrealistic demands"
+        ],
+        "interpretation": "The King of Wands reversed questions leadership that expects others to match one person's urgency or ambition. A compelling vision may be weakened by impatience, pride, or a reluctance to hear practical objections.\n\nExamine the difference between inviting commitment and demanding loyalty. Clear priorities, realistic expectations, and shared decisions can restore credibility. If this describes someone around you, consider what boundaries let you contribute without being swept into a plan whose costs or direction you cannot meaningfully question.",
+        "reflection": "Where does a strong vision need more listening and shared responsibility?"
+      }
+    },
+    "cuac": {
+      "name": "Ace of Cups",
+      "upright": {
+        "keywords": [
+          "Openness",
+          "Affection",
+          "Emotional renewal"
+        ],
+        "interpretation": "The overflowing cup suggests a fresh opening in emotional life. Affection, compassion, creativity, or the simple willingness to be moved may be asking for room after a period of reserve.\n\nReceive the feeling without needing to decide immediately what it will become. A kind exchange, an honest expression, or time with something beautiful can give this opening a tangible place. Emotional abundance becomes more nourishing when it can flow in both directions, through giving and receiving.",
+        "reflection": "What feeling or connection am I ready to welcome more openly?"
+      },
+      "reversed": {
+        "keywords": [
+          "Withheld feeling",
+          "Depletion",
+          "Inward care"
+        ],
+        "interpretation": "The Ace of Cups reversed can suggest feeling held back, a disappointment that closes an opening, or care flowing outward faster than it is replenished. An emotional response may need privacy before it can be shared.\n\nNotice what would make expression feel possible without forcing it. That may be rest, a clearer boundary, or someone willing to listen patiently. Begin with the feeling as it is, rather than expecting yourself to become immediately available for everyone else's needs.",
+        "reflection": "What would help me make room for a feeling I have been holding back?"
+      }
+    },
+    "cu02": {
+      "name": "Two of Cups",
+      "upright": {
+        "keywords": [
+          "Mutuality",
+          "Partnership",
+          "Exchange"
+        ],
+        "interpretation": "Two people meet with their cups raised, suggesting connection through mutual attention and a willingness to exchange honestly. The Two of Cups can concern romance, friendship, cooperation, or the first steps toward reconciliation.\n\nLook at how each person gives, receives, and makes room for the other. A meaningful bond does not require sameness, but it benefits from clear consent and reciprocal care. A simple conversation may strengthen the relationship by making an unspoken appreciation or expectation visible.",
+        "reflection": "What would make an important exchange more mutual and honest?"
+      },
+      "reversed": {
+        "keywords": [
+          "Disconnection",
+          "Imbalance",
+          "Repair"
+        ],
+        "interpretation": "The Two of Cups reversed brings attention to an exchange that has lost its balance. Affection may remain while expectations differ, or one person may be carrying more of the work of staying connected.\n\nAsk what each person is actually offering and requesting. Repair needs participation from both sides; goodwill alone cannot settle an agreement that remains unclear. A conversation may renew understanding, while acknowledging a persistent mismatch can also be an honest way to care for everyone involved.",
+        "reflection": "What difference in expectations needs to be named in this relationship?"
+      }
+    },
+    "cu03": {
+      "name": "Three of Cups",
+      "upright": {
+        "keywords": [
+          "Friendship",
+          "Celebration",
+          "Community"
+        ],
+        "interpretation": "The Three of Cups raises a toast among companions, honoring the pleasure and support found in shared life. Friendship can help joy expand and make difficult seasons less lonely through simple acts of presence.\n\nNotice who you can celebrate with and who helps you feel welcome. Reach out, acknowledge good news, or contribute to a gathering in a way that suits you. Community grows through participation and care, including the small gestures that continue after the occasion is over.",
+        "reflection": "Which friendships or shared moments would I like to give more attention?"
+      },
+      "reversed": {
+        "keywords": [
+          "Exclusion",
+          "Social strain",
+          "Excess"
+        ],
+        "interpretation": "The Three of Cups reversed asks about the quality of the company you keep. A group may feel excluding, social commitments may be draining, or celebration may be drifting into excess that leaves people less connected.\n\nLook for the difference between belonging and merely keeping up. You might choose a smaller gathering, address an unkind dynamic, or make space for a friendship outside the group. Shared enjoyment is more sustaining when it allows honesty and respects each person's limits.",
+        "reflection": "Where do I feel nourished by company, and where am I simply trying to fit in?"
+      }
+    },
+    "cu04": {
+      "name": "Four of Cups",
+      "upright": {
+        "keywords": [
+          "Withdrawal",
+          "Discontent",
+          "Reconsideration"
+        ],
+        "interpretation": "The Four of Cups sits apart from the cups already present and an additional offer. It can speak to weariness, disappointment, or a need to turn inward when familiar options no longer feel satisfying.\n\nA pause may help you understand what is missing. At the same time, discontent can narrow attention until even a useful offer goes unnoticed. Explore whether you need something different, time to recover your interest, or a closer look at what is actually being offered.",
+        "reflection": "What is my lack of interest telling me, and what might it be keeping me from noticing?"
+      },
+      "reversed": {
+        "keywords": [
+          "Re-engagement",
+          "Restlessness",
+          "Fresh attention"
+        ],
+        "interpretation": "The Four of Cups reversed can suggest attention beginning to turn outward after withdrawal. An overlooked possibility may become interesting again, or restlessness may push you to accept anything that breaks the stillness.\n\nLet renewed participation be a choice rather than an escape from boredom. Revisit an offer with clearer questions, or try one modest change in your routine. You can remain selective while becoming more available to experience, especially when you understand what caused the earlier disengagement.",
+        "reflection": "What would I like to reconsider now that my attention is shifting?"
+      }
+    },
+    "cu05": {
+      "name": "Five of Cups",
+      "upright": {
+        "keywords": [
+          "Grief",
+          "Disappointment",
+          "Remaining bonds"
+        ],
+        "interpretation": "The Five of Cups faces what has spilled while two cups remain standing behind. It acknowledges grief and disappointment without suggesting that what remains should make the loss easy to bear.\n\nGive the missing thing its proper place in your attention. When you have room, notice the relationships, resources, or possibilities that are still present. Turning toward them need not betray what you mourn; it can be one way of carrying the loss within a life that continues.",
+        "reflection": "How can I honor what I have lost while staying connected to what remains?"
+      },
+      "reversed": {
+        "keywords": [
+          "Acceptance",
+          "Lingering regret",
+          "Reconnection"
+        ],
+        "interpretation": "The Five of Cups reversed can suggest a gradual willingness to turn toward life after disappointment. It may also reveal regret that keeps revisiting the same moment, particularly when blame has become part of remembering.\n\nAcceptance does not require approval of what happened or a finished period of mourning. Notice whether there is a relationship to renew, an apology to make, or a support you can receive. Small acts of reconnection can coexist with grief that still returns.",
+        "reflection": "What small act of reconnection feels possible alongside the grief or regret I carry?"
+      }
+    },
+    "cu06": {
+      "name": "Six of Cups",
+      "upright": {
+        "keywords": [
+          "Memory",
+          "Kindness",
+          "Familiarity"
+        ],
+        "interpretation": "The flower-filled cups of the Six of Cups suggest kindness, remembered pleasure, and the influence of earlier life. A familiar place or gesture may reconnect you with something simple that still matters.\n\nLet memory offer perspective without asking it to become a perfect account of the past. You might revive a shared tradition, offer uncomplicated care, or notice an old source of delight. What is valuable in a memory can be brought into the present in a form that suits who you are now.",
+        "reflection": "What kindness or pleasure from my past would I like to carry forward?"
+      },
+      "reversed": {
+        "keywords": [
+          "Nostalgia",
+          "Old patterns",
+          "Growing beyond"
+        ],
+        "interpretation": "The Six of Cups reversed asks how the past is shaping the present. Nostalgia may soften difficult memories, or an old role may continue to influence relationships long after it has stopped fitting.\n\nYou can value earlier experiences while making room for a fuller account of them. Notice what you are repeating because it feels familiar. Growing beyond an old pattern may involve updating a tradition, setting a different boundary, or allowing someone to know the person you have become.",
+        "reflection": "Which part of my past supports me, and which familiar pattern have I outgrown?"
+      }
+    },
+    "cu07": {
+      "name": "Seven of Cups",
+      "upright": {
+        "keywords": [
+          "Possibilities",
+          "Fantasy",
+          "Discernment"
+        ],
+        "interpretation": "The Seven of Cups presents alluring and unsettling visions, suggesting a field of possibilities whose substance is not yet clear. Imagination can reveal desire, while also making very different options seem equally compelling.\n\nGive yourself time to explore, then bring the choices closer to reality. What would each require, and what evidence supports its appeal? A useful decision begins by distinguishing a meaningful aspiration from a fantasy that depends on leaving the difficult parts out of view.",
+        "reflection": "Which possibility still appeals to me when I include its practical costs and demands?"
+      },
+      "reversed": {
+        "keywords": [
+          "Narrowing choices",
+          "Clarity",
+          "Overwhelm"
+        ],
+        "interpretation": "The Seven of Cups reversed can suggest the fog of possibilities beginning to clear. It may also reflect feeling so overwhelmed by choices that you seize the first definite answer, whether or not it fits.\n\nChoose a few reliable criteria and let them reduce the field. A small test can reveal more than another round of imagining. Clarity grows through checking assumptions and accepting trade-offs, rather than waiting for an option that carries every benefit without any cost.",
+        "reflection": "What criteria would help me narrow my choices without rushing the decision?"
+      }
+    },
+    "cu08": {
+      "name": "Eight of Cups",
+      "upright": {
+        "keywords": [
+          "Departure",
+          "Searching",
+          "Emotional honesty"
+        ],
+        "interpretation": "The Eight of Cups leaves an arranged collection behind and turns toward unfamiliar terrain. Something can have value and still no longer meet a deeper need; recognizing that difference may bring sadness as well as resolve.\n\nConsider what is prompting the wish to move on. An honest departure includes acknowledging what you received and what remains lacking. The next destination may be uncertain, but you can begin by naming the question that staying in the same place has not answered.",
+        "reflection": "What need remains unmet in something I have invested in?"
+      },
+      "reversed": {
+        "keywords": [
+          "Ambivalence",
+          "Returning",
+          "Fear of leaving"
+        ],
+        "interpretation": "The Eight of Cups reversed pauses at the decision to stay or leave. Familiarity, unfinished attachment, or fear of starting over may complicate a departure; a return may also deserve consideration if conditions have meaningfully changed.\n\nExamine what draws you back and what pushes you away. Neither staying nor leaving becomes wise simply because it is difficult. Look for evidence of what can be renewed, and be honest about a hope that asks the same unmet need to wait indefinitely.",
+        "reflection": "What would need to change for staying or returning to be a considered choice?"
+      }
+    },
+    "cu09": {
+      "name": "Nine of Cups",
+      "upright": {
+        "keywords": [
+          "Contentment",
+          "Pleasure",
+          "Fulfillment"
+        ],
+        "interpretation": "The Nine of Cups sits before a satisfying collection, inviting appreciation of a pleasure or wish that has taken a real place in life. Contentment can be an experience to enjoy, rather than another task to improve.\n\nNotice what feels enough in this moment. Acknowledge the effort, good fortune, and relationships that helped make it possible. Enjoyment becomes richer when it includes gratitude and room for others, without requiring you to display satisfaction as proof that everything is complete.",
+        "reflection": "What feels satisfying enough for me to enjoy without immediately seeking more?"
+      },
+      "reversed": {
+        "keywords": [
+          "Dissatisfaction",
+          "Indulgence",
+          "Hollow rewards"
+        ],
+        "interpretation": "The Nine of Cups reversed asks what happens when obtaining a wish does not bring the feeling you expected. Pleasure may have become excessive, or a visible reward may conceal an unmet need that it cannot address.\n\nExplore the difference between enjoyment and the attempt to fill a persistent lack. There is no need to shame an appetite; understanding its purpose can make your choices clearer. Reconsider what satisfaction means when it is measured through lived experience rather than appearance or accumulation.",
+        "reflection": "What am I hoping a particular pleasure or reward will give me?"
+      }
+    },
+    "cu10": {
+      "name": "Ten of Cups",
+      "upright": {
+        "keywords": [
+          "Belonging",
+          "Shared joy",
+          "Emotional harmony"
+        ],
+        "interpretation": "The Ten of Cups' rainbow stretches over a scene of shared life, suggesting fulfillment through relationships and a sense of home. This can include chosen family, friendship, or any circle where care has become dependable.\n\nNotice the ordinary actions beneath the larger feeling of belonging. Listening, cooperation, and time together help sustain it. Appreciate the happiness that is present without requiring everyone to fit an ideal picture; meaningful harmony can include differences that people are willing to hold with respect.",
+        "reflection": "What everyday actions help sustain the belonging I value?"
+      },
+      "reversed": {
+        "keywords": [
+          "Discord",
+          "Unrealistic ideals",
+          "Redefined belonging"
+        ],
+        "interpretation": "The Ten of Cups reversed brings attention to a difference between the picture of togetherness and the relationships beneath it. Unspoken tensions or inherited expectations may make belonging feel conditional.\n\nLet the actual needs of the people involved matter more than maintaining an image. A difficult conversation, a revised tradition, or a different understanding of family may create a more honest foundation. Some bonds need repair, while others need boundaries before shared life can feel welcoming again.",
+        "reflection": "What expectation about togetherness needs to make room for people's actual needs?"
+      }
+    },
+    "cupa": {
+      "name": "Page of Cups",
+      "upright": {
+        "keywords": [
+          "Sensitivity",
+          "Imagination",
+          "Emotional curiosity"
+        ],
+        "interpretation": "The Page of Cups finds an unexpected fish in a cup, suggesting surprise within emotional or creative life. This card can describe a sensitive person, a tentative message, or an approach willing to be curious about a feeling.\n\nWelcome what is emerging without demanding that it arrive fully explained. A playful idea, gentle apology, or honest admission may open a conversation. Give imaginative impressions space, and stay willing to learn what the feeling means through experience rather than assumption.",
+        "reflection": "What unexpected feeling or creative idea would I like to approach with curiosity?"
+      },
+      "reversed": {
+        "keywords": [
+          "Vulnerability",
+          "Immaturity",
+          "Blocked expression"
+        ],
+        "interpretation": "The Page of Cups reversed can suggest a feeling that is difficult to express or a response shaped by embarrassment and wishful thinking. Sensitivity may be present without the experience needed to communicate it clearly.\n\nGive the feeling a little time and a suitable form. Writing privately or speaking simply may help more than hints that another person must decode. If disappointment has prompted withdrawal or an impulsive reaction, consider what you actually wanted to ask for before deciding how to respond.",
+        "reflection": "How could I express a tender feeling more clearly and directly?"
+      }
+    },
+    "cukn": {
+      "name": "Knight of Cups",
+      "upright": {
+        "keywords": [
+          "Romance",
+          "Idealism",
+          "Invitation"
+        ],
+        "interpretation": "The Knight of Cups carries an offering with care, representing an approach guided by feeling, beauty, or an ideal. It may suggest a person bringing an invitation, or your own willingness to move toward something emotionally meaningful.\n\nLet sincerity take a form that another person can understand and freely receive. A thoughtful proposal or creative gesture can open possibilities. Keep the ideal connected to ordinary conduct, so that the promise of the moment has something reliable beneath its charm.",
+        "reflection": "How can I give an ideal or feeling a sincere, practical expression?"
+      },
+      "reversed": {
+        "keywords": [
+          "Disillusionment",
+          "Inconstancy",
+          "Unkept promises"
+        ],
+        "interpretation": "The Knight of Cups reversed asks whether an appealing offer is supported by steady action. Strong feeling may produce a promise that cannot be maintained, or disappointment may arise when a person differs from the ideal placed upon them.\n\nLook at consistency as well as intention. You can value tenderness while questioning an unclear commitment. If this reflects your own approach, be honest about what you can offer now, and allow others to respond to that reality rather than to a beautiful possibility.",
+        "reflection": "Where does an appealing promise need clearer expectations and more consistent action?"
+      }
+    },
+    "cuqu": {
+      "name": "Queen of Cups",
+      "upright": {
+        "keywords": [
+          "Compassion",
+          "Sensitivity",
+          "Emotional depth"
+        ],
+        "interpretation": "The Queen of Cups attends closely to an ornate, covered cup, suggesting feeling held with depth and care. This card can describe a compassionate person or an approach that listens beneath the surface without demanding immediate disclosure.\n\nMake room for what is felt, including what is difficult to put into words. Receptive attention can deepen understanding, especially when it respects privacy and keeps assumptions open to correction. Caring for others also includes noticing your own responses and the limits of what you can hold.",
+        "reflection": "How can I listen deeply while remaining clear about my own feelings and limits?"
+      },
+      "reversed": {
+        "keywords": [
+          "Overwhelm",
+          "Emotional strain",
+          "Blurred boundaries"
+        ],
+        "interpretation": "The Queen of Cups reversed can suggest taking in more feeling than you can comfortably carry. Compassion may become entangled with responsibility for another person's moods, or your own needs may remain unspoken while you attend to theirs.\n\nDistinguish understanding someone from managing their experience. A clearer limit can protect the quality of your care. Allow private time to recognize your own response, and avoid treating an intense impression as certain knowledge of what another person feels or intends.",
+        "reflection": "Which feelings belong to my own experience, and which am I taking responsibility for unnecessarily?"
+      }
+    },
+    "cuki": {
+      "name": "King of Cups",
+      "upright": {
+        "keywords": [
+          "Composure",
+          "Compassion",
+          "Emotional maturity"
+        ],
+        "interpretation": "The King of Cups remains seated amid moving water, representing steadiness that can coexist with strong feeling. This card may describe a thoughtful person or an approach that combines emotional understanding with measured action.\n\nLet feelings inform a decision without requiring them to make it alone. You can acknowledge distress, listen generously, and maintain a necessary boundary. Mature composure becomes useful when it allows honest expression and practical care, rather than asking everyone to remain calm for the sake of appearances.",
+        "reflection": "What would a compassionate and measured response look like in this situation?"
+      },
+      "reversed": {
+        "keywords": [
+          "Suppression",
+          "Volatility",
+          "Emotional leverage"
+        ],
+        "interpretation": "The King of Cups reversed asks how emotion and influence are interacting. A composed appearance may hide pressure that eventually spills out, or someone's feelings may be used to steer others without an open request.\n\nAttend to conduct as well as tone. Calm words do not settle an unfair exchange, and strong feelings do not remove responsibility for actions. Clear communication and dependable boundaries can make room for emotion without allowing it to become a means of control.",
+        "reflection": "Where does emotional influence need to become a clearer, more accountable conversation?"
+      }
+    },
+    "peac": {
+      "name": "Ace of Pentacles",
+      "upright": {
+        "keywords": [
+          "Opportunity",
+          "Grounding",
+          "Potential"
+        ],
+        "interpretation": "The offered pentacle rests above a garden path, suggesting potential that can take a tangible form. A resource, skill, practical opening, or useful commitment may provide the beginning of something worth cultivating.\n\nExamine the opportunity through ordinary questions about time, effort, and support. A promising start benefits from a clear first step and care for the conditions around it. The value of the seed lies partly in what it could become and partly in how you choose to tend it.",
+        "reflection": "What practical opportunity deserves my attention and sustained care?"
+      },
+      "reversed": {
+        "keywords": [
+          "Missed openings",
+          "Unsteady foundations",
+          "Practical review"
+        ],
+        "interpretation": "The Ace of Pentacles reversed asks whether a practical opening has enough support to take root. A plan may be delayed, a resource overlooked, or the attraction of a new beginning may conceal costs that need closer examination.\n\nReview the details before treating potential as a result. What is available now, and what would have to be supplied? A smaller beginning or a decision to wait may protect your resources while revealing whether this opportunity fits your actual circumstances.",
+        "reflection": "What needs checking before I commit resources to this possibility?"
+      }
+    },
+    "pe02": {
+      "name": "Two of Pentacles",
+      "upright": {
+        "keywords": [
+          "Adaptability",
+          "Priorities",
+          "Balance"
+        ],
+        "interpretation": "The Two of Pentacles keeps two coins moving while waves rise and fall behind. It speaks to the practical adjustments involved in managing changing demands, with flexibility helping you respond as conditions shift.\n\nLook at the rhythm of your commitments rather than expecting every day to carry the same load. Clear priorities can make necessary trade-offs easier to handle. Leave some margin where possible, so that maintaining balance does not depend on constant motion and a perfectly predictable day.",
+        "reflection": "What adjustment would make my competing commitments easier to manage?"
+      },
+      "reversed": {
+        "keywords": [
+          "Overload",
+          "Disorganization",
+          "Unsustainable juggling"
+        ],
+        "interpretation": "The Two of Pentacles reversed suggests that keeping everything in motion may be concealing an overload. A missed detail, uneven use of resources, or repeated last-minute adjustment can show where flexibility has reached its limit.\n\nMake the demands visible and choose what needs attention first. A simpler schedule, fewer commitments, or a clearer record may help more than trying to become faster. Some obligations need renegotiation when the only way to maintain them is to keep borrowing from tomorrow's capacity.",
+        "reflection": "Which demand needs to change so that balance does not depend on constant juggling?"
+      }
+    },
+    "pe03": {
+      "name": "Three of Pentacles",
+      "upright": {
+        "keywords": [
+          "Collaboration",
+          "Craft",
+          "Shared planning"
+        ],
+        "interpretation": "The Three of Pentacles brings a craftsperson and planners together around work taking shape. Different kinds of knowledge become useful when people respect each other's contribution and agree on what they are building.\n\nSeek clear roles, thoughtful feedback, and standards that everyone understands. Skill develops through practice, while collaboration can reveal what one person would miss. Notice whose work is visible and whose remains behind the scenes, and let recognition follow the effort that makes the result possible.",
+        "reflection": "What contribution or conversation would improve the work we are doing together?"
+      },
+      "reversed": {
+        "keywords": [
+          "Poor coordination",
+          "Uneven standards",
+          "Unrecognized skill"
+        ],
+        "interpretation": "The Three of Pentacles reversed can suggest people working alongside each other without a shared plan. Skill may be overlooked, feedback may be unclear, or differences in standards may be weakening the result.\n\nReturn to the agreements beneath the work. Who is responsible for what, and how will quality be assessed? A practical conversation can prevent frustration from becoming personal. If expertise is being dismissed, naming the specific contribution may make the imbalance easier to address.",
+        "reflection": "Which unclear role or expectation is getting in the way of useful collaboration?"
+      }
+    },
+    "pe04": {
+      "name": "Four of Pentacles",
+      "upright": {
+        "keywords": [
+          "Security",
+          "Protection",
+          "Control"
+        ],
+        "interpretation": "The Four of Pentacles speaks of protecting what you have built. It honors the comfort of stability, careful stewardship, and boundaries that help you feel secure.\n\nIt also asks what that protection is costing you. Holding tightly can leave little room for generosity, connection, or change. Consider whether your boundaries still serve their purpose, and whether there is something you could share without giving away what you need.",
+        "reflection": "What am I protecting, and how is that protection shaping my life?"
+      },
+      "reversed": {
+        "keywords": [
+          "Release",
+          "Generosity",
+          "Security"
+        ],
+        "interpretation": "The Four of Pentacles reversed invites reflection on what you hold close. It can suggest becoming more generous and open, or feeling uncertain as familiar sources of security shift.\n\nProtecting what matters is natural. Consider where that protection supports you, and where holding too tightly leaves little room for connection or change. You can loosen your grip gradually while keeping the boundaries you need.",
+        "reflection": "Where could I make a little more room without losing what matters to me?"
+      }
+    },
+    "pe05": {
+      "name": "Five of Pentacles",
+      "upright": {
+        "keywords": [
+          "Hardship",
+          "Exclusion",
+          "Support"
+        ],
+        "interpretation": "The Five of Pentacles shows hardship beside a lit window, bringing material difficulty and the experience of being left outside into view. Scarcity, illness, or insecurity can make ordinary tasks harder and belonging feel less available.\n\nThis card does not assign blame for difficult circumstances. Consider what practical support exists and what barriers stand between you and it. Companionship can matter, but so can specific help with shelter, resources, or an obligation that has become too heavy to carry.",
+        "reflection": "What support could ease a real hardship, and what makes it difficult to reach?"
+      },
+      "reversed": {
+        "keywords": [
+          "Re-entry",
+          "Fragile recovery",
+          "Persistent scarcity"
+        ],
+        "interpretation": "The Five of Pentacles reversed can suggest an opening toward support or gradual improvement after hardship. It may also reflect the fear of scarcity continuing even when circumstances begin to change.\n\nTake stock of what has improved and what remains difficult. Recovery can be uneven, and accepting help need not wait until you can manage everything else alone. A practical connection, renewed access to resources, or one reduced burden may create room for the next step without erasing the strain already experienced.",
+        "reflection": "What change or available support could make recovery more manageable?"
+      }
+    },
+    "pe06": {
+      "name": "Six of Pentacles",
+      "upright": {
+        "keywords": [
+          "Generosity",
+          "Exchange",
+          "Fairness"
+        ],
+        "interpretation": "The Six of Pentacles combines giving with scales, inviting attention to how resources are shared. Help can meet a real need, and receiving it can be as important as having the means to offer it.\n\nLook at the dignity and freedom within the exchange. Clear expectations help generosity remain useful rather than creating an unspoken obligation. Whether you are giving or receiving, consider the balance of influence and whether the arrangement supports a more dependable footing for everyone involved.",
+        "reflection": "What would make this exchange of help fairer and more respectful?"
+      },
+      "reversed": {
+        "keywords": [
+          "Strings attached",
+          "Unequal exchange",
+          "Overgiving"
+        ],
+        "interpretation": "The Six of Pentacles reversed questions help that carries hidden conditions or an exchange whose balance has become difficult to name. Generosity may be stretching one person's resources, while another person's dependence gives someone disproportionate influence.\n\nClarify what is being offered and expected. Gratitude does not require surrendering every boundary, and giving does not entitle someone to control. A smaller contribution or more explicit agreement may protect the value of the help and reduce resentment on both sides.",
+        "reflection": "What unspoken condition or imbalance needs to be clarified in this exchange?"
+      }
+    },
+    "pe07": {
+      "name": "Seven of Pentacles",
+      "upright": {
+        "keywords": [
+          "Patience",
+          "Assessment",
+          "Investment"
+        ],
+        "interpretation": "The Seven of Pentacles pauses beside a cultivated crop, considering the relationship between effort and growth. Work has been invested, but its full value may still be developing or may need a careful review.\n\nLook at what is actually taking root. Some efforts need time, while others need a change in method or priorities. A measured assessment can help you decide where to continue tending, without assuming that waiting longer automatically makes every investment worthwhile.",
+        "reflection": "What evidence would help me judge whether this effort deserves more time?"
+      },
+      "reversed": {
+        "keywords": [
+          "Impatience",
+          "Poor returns",
+          "Redirected effort"
+        ],
+        "interpretation": "The Seven of Pentacles reversed asks whether dissatisfaction comes from expecting results too quickly or from persisting with an effort that offers little return. The time already spent can make that distinction difficult.\n\nReview the evidence without treating past investment as a command to continue. You might change the method, reduce the commitment, or choose another direction. If growth is simply slow, agree on a realistic point for reassessment so that patience has a purpose and a boundary.",
+        "reflection": "How can I tell whether my effort needs more time or a different direction?"
+      }
+    },
+    "pe08": {
+      "name": "Eight of Pentacles",
+      "upright": {
+        "keywords": [
+          "Practice",
+          "Dedication",
+          "Craftsmanship"
+        ],
+        "interpretation": "The Eight of Pentacles returns to the workbench, giving attention to one carefully made piece after another. Competence grows through repetition that includes observation, correction, and a willingness to learn.\n\nChoose a skill or task worth practicing with care. Small improvements can accumulate, especially when you seek useful feedback and protect enough time to concentrate. The value of dedication includes the quality of the work and the understanding you develop while making it, rather than simply the number of hours spent.",
+        "reflection": "What would make my practice more attentive and useful?"
+      },
+      "reversed": {
+        "keywords": [
+          "Perfectionism",
+          "Carelessness",
+          "Misplaced effort"
+        ],
+        "interpretation": "The Eight of Pentacles reversed draws attention to work that has lost a useful standard. You may be rushing through details, polishing endlessly, or practicing a method that no longer helps you improve.\n\nCheck what quality means for this particular task. A clear stopping point can prevent perfectionism from consuming the purpose of the work, while specific feedback can reveal where more care is needed. Redirect effort toward the part that would make a meaningful difference rather than repeating familiar motions.",
+        "reflection": "Where would a clearer standard help me work with more care and less wasted effort?"
+      }
+    },
+    "pe09": {
+      "name": "Nine of Pentacles",
+      "upright": {
+        "keywords": [
+          "Independence",
+          "Refinement",
+          "Earned comfort"
+        ],
+        "interpretation": "The Nine of Pentacles enjoys a cultivated garden, with a trained bird suggesting patience and discipline beneath the ease. It honors self-reliance, practical competence, and the pleasure of inhabiting something carefully developed.\n\nLet yourself appreciate the comfort or freedom your efforts support. Independence can include choosing help and sharing enjoyment; it need not mean doing everything alone. Notice what allows you to feel at home in your surroundings and what you would like to maintain with thoughtful care.",
+        "reflection": "What freedom or comfort have I cultivated that I would like to appreciate more fully?"
+      },
+      "reversed": {
+        "keywords": [
+          "Dependence",
+          "Costly appearances",
+          "Uneasy comfort"
+        ],
+        "interpretation": "The Nine of Pentacles reversed asks what supports an appearance of ease and independence. Comfort may depend on an arrangement that limits choice, or the effort to maintain a polished image may be taking more than it gives.\n\nExamine what you value in the lifestyle itself and what mainly serves comparison. A realistic view of resources and support can help you make freer decisions. Receiving assistance does not diminish competence, but unclear conditions around that assistance deserve attention.",
+        "reflection": "What does my current idea of independence cost, and what support could make it more workable?"
+      }
+    },
+    "pe10": {
+      "name": "Ten of Pentacles",
+      "upright": {
+        "keywords": [
+          "Legacy",
+          "Continuity",
+          "Shared security"
+        ],
+        "interpretation": "The Ten of Pentacles gathers generations, daily life, and an established home into one scene. It concerns the resources, customs, and commitments that sustain people beyond a single moment or individual effort.\n\nConsider what you are helping maintain and what you hope to pass on. Security can include knowledge, reliable care, and fair agreements as well as material resources. A lasting foundation benefits from attention to who belongs within it and whether its traditions remain useful to those living with them.",
+        "reflection": "What would I like my present choices to make possible for others in the future?"
+      },
+      "reversed": {
+        "keywords": [
+          "Family expectations",
+          "Unstable legacy",
+          "Unequal access"
+        ],
+        "interpretation": "The Ten of Pentacles reversed questions the conditions beneath inherited security. Shared resources may be disputed, traditions may become restrictive, or belonging may depend on meeting expectations that no longer fit.\n\nLook at how an arrangement distributes both support and obligation. What deserves preservation, and what needs a fairer agreement? Long-standing practices can be revised without dismissing their entire history. A different foundation may be needed when the cost of continuity falls repeatedly on the same people.",
+        "reflection": "Which inherited arrangement or expectation needs a more equitable form?"
+      }
+    },
+    "pepa": {
+      "name": "Page of Pentacles",
+      "upright": {
+        "keywords": [
+          "Study",
+          "Application",
+          "Practical curiosity"
+        ],
+        "interpretation": "The Page of Pentacles studies a coin with focused interest, representing a learner ready to make an idea tangible. This card may describe a diligent person, useful news, or an approach that values careful beginnings.\n\nChoose something specific to learn and give it a place in your routine. A course, budget, practice session, or simple plan can connect curiosity to application. Progress may be modest at first, but attention to the basics can establish a foundation that supports more ambitious work later.",
+        "reflection": "What practical skill or subject would I like to begin learning with care?"
+      },
+      "reversed": {
+        "keywords": [
+          "Procrastination",
+          "Inattention",
+          "Unapplied learning"
+        ],
+        "interpretation": "The Page of Pentacles reversed can suggest a practical beginning repeatedly deferred or knowledge collected without being put to use. The task may seem dull beside the imagined result, making basic steps easy to neglect.\n\nFind a manageable way to connect learning with action. One small exercise can reveal what you understand and what still needs practice. If concentration is difficult, examine the conditions around the task before assuming a lack of ability; a clearer purpose or simpler routine may help.",
+        "reflection": "How could I put something I have learned into a small, concrete practice?"
+      }
+    },
+    "pekn": {
+      "name": "Knight of Pentacles",
+      "upright": {
+        "keywords": [
+          "Reliability",
+          "Diligence",
+          "Steady progress"
+        ],
+        "interpretation": "The Knight of Pentacles considers the ground ahead from a still horse, suggesting an approach that values preparation and dependable effort. This may describe a patient person or a responsibility best served by consistency.\n\nTake the next workable step and keep your promises proportionate to your capacity. Repeated care can accomplish what a burst of enthusiasm leaves unfinished. Make room for review along the way, so that steadiness serves the purpose rather than becoming a routine maintained only because it is familiar.",
+        "reflection": "What steady action would help me honor a commitment that matters?"
+      },
+      "reversed": {
+        "keywords": [
+          "Stagnation",
+          "Rigidity",
+          "Neglected duties"
+        ],
+        "interpretation": "The Knight of Pentacles reversed asks whether a routine still moves anything forward. Caution may have hardened into resistance, or boredom may be leading to neglected responsibilities that once received dependable care.\n\nReview the task's purpose and the method used to carry it out. A modest adjustment may restore interest without sacrificing reliability. If the workload itself is unreasonable, changing the expectation may matter more than improving your discipline. Consistency needs a useful direction and enough capacity to sustain it.",
+        "reflection": "Which routine needs an adjustment so that reliability does not become stagnation?"
+      }
+    },
+    "pequ": {
+      "name": "Queen of Pentacles",
+      "upright": {
+        "keywords": [
+          "Practical care",
+          "Resourcefulness",
+          "Comfort"
+        ],
+        "interpretation": "The Queen of Pentacles holds a coin within a living garden, joining practical resources with care for everyday life. This card may describe a resourceful person or an approach that makes support tangible and surroundings more hospitable.\n\nAttend to the ordinary conditions that allow people to flourish: food, time, tools, rest, and a well-kept space. Generosity becomes sustainable when your own needs are included. Thoughtful stewardship can create comfort without requiring perfection or turning care into an endless list of duties.",
+        "reflection": "What practical form of care would make everyday life more nourishing?"
+      },
+      "reversed": {
+        "keywords": [
+          "Overextension",
+          "Neglected needs",
+          "Possessive care"
+        ],
+        "interpretation": "The Queen of Pentacles reversed brings attention to practical care that has become costly or controlling. Keeping everything comfortable may leave your own needs untended, or assistance may come with an expectation that others follow your preferences.\n\nLook at the actual resources available and the freedom within the care being offered. Simplifying an obligation, sharing a task, or accepting another person's way of doing things may help. A welcoming environment includes room for the caregiver to rest and for others to make choices.",
+        "reflection": "What would make the care I provide more sustainable and less dependent on my doing everything?"
+      }
+    },
+    "peki": {
+      "name": "King of Pentacles",
+      "upright": {
+        "keywords": [
+          "Stewardship",
+          "Stability",
+          "Practical leadership"
+        ],
+        "interpretation": "The King of Pentacles sits amid cultivated abundance, representing the ability to manage resources with experience and a long view. This card may describe a dependable person or an approach that turns practical knowledge into lasting support.\n\nUse what you have with care for both the present and the future. Sound leadership makes resources useful, keeps commitments realistic, and shares the benefits of success. Stability becomes more substantial when it supports people and purposes, rather than merely displaying what has been accumulated.",
+        "reflection": "How could I manage my resources in a way that creates dependable support?"
+      },
+      "reversed": {
+        "keywords": [
+          "Material fixation",
+          "Mismanagement",
+          "Rigid authority"
+        ],
+        "interpretation": "The King of Pentacles reversed questions security defined mainly through possession, status, or control of resources. An established arrangement may appear solid while relying on poor judgment, inflexibility, or unequal access to its benefits.\n\nExamine how practical authority is being used. What decisions serve long-term needs, and which mainly protect an image of success? Clear records, fair agreements, and willingness to reconsider an unworkable habit can strengthen stewardship. Having resources does not remove the need to listen to those affected by their use.",
+        "reflection": "Where does control over resources need more transparency or a broader sense of responsibility?"
+      }
+    },
+    "swac": {
+      "name": "Ace of Swords",
+      "upright": {
+        "keywords": [
+          "Clarity",
+          "Truth",
+          "Discernment"
+        ],
+        "interpretation": "The raised sword suggests a clear idea or truth that cuts through confusion. Understanding can sharpen when you name a problem accurately, distinguish facts from assumptions, and recognize what a decision actually requires.\n\nUse that clarity with care. A precise question or honest statement may open a way forward, while bluntness alone can create unnecessary harm. The insight matters most when you are willing to test it and accept the responsibility that comes with acting on what you now see.",
+        "reflection": "What needs to be named clearly before I can make a sound decision?"
+      },
+      "reversed": {
+        "keywords": [
+          "Confusion",
+          "Miscommunication",
+          "Unexamined certainty"
+        ],
+        "interpretation": "The Ace of Swords reversed asks whether an apparent answer is as clear as it seems. Information may be incomplete, language may be causing confusion, or a forceful opinion may be mistaken for a well-supported conclusion.\n\nReturn to the question and check the reasoning. Define important terms, seek the missing fact, and allow a claim to remain unsettled when evidence is lacking. A sharper understanding may come from revising your position rather than arguing it more strongly.",
+        "reflection": "Which assumption or unclear statement needs closer examination?"
+      }
+    },
+    "sw02": {
+      "name": "Two of Swords",
+      "upright": {
+        "keywords": [
+          "Impasse",
+          "Deliberation",
+          "Guarded balance"
+        ],
+        "interpretation": "The Two of Swords holds two blades in a guarded balance while a blindfold limits the view. It speaks to an impasse where competing considerations are being held apart and a decision feels difficult to approach.\n\nA pause can protect you from acting too quickly, but it cannot supply information you are avoiding. Notice what facts, feelings, or consequences remain outside the discussion. Bringing one of them into view may help you understand the choice without demanding an immediate answer.",
+        "reflection": "What have I kept outside the decision because it is difficult to face?"
+      },
+      "reversed": {
+        "keywords": [
+          "Overload",
+          "Exposed conflict",
+          "Forced decisions"
+        ],
+        "interpretation": "The Two of Swords reversed can suggest that a held balance is becoming difficult to maintain. Conflicting information may overwhelm you, or a postponed choice may be pressing for attention before you feel ready.\n\nSeparate the essential question from the surrounding noise. You may not be able to make every consideration agree, but you can identify priorities and check which consequences are most significant. Asking for time or a missing piece of information may restore some agency within a pressured decision.",
+        "reflection": "What would help me make this decision with more clarity and less pressure?"
+      }
+    },
+    "sw03": {
+      "name": "Three of Swords",
+      "upright": {
+        "keywords": [
+          "Heartache",
+          "Separation",
+          "Painful truth"
+        ],
+        "interpretation": "The pierced heart of the Three of Swords gives pain a clear place in the reading. Loss, rejection, conflict, or a difficult truth can hurt even when you understand why it happened.\n\nLet the experience be named without immediately finding a lesson in it. Honest acknowledgement can help you decide what care, distance, or conversation is needed. Avoid adding unnecessary cruelty through repeated blame or sharp words, while allowing the sadness itself to receive the attention it deserves.",
+        "reflection": "What would it mean to acknowledge this hurt without adding to it?"
+      },
+      "reversed": {
+        "keywords": [
+          "Mending",
+          "Unspoken sorrow",
+          "Lingering hurt"
+        ],
+        "interpretation": "The Three of Swords reversed turns toward pain being processed, released, or kept out of sight. A wound may be easing while still tender, or an effort to move on may be leaving important feelings unspoken.\n\nNotice what would make the next step more honest. An apology, private mourning, or a clearer boundary may have a place, depending on the situation. Reconciliation is one possibility among others; mending does not require restoring every relationship or pretending that the hurt never mattered.",
+        "reflection": "What part of this hurt needs expression, care, or a firmer boundary?"
+      }
+    },
+    "sw04": {
+      "name": "Four of Swords",
+      "upright": {
+        "keywords": [
+          "Rest",
+          "Retreat",
+          "Recovery"
+        ],
+        "interpretation": "The resting figure of the Four of Swords withdraws from active struggle beneath a quiet window. It suggests an interval to recover attention, absorb what has happened, and let constant demands fall still for a while.\n\nMake the pause real enough to serve its purpose. Reducing input or postponing a nonessential task may help you hear what fatigue has obscured. Rest can prepare a thoughtful response, especially when returning too quickly would simply carry the same strain into the next exchange.",
+        "reflection": "What kind of pause would let me return with clearer attention?"
+      },
+      "reversed": {
+        "keywords": [
+          "Restlessness",
+          "Exhaustion",
+          "Re-entry"
+        ],
+        "interpretation": "The Four of Swords reversed asks whether rest has been sufficient or whether withdrawal has continued after its purpose has changed. You may feel ready to rejoin activity, or feel compelled to do so while still depleted.\n\nAssess your capacity through what you can actually sustain. A gradual return may be more useful than resuming every demand at once. If you cannot settle, examine what keeps the struggle active during the pause and what would allow a more meaningful reduction in pressure.",
+        "reflection": "What would help me distinguish readiness to return from pressure to keep going?"
+      }
+    },
+    "sw05": {
+      "name": "Five of Swords",
+      "upright": {
+        "keywords": [
+          "Conflict",
+          "Hollow victory",
+          "Damaged trust"
+        ],
+        "interpretation": "The Five of Swords shows a winner collecting blades while others withdraw. It questions a conflict in which prevailing may leave damaged trust, humiliation, or costs that the apparent victory does not acknowledge.\n\nLook at the terms of the contest and the methods being used. Being right does not settle every question about conduct. You may need to challenge an unfair exchange, step away, or acknowledge your part in an injury before deciding whether further argument would accomplish anything worthwhile.",
+        "reflection": "What is being lost in the effort to win this conflict?"
+      },
+      "reversed": {
+        "keywords": [
+          "Aftermath",
+          "Reconciliation",
+          "Unresolved resentment"
+        ],
+        "interpretation": "The Five of Swords reversed brings attention to what remains after a damaging conflict. There may be a wish to end the contest, while mistrust or resentment continues beneath a quieter surface.\n\nRepair requires more than agreeing to stop arguing. Consider what needs acknowledgement and whether people are willing to change the conduct that caused harm. A truce can create breathing room, but some situations call for a clearer distance when continued engagement repeats the same injury.",
+        "reflection": "What would need to happen for this conflict's aftermath to be addressed honestly?"
+      }
+    },
+    "sw06": {
+      "name": "Six of Swords",
+      "upright": {
+        "keywords": [
+          "Transition",
+          "Passage",
+          "Necessary distance"
+        ],
+        "interpretation": "The Six of Swords crosses toward quieter water while carrying the blades along. Moving away from difficulty may create needed distance, even though memories, responsibilities, or sadness travel with you.\n\nAllow the transition to be imperfect. You may not feel relieved immediately, and leaving does not solve every part of the situation. Practical support and a manageable destination can help. What matters is whether the passage gives you room to respond differently from the conditions you are moving beyond.",
+        "reflection": "What kind of distance or support would make a necessary transition more manageable?"
+      },
+      "reversed": {
+        "keywords": [
+          "Interrupted passage",
+          "Unfinished matters",
+          "Resistance"
+        ],
+        "interpretation": "The Six of Swords reversed suggests a passage slowed by unresolved matters, practical barriers, or reluctance to leave familiar difficulty. A change of setting may also be failing to change a pattern carried into it.\n\nIdentify what is holding the transition in place. Some obstacles need concrete help; others need an honest conversation or a different response from you. Returning to an unfinished matter can be useful when it supports movement, but repeatedly revisiting it may keep the crossing from ever beginning.",
+        "reflection": "What obstacle or unfinished matter needs attention before this transition can continue?"
+      }
+    },
+    "sw07": {
+      "name": "Seven of Swords",
+      "upright": {
+        "keywords": [
+          "Strategy",
+          "Secrecy",
+          "Evasion"
+        ],
+        "interpretation": "The Seven of Swords carries blades away while glancing back, suggesting a strategy that depends on discretion or incomplete disclosure. It asks how independence, privacy, and avoidance are operating in the situation.\n\nA quiet approach can be sensible, but secrecy may also protect a shortcut that shifts costs onto others. Examine what is being left unsaid and why. Plan carefully where discretion is needed, and question a method that works only because someone affected lacks the information to choose freely.",
+        "reflection": "What is being kept private here, and whose choices does that secrecy affect?"
+      },
+      "reversed": {
+        "keywords": [
+          "Disclosure",
+          "Conscience",
+          "Self-deception"
+        ],
+        "interpretation": "The Seven of Swords reversed can suggest hidden conduct coming into view or a growing wish to stop managing a secret. It may also ask about the explanations you use to avoid admitting an uncomfortable truth to yourself.\n\nConsider what a more direct approach would require. An honest admission can begin a repair, though it does not remove the consequences. If you suspect incomplete information from someone else, seek clear evidence and specific answers rather than letting suspicion become a verdict.",
+        "reflection": "What truth would change my approach if I stopped explaining it away?"
+      }
+    },
+    "sw08": {
+      "name": "Eight of Swords",
+      "upright": {
+        "keywords": [
+          "Restriction",
+          "Fear",
+          "Limited perspective"
+        ],
+        "interpretation": "The Eight of Swords stands bound and blindfolded among blades, suggesting a situation where options feel narrow and the way out is difficult to see. Fear and assumptions may add to genuine restrictions.\n\nBegin by distinguishing what is known from what has been concluded. Some limits need outside help, and the card does not make them your fault. A small piece of information, a trusted perspective, or one accessible choice may reveal room that is hard to recognize from inside the difficulty.",
+        "reflection": "Which limits are fixed, and which might look different with more information or support?"
+      },
+      "reversed": {
+        "keywords": [
+          "Loosening limits",
+          "Self-doubt",
+          "New choices"
+        ],
+        "interpretation": "The Eight of Swords reversed can suggest an opening in a restrictive situation or recognition of a belief that has narrowed your choices. It may also reveal self-doubt persisting as external conditions begin to loosen.\n\nTest the available room through one manageable action. A new option need not resolve every barrier to be useful. If freedom still feels distant, name the practical constraint that remains and seek support for it rather than demanding that confidence alone carry you out.",
+        "reflection": "What small choice could help me test whether there is more room than I expected?"
+      }
+    },
+    "sw09": {
+      "name": "Nine of Swords",
+      "upright": {
+        "keywords": [
+          "Worry",
+          "Remorse",
+          "Distress"
+        ],
+        "interpretation": "The Nine of Swords sits awake beneath a row of blades, giving shape to worry, remorse, and thoughts that become especially heavy in isolation. The distress can be real even when the feared outcome is uncertain.\n\nSeparate the problem from the repeated story surrounding it. What is known, what is feared, and what could receive a practical response? Bringing a concern into a trusted conversation may reduce its isolation, while a specific repair can be more useful than repeatedly punishing yourself for the same mistake.",
+        "reflection": "What part of my worry needs action, and what part needs to be shared or questioned?"
+      },
+      "reversed": {
+        "keywords": [
+          "Shared worries",
+          "Deepening distress",
+          "Possible relief"
+        ],
+        "interpretation": "The Nine of Swords reversed can suggest worry beginning to be spoken aloud, or distress becoming harder to contain privately. Relief may be possible through support, while the effort to hide the struggle can make it feel more solitary.\n\nNotice whether the burden is changing or simply being concealed. You do not have to settle the whole concern before asking someone trustworthy to hear it. Addressing one concrete part and accepting appropriate help may create a more bearable starting point.",
+        "reflection": "What would make it easier to let someone trustworthy know what I am carrying?"
+      }
+    },
+    "sw10": {
+      "name": "Ten of Swords",
+      "upright": {
+        "keywords": [
+          "Painful ending",
+          "Exhaustion",
+          "Finality"
+        ],
+        "interpretation": "The Ten of Swords presents a stark ending, with a distant line of dawn that does not diminish what has happened. It can speak to defeat, betrayal, or the point where a painful effort cannot continue in its current form.\n\nRecognize what is finished before asking yourself to rebuild. Immediate needs may be rest, protection, or help with the consequences. The possibility of another chapter can remain distant for now; you are allowed to attend first to the weight of this one.",
+        "reflection": "What needs care now that a painful situation has reached its limit?"
+      },
+      "reversed": {
+        "keywords": [
+          "Survival",
+          "Slow recovery",
+          "Resisted endings"
+        ],
+        "interpretation": "The Ten of Swords reversed can suggest beginning to rise after a difficult ending, or resisting the finality of something that has already reached its limit. Recovery and reluctance may exist at the same time.\n\nNotice what is easing and what keeps reopening the injury. A small return of capacity deserves care without becoming a demand for rapid progress. If the ending remains unresolved, ask whether another attempt would change the conditions or simply repeat an experience whose costs are already clear.",
+        "reflection": "What would support recovery without drawing me back into the same harm?"
+      }
+    },
+    "swpa": {
+      "name": "Page of Swords",
+      "upright": {
+        "keywords": [
+          "Inquiry",
+          "Alertness",
+          "New understanding"
+        ],
+        "interpretation": "The Page of Swords stands alert in moving air, representing an inquisitive approach that notices details and wants to understand. This card may describe a curious person, a question worth asking, or information that invites further investigation.\n\nLet curiosity become careful inquiry. Check a claim, read closely, or ask a direct question before deciding what it means. New understanding benefits from openness to correction, especially when eagerness to speak would otherwise outrun the experience needed to interpret what you have found.",
+        "reflection": "What question would help me understand this situation more accurately?"
+      },
+      "reversed": {
+        "keywords": [
+          "Gossip",
+          "Suspicion",
+          "Hasty conclusions"
+        ],
+        "interpretation": "The Page of Swords reversed asks how information is being gathered and passed along. Alertness may become suspicion, or an interesting fragment may be repeated before its accuracy or context is established.\n\nSlow the movement from observation to conclusion. What did you see directly, and what came through someone else's interpretation? If a conversation has become sharp or intrusive, return to the actual question. Respect for privacy and a willingness to correct an error can make inquiry more useful.",
+        "reflection": "What needs verification before I repeat it or draw a conclusion?"
+      }
+    },
+    "swkn": {
+      "name": "Knight of Swords",
+      "upright": {
+        "keywords": [
+          "Decisiveness",
+          "Advocacy",
+          "Urgency"
+        ],
+        "interpretation": "The Knight of Swords charges toward a purpose with strong conviction. This card can describe a direct person or an approach ready to confront a problem, argue a case, and act when hesitation would carry its own cost.\n\nUse clarity and courage to address what needs a response. At the same time, keep attention on the terrain and the people affected. A forceful argument becomes more credible when it includes accurate information and enough listening to recognize what the first charge may have missed.",
+        "reflection": "How can I act decisively while staying open to information I may have missed?"
+      },
+      "reversed": {
+        "keywords": [
+          "Aggression",
+          "Haste",
+          "Misdirected effort"
+        ],
+        "interpretation": "The Knight of Swords reversed suggests urgency overwhelming judgment. An argument may escalate before the facts are clear, or determination may be directed toward winning a dispute rather than solving the problem that began it.\n\nPause to identify the actual aim and the consequences of your method. A measured response can still be firm. If another person's forcefulness is setting the pace, consider whether you need a boundary or more time before joining a conversation that leaves little room for thought.",
+        "reflection": "What would change if I gave this response enough time to become accurate as well as forceful?"
+      }
+    },
+    "swqu": {
+      "name": "Queen of Swords",
+      "upright": {
+        "keywords": [
+          "Discernment",
+          "Candor",
+          "Clear boundaries"
+        ],
+        "interpretation": "The Queen of Swords holds a blade upright while extending an open hand, joining clear judgment with a willingness to hear. This card may describe a perceptive person or an approach shaped by experience and careful distinctions.\n\nSpeak plainly about what you know, need, and will accept. Fairness can include warmth without blurring a necessary boundary. Let experience sharpen your understanding while leaving room for new evidence, so that a hard-earned lesson does not become a fixed verdict on every future encounter.",
+        "reflection": "What would honest, fair communication sound like with my boundaries clearly included?"
+      },
+      "reversed": {
+        "keywords": [
+          "Harsh judgment",
+          "Bitterness",
+          "Withheld truth"
+        ],
+        "interpretation": "The Queen of Swords reversed asks whether discernment has hardened into suspicion or whether a needed truth is being withheld to avoid a difficult response. Earlier hurt may be giving present judgments a sharper edge than the evidence supports.\n\nDistinguish a protective boundary from a conclusion about someone's entire character. You can be direct without using accuracy as a weapon. If speaking has become difficult, clarify what needs saying and choose a form that preserves both honesty and proportion.",
+        "reflection": "Where does my judgment need more proportion without losing its clarity?"
+      }
+    },
+    "swki": {
+      "name": "King of Swords",
+      "upright": {
+        "keywords": [
+          "Reason",
+          "Authority",
+          "Principled judgment"
+        ],
+        "interpretation": "The King of Swords represents judgment grounded in evidence, clear standards, and responsibility for decisions. This card may describe an experienced adviser or an approach that can bring order to a complicated question.\n\nUse reason to make the situation more understandable and the process more fair. State the criteria, examine competing claims, and remain accountable for the result. Sound authority includes recognizing the human consequences of a decision, even when the decision itself requires distance from immediate emotion.",
+        "reflection": "What standards and evidence should guide a decision for which I am responsible?"
+      },
+      "reversed": {
+        "keywords": [
+          "Intellectual control",
+          "Bias",
+          "Rigid judgment"
+        ],
+        "interpretation": "The King of Swords reversed questions authority that uses logic selectively or treats certainty as a right to silence others. Expertise may be real while its application remains biased, detached, or unwilling to account for consequences.\n\nExamine the reasoning and the rules of the discussion. Are standards applied consistently, and can evidence change the conclusion? If this reflects your own approach, invite a serious challenge. If it reflects someone else's, seek clear explanations and protect your ability to question the decision.",
+        "reflection": "Where does a claim to authority need more consistent reasoning and accountability?"
+      }
+    }
+  }
+}

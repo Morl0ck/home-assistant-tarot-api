@@ -1,11 +1,12 @@
 # Tarot API — Home Assistant
 
-Custom integration: pull a random Rider–Waite–Smith card over HTTP, expose a native **`image`** entity for Picture cards, plus a **`sensor`** (meanings, upright/reversed) and a **`button`** to draw again.
+Custom integration: pull a random Rider–Waite–Smith card over HTTP, expose a native **`image`** entity for Picture cards, plus a **`sensor`** with original bundled upright/reversed readings and a **`button`** to draw again.
 
 **Data sources**
 
 - **Default:** [tarotapi.dev](https://tarotapi.dev) ([ekelen/tarot-api](https://github.com/ekelen/tarot-api)). Card art is resolved from [metabismuth/tarot-json](https://github.com/metabismuth/tarot-json) on GitHub (`name_short` → scan URLs). No image server required.
 - **Optional:** [krates98/tarotcardapi](https://github.com/krates98/tarotcardapi) on your network; set its base URL in the flow (not `tarotapi.dev`).
+- **Readings:** all 156 interpretations are bundled in [`readings.json`](custom_components/tarot_api/readings.json). They load once in a background worker; reading text needs no AI service or additional API request. Providers still supply the random card and artwork.
 
 **Requirements:** Home Assistant **2023.8+**. Outbound HTTPS to the API you use and, for default art, `raw.githubusercontent.com`.
 
@@ -27,7 +28,7 @@ One config entry is enough.
 
 | Flow choice | Meaning |
 |-------------|---------|
-| tarotapi.dev | Waite text from the public API; optional override of API base URL if you self-host the same API. |
+| tarotapi.dev | Card draws from the public API; optional override of API base URL if you self-host the same API. Readings use the bundled catalog. |
 | krates98 | Your server, e.g. `http://192.168.1.10:3000`. |
 
 ---
@@ -36,7 +37,15 @@ One config entry is enough.
 
 One device (e.g. “Tarot draw”): **Draw** button, **Tarot card** sensor, **Tarot card face** image. Check **Developer tools → States** for exact `entity_id`s.
 
+The sensor adds **`card_name`**, **`keywords`**, **`interpretation`**, **`reflection`**, and **`reading_available`** for the current orientation. Existing provider meanings, description, identity attributes, and image URL remain available. The sensor state retains its existing `(reversed)` suffix; use `card_name` for a heading with orientation shown separately.
+
+Default cards match by their raw `name_short`. krates98 cards match by normalized raw names, including optional leading “The,” capitalization/spacing differences, Fortitude/Strength, and Judgment/Judgement/Last Judgment variants. Strength is VIII (`ar08`); Justice is XI (`ar11`). Unknown cards or unavailable readings retain the draw and image, with empty keywords, null interpretation/reflection, and `reading_available: false`.
+
 Picture Entity card **`entity`** must be **`image.…`**, not the sensor — HA only treats camera/image/person as image sources there. Example layout: [`examples/tarot_dashboard_card.yaml`](examples/tarot_dashboard_card.yaml).
+
+The example displays the clean card name and orientation once, then keywords, interpretation, and reflection. It preserves paragraph breaks and shows a brief message if a local reading is unavailable. Copy its updated Markdown card into your actual dashboard and use your entity IDs; editing this repository example does not automatically change a dashboard stored in Home Assistant.
+
+To apply a local update, copy the complete `custom_components/tarot_api` folder (including `readings.py` and `readings.json`) to Home Assistant, restart, and draw a new card. HACS installations do not see local checkout edits until those files are published or copied to Home Assistant.
 
 **Reversed (optional):** `orientation` is on the sensor. With [card-mod](https://github.com/thomasloven/lovelace-card-mod) v4 (Jinja in `style:`):
 
@@ -61,6 +70,7 @@ card_mod:
 | Setup fails | Logs; full `tarot_api` tree under `custom_components`; restart after changes. |
 | Picture card empty / wrong | `entity` is **`image.*`**, not `sensor.*`. |
 | No artwork | HA can reach GitHub raw URLs and your API host. |
+| Local reading unavailable | Check logs and ensure `readings.json` was copied with the integration. After repairing the file, restart HA to reload the shared catalog. |
 
 **Publishing your own fork:** [`scripts/publish-github.ps1`](scripts/publish-github.ps1) — `gh auth login`, then run from repo root (adjust `$RepoName` if needed). Or `gh repo create … --source=. --push` and align `manifest.json` URLs.
 
@@ -68,6 +78,6 @@ card_mod:
 
 ## Credits
 
-API / text: [ekelen/tarot-api](https://github.com/ekelen/tarot-api). Default scans: [metabismuth/tarot-json](https://github.com/metabismuth/tarot-json). Placeholder back: [Wikimedia — red card back](https://commons.wikimedia.org/wiki/File:Card_back_red.svg). Entertainment only, not professional advice.
+Card metadata / original API text: [ekelen/tarot-api](https://github.com/ekelen/tarot-api). Bundled readings: original traditional, warm, reflective interpretations for this integration. Default scans: [metabismuth/tarot-json](https://github.com/metabismuth/tarot-json). Placeholder back: [Wikimedia — red card back](https://commons.wikimedia.org/wiki/File:Card_back_red.svg). Entertainment only, not professional advice.
 
 **License:** [MIT](LICENSE). Issues/PRs: this repo’s `issue_tracker` in `manifest.json`.

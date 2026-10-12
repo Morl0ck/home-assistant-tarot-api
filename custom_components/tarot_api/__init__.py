@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import logging
 import random
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 from urllib.parse import urljoin
 
@@ -28,6 +28,7 @@ from .const import (
     SIGNAL_CARD_UPDATED,
 )
 from .image_util import image_url_for_ekelen_card
+from .readings import ReadingCatalog, async_get_readings
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -48,6 +49,7 @@ class TarotHub:
     provider: str
     last_card: dict[str, Any] | None = None
     orientation: str | None = None  # "upright" | "reversed"
+    readings: ReadingCatalog = field(default_factory=ReadingCatalog)
 
     async def async_draw_one(self) -> None:
         """Fetch one random card and store it with a random orientation."""
@@ -123,11 +125,13 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Tarot API from a config entry."""
     base_url = entry.data.get(CONF_BASE_URL, DEFAULT_BASE_URL)
     provider = entry.data.get(CONF_PROVIDER, PROVIDER_EKELEN)
+    readings = await async_get_readings(hass)
     hub = TarotHub(
         hass=hass,
         entry_id=entry.entry_id,
         base_url=base_url,
         provider=provider,
+        readings=readings,
     )
     hass.data.setdefault(DOMAIN, {})[entry.entry_id] = hub
 

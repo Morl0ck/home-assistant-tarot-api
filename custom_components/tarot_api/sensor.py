@@ -60,7 +60,7 @@ class TarotCardSensor(SensorEntity):
 
     @property
     def extra_state_attributes(self) -> dict[str, Any]:
-        """Full card payload plus active meaning."""
+        """Existing provider attributes plus the active bundled reading."""
         card = self._hub.last_card
         if not card:
             return {}
@@ -80,6 +80,9 @@ class TarotCardSensor(SensorEntity):
             attrs["type"] = card.get("type")
             attrs["name_short"] = card.get("name_short")
             attrs["value"] = card.get("value")
+        attrs.update(
+            self._hub.readings.attributes_for(card, self._hub.provider, orientation)
+        )
         return attrs
 
     @property
