@@ -1,4 +1,4 @@
-/* Original Home Assistant Practice card. No framework, CDN, or Moonly assets. */
+/* Original bundled Home Assistant Practice card. No framework or CDN. */
 const PRACTICE_TABS = [
   { key: "affirmation", label: "Affirmations", entity: "sensor.daily_affirmation", button: "button.new_affirmation", action: "Another affirmation" },
   { key: "tarot", label: "Tarot", entity: "sensor.tarot_card", button: "button.draw_tarot_card", action: "Draw a card" },

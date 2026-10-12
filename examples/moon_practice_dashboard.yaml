@@ -1,5 +1,6 @@
-# Copy frontend/moon-practice-card.js to config/www/moon-practice-card.js.
-# Add /local/moon-practice-card.js?v=1.4.0 as a JavaScript module resource
+# The integration now creates a Daily Practice sidebar panel automatically.
+# This optional example embeds the card in a separate Lovelace dashboard.
+# Add /tarot_api_static/moon-practice-card.js?v=1.4.1 as a module resource
 # under Settings -> Dashboards -> Resources (enable Advanced mode if needed).
 # This is a full dashboard for the Raw configuration editor. For a Manual
 # card, copy only the type/config block under cards below.

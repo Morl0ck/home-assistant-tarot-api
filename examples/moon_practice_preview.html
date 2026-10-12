@@ -11,13 +11,32 @@
 </style>
 <main><moon-practice-card></moon-practice-card><p class="note">Interactive local preview · Sample Home Assistant states<br>Use the tabs and draw buttons to explore.</p></main>
 <script type="module">
-  import '../frontend/moon-practice-card.js';
+  import '../custom_components/tarot_api/frontend/moon-practice-panel.js';
   const [catalog, tarot] = await Promise.all([
     fetch('../custom_components/tarot_api/practices.json').then(r => r.json()),
     fetch('../custom_components/tarot_api/readings.json').then(r => r.json()),
   ]);
   const card = document.querySelector('moon-practice-card');
-  card.setConfig({ type:'custom:moon-practice-card' });
+  const panelMode = new URLSearchParams(location.search).has('panel');
+  let receiver = card;
+  const mappings = {};
+  for (const kind of ['affirmation','tarot','oracle','deity','rune']) {
+    mappings[kind] = {entity:`sensor.preview_renamed_${kind}`, button:`button.preview_renamed_${kind}`};
+  }
+  if (panelMode) {
+    const panel = document.createElement('tarot-practice-panel');
+    document.querySelector('main').replaceWith(panel);
+    panel.panel = {config:{card:mappings}};
+    const resize = () => { panel.narrow = innerWidth < 870; };
+    resize();
+    window.addEventListener('resize', resize);
+    panel.addEventListener('hass-toggle-menu', () => {
+      document.title = 'Daily Practice — sidebar menu event received';
+    });
+    receiver = panel;
+  } else {
+    card.setConfig({ type:'custom:moon-practice-card' });
+  }
   const keys = { affirmation:['daily_affirmation','new_affirmation'], oracle:['oracle_card','draw_oracle_card'], deity:['deity_card','draw_deity_card'], rune:['rune','draw_rune'] };
   const indexes = { affirmation:0, oracle:0, deity:0, rune:0, tarot:17 };
   const date = new Date().toLocaleDateString('en-CA');
@@ -49,11 +68,25 @@
     if (domain !== 'button' || service !== 'press') throw new Error('Unexpected service');
     if (scenario === 'error') throw new Error('Sample provider failure.');
     if (scenario === 'slow') await new Promise(resolve => setTimeout(resolve, 1200));
-    const kind = entity_id === 'button.draw_tarot_card' ? 'tarot' : Object.keys(keys).find(key => entity_id === `button.${keys[key][1]}`);
+    const kind = panelMode ? Object.keys(mappings).find(key => entity_id === mappings[key].button)
+      : entity_id === 'button.draw_tarot_card' ? 'tarot' : Object.keys(keys).find(key => entity_id === `button.${keys[key][1]}`);
+    if (!kind) throw new Error('Unknown button entity');
     indexes[kind]++;
     update(kind);
-    card.hass = {...hass,states:{...states}};
+    publish();
   } };
-  card.hass = {...hass, states:{...states}};
+  function publish() {
+    let visibleStates = {...states};
+    if (panelMode) {
+      visibleStates = {};
+      for (const kind of Object.keys(mappings)) {
+        const ids = kind === 'tarot' ? ['tarot_card','draw_tarot_card'] : keys[kind];
+        visibleStates[mappings[kind].entity] = states[`sensor.${ids[0]}`];
+        visibleStates[mappings[kind].button] = states[`button.${ids[1]}`];
+      }
+    }
+    receiver.hass = {...hass,states:visibleStates};
+  }
+  publish();
 </script>
 </html>

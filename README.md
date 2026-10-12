@@ -11,7 +11,7 @@ Custom integration: draw a random Rider–Waite–Smith card over HTTP, display 
 
 **Requirements:** Home Assistant **2023.8+**, access to your chosen card API, and about **543 MiB** of storage for the artwork. Normal card images and readings load locally. External fallback images need access to their image host; the initial card-back placeholder needs access to Wikimedia.
 
-## Daily Practice dashboard (1.4.0)
+## Daily Practice dashboard (1.4.1)
 
 The new **Practice** card brings **Affirmations, Tarot, Oracle, Gods, and Runes** into one mobile dashboard. It uses a dark lavender palette, warm accent buttons, a locally drawn moon landscape, and horizontally scrolling tabs. It is an original interface inspired by a daily practice screen; its content and artwork are not copied from Moonly. No frontend libraries, card-mod, subscription, or AI account are required.
 
@@ -19,11 +19,16 @@ The four new collections are bundled in `practices.json`: **32 affirmations**, *
 
 Affirmations, Oracle, Gods, and Runes receive a daily selection automatically. They rotate through every item before repeating, remain the same across devices, and refresh within one minute of midnight in **Home Assistant's configured timezone**. Draw buttons select a different item in that collection. Manual choices survive restarts on the same local day, stored per integration entry in HA's `.storage`; the next day resets them. These four collections need no network requests. Tarot retains its existing manual draw and API behavior, including starting without a card after a restart.
 
-### Install the Practice card
+### Open Daily Practice
 
-1. Replace the complete `config/custom_components/tarot_api` directory with this checkout's `custom_components/tarot_api`, including `practices.json`, `readings.json`, and both artwork directories. Restart Home Assistant. Keep the existing integration entry; it gains four sensors and four buttons.
-2. Copy [`frontend/moon-practice-card.js`](frontend/moon-practice-card.js) to **`config/www/moon-practice-card.js`**. Add **`/local/moon-practice-card.js?v=1.4.0`** as a **JavaScript module** dashboard resource. This follows [Home Assistant's custom card installation](https://developers.home-assistant.io/docs/frontend/custom-ui/custom-card/#referencing-your-new-card). If you created `www` for the first time, restart HA. Refresh the browser or Companion app after adding/updating the resource.
-3. Create a dashboard and paste [`examples/moon_practice_dashboard.yaml`](examples/moon_practice_dashboard.yaml) into its **Raw configuration editor**. Alternatively, use only the `custom:moon-practice-card` block in a Manual card. Check **Developer tools → States** and adjust the configured sensor and button IDs, especially if you have multiple integration entries or existing name collisions.
+1. Install or update **Tarot API** through HACS and restart Home Assistant. For a manual installation, copy the complete `custom_components/tarot_api` directory, including its `frontend`, catalogs and artwork directories. New installations also need **Settings → Devices & services → Add integration → Tarot API**; existing installations keep their integration entry.
+2. Refresh your browser or Companion app and open **Daily Practice** in the Home Assistant sidebar.
+
+The integration serves its bundled JavaScript, registers the sidebar page, and connects the five tabs to the entity IDs in Home Assistant's registry automatically. No `www` copy, dashboard resource, or YAML setup is needed for this page. Renaming an entity updates its mapping; multiple integration entries each get an independent page. The page is available to regular Home Assistant users, including your wife. Unloading or removing the integration removes its page.
+
+### Optional: add the card to an existing dashboard
+
+For a card inside your own Lovelace dashboard, add **`/tarot_api_static/moon-practice-card.js?v=1.4.1`** as a **JavaScript module** dashboard resource and refresh the browser or Companion app. Paste the `custom:moon-practice-card` block from [`examples/moon_practice_dashboard.yaml`](examples/moon_practice_dashboard.yaml) into a Manual card, or use the full example in a dashboard's **Raw configuration editor**. This follows [Home Assistant's custom card installation](https://developers.home-assistant.io/docs/frontend/custom-ui/custom-card/#referencing-your-new-card). Check **Developer tools → States** and adjust its sensor and button IDs, especially with multiple integration entries or name collisions. The bundled file replaces the manual `www` copy used in 1.4.0.
 
 | Tab | Default sensor | Default button |
 |-----|----------------|----------------|
@@ -35,7 +40,7 @@ Affirmations, Oracle, Gods, and Runes receive a daily selection automatically. T
 
 The default tab is `affirmation`. Set `default_tab` to `tarot`, `oracle`, `deity`, or `rune` to choose another. Names and text wrap rather than truncate; swipe the tab row to reach later sections. Keyboard users can navigate tabs with Left/Right, Home, and End. Missing entities and failed draws show a message inside the card. Tarot uses the image proxy, updates with the existing day/night decks, and rotates reversed cards automatically.
 
-For a local, interactive preview using sample HA states, run `python -m http.server 8766 --bind 127.0.0.1` from the repository root and open `http://127.0.0.1:8766/examples/moon_practice_preview.html`. The preview exercises the real card with bundled text and artwork; it is not connected to your live Home Assistant. The card, integration, and YAML still need to be installed there. To customize the writing, edit [`scripts/build-practice-catalog.py`](scripts/build-practice-catalog.py), run it once, then copy the regenerated `practices.json` into HA and restart.
+For a local, interactive preview using sample HA states, run `python -m http.server 8766 --bind 127.0.0.1` from the repository root and open `http://127.0.0.1:8766/examples/moon_practice_preview.html`. Append `?panel=1` to exercise the sidebar wrapper with renamed sample entities. The preview exercises the real UI with bundled text and artwork; it is not connected to your live Home Assistant. Install the integration there using the steps above. To customize the writing, edit [`scripts/build-practice-catalog.py`](scripts/build-practice-catalog.py), run it once, then copy the regenerated `practices.json` into HA and restart.
 
 ## Daytime and nighttime artwork
 
@@ -55,7 +60,7 @@ For a manual update, copy the **entire** `custom_components/tarot_api` folder, i
 
 **Manual:** Copy the complete [`custom_components/tarot_api`](custom_components/tarot_api) directory to `config/custom_components/tarot_api`, including `readings.json` and both `artwork` subdirectories. Restart Home Assistant, then add the integration.
 
-**Updating an existing installation:** Install the repository update through HACS, or replace the complete integration directory manually. Restart Home Assistant and draw a card. Existing entity IDs and the dashboard example remain compatible; automatic artwork switching needs no extra automation. Confirm the integration's `manifest.json` reports version **1.4.0** and set your home location correctly under Home Assistant's system settings. The Practice custom card is installed separately as described above; HACS integration updates do not install its frontend resource.
+**Updating an existing installation:** Install the repository update through HACS, or replace the complete integration directory manually. Restart Home Assistant, refresh the browser or Companion app, and open **Daily Practice** in the sidebar. Draw a Tarot card to populate that tab. Existing entity IDs and dashboards remain compatible; automatic artwork switching needs no extra automation. Confirm the integration's `manifest.json` reports version **1.4.1** and set your home location correctly under Home Assistant's system settings. HACS installs the bundled Practice UI along with the integration.
 
 If HACS errors with **`unexpected character: line 1 column 1`**, it’s usually wrong repo URL (repository root only, not `/tree/main` or raw), JSON saved with a **UTF-8 BOM**, bad HACS storage (`config/.storage/hacs.repositories` — backup, delete while HA stopped, restart), or wrong category (**Integration**). This repo keeps JSON UTF-8 without BOM and LF per [`.gitattributes`](.gitattributes).
 

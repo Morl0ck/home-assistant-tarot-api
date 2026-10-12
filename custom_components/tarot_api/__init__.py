@@ -30,6 +30,7 @@ from .const import (
 from .image_util import image_url_for_ekelen_card
 from .readings import ReadingCatalog, async_get_readings
 from .practice import PracticeHub, async_get_practices
+from .frontend import PracticeFrontend
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -53,6 +54,7 @@ class TarotHub:
     readings: ReadingCatalog = field(default_factory=ReadingCatalog)
     face_image: Any = field(default=None, repr=False)
     practice: PracticeHub | None = field(default=None, repr=False)
+    frontend: PracticeFrontend | None = field(default=None, repr=False)
 
     async def async_draw_one(self) -> None:
         """Fetch one random card and store it with a random orientation."""
@@ -143,9 +145,16 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     try:
         await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
+        hub.frontend = PracticeFrontend(hass, entry)
+        await hub.frontend.async_start()
     except BaseException:
-        practice.stop()
-        hass.data[DOMAIN].pop(entry.entry_id, None)
+        try:
+            if hub.frontend is not None:
+                hub.frontend.stop()
+                await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
+        finally:
+            practice.stop()
+            hass.data[DOMAIN].pop(entry.entry_id, None)
         raise
     return True
 
@@ -176,4 +185,6 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         hub = hass.data[DOMAIN].pop(entry.entry_id, None)
         if hub is not None and hub.practice is not None:
             hub.practice.stop()
+        if hub is not None and hub.frontend is not None:
+            hub.frontend.stop()
     return unload_ok

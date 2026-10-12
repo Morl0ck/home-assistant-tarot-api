@@ -11,6 +11,7 @@ import importlib.util
 import sys
 from types import ModuleType, SimpleNamespace
 from unittest.mock import AsyncMock
+from dataclasses import dataclass
 
 
 def install_import_stubs():
@@ -26,6 +27,8 @@ def install_import_stubs():
         "homeassistant.helpers.sun",
         "homeassistant.helpers.storage", "homeassistant.util", "homeassistant.util.dt",
         "homeassistant.components.button",
+        "homeassistant.components.frontend", "homeassistant.components.http",
+        "homeassistant.helpers.entity_registry",
     ):
         module = ModuleType(name)
         module.__path__ = []
@@ -49,6 +52,27 @@ def install_import_stubs():
     sys.modules["homeassistant.components.sensor"].SensorEntity = object
     sys.modules["homeassistant.components.button"].ButtonEntity = object
     sys.modules["homeassistant.util.dt"].now = lambda: datetime.now(timezone.utc)
+    sys.modules["homeassistant.helpers.entity_registry"].async_get = lambda hass: hass.registry
+    frontend = sys.modules["homeassistant.components.frontend"]
+    frontend.DATA_PANELS = "frontend_panels"
+
+    def register_panel(hass, **kwargs):
+        panels = hass.data.setdefault(frontend.DATA_PANELS, {})
+        path = kwargs["frontend_url_path"]
+        if path in panels and not kwargs.get("update"):
+            raise ValueError("Panel already exists")
+        panels[path] = SimpleNamespace(**kwargs)
+
+    frontend.async_register_built_in_panel = register_panel
+    frontend.async_remove_panel = lambda hass, path: hass.data[frontend.DATA_PANELS].pop(path, None)
+
+    @dataclass
+    class StaticPathConfig:
+        url_path: str
+        path: str
+        cache_headers: bool
+
+    sys.modules["homeassistant.components.http"].StaticPathConfig = StaticPathConfig
 
     class Store:
         def __init__(self, hass, version, key):
@@ -98,6 +122,16 @@ class FakeHass:
         self.data = {}
         self.states = SimpleNamespace(get=lambda entity_id: SimpleNamespace(state="above_horizon"))
         self.executor_jobs = 0
+        self.http = SimpleNamespace(async_register_static_paths=AsyncMock())
+        self.registry = FakeRegistry()
+        self.listeners = []
+
+        def listen(event_type, listener):
+            item = (event_type, listener)
+            self.listeners.append(item)
+            return lambda: self.listeners.remove(item)
+
+        self.bus = SimpleNamespace(async_listen=listen)
         self.config_entries = SimpleNamespace(
             async_forward_entry_setups=AsyncMock(),
             async_unload_platforms=AsyncMock(return_value=True),
@@ -106,6 +140,23 @@ class FakeHass:
     def async_add_executor_job(self, target, *args):
         self.executor_jobs += 1
         return asyncio.get_running_loop().run_in_executor(None, target, *args)
+
+
+class FakeRegistry:
+    def __init__(self):
+        self.records = {}
+
+    def add(self, domain, platform, unique_id, entity_id, entry_id):
+        self.records[(domain, platform, unique_id)] = SimpleNamespace(
+            entity_id=entity_id, config_entry_id=entry_id
+        )
+
+    def async_get_entity_id(self, domain, platform, unique_id):
+        record = self.records.get((domain, platform, unique_id))
+        return record.entity_id if record else None
+
+    def async_get(self, entity_id):
+        return next((r for r in self.records.values() if r.entity_id == entity_id), None)
 
 
 class FakeResponse:
