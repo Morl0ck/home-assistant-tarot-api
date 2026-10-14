@@ -15,6 +15,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.dispatcher import async_dispatcher_send
+from homeassistant.util import dt as dt_util
 
 from .const import (
     CONF_BASE_URL,
@@ -57,6 +58,20 @@ class TarotHub:
     practice: PracticeHub | None = field(default=None, repr=False)
     frontend: PracticeFrontend | None = field(default=None, repr=False)
     horoscope: HoroscopeHub | None = field(default=None, repr=False)
+    spread_cards: list[dict[str, Any]] = field(default_factory=list)
+    spread_images: list[Any] = field(default_factory=lambda: [None, None, None], repr=False)
+    spread_drawn_at: str | None = None
+
+    async def async_draw_three(self) -> None:
+        """Draw three distinct cards from the bundled deck, atomically and offline."""
+        if len(self.readings.cards) < 3:
+            raise HomeAssistantError("The bundled Tarot deck is unavailable. Check readings.json and restart Home Assistant.")
+        ids = random.sample(sorted(self.readings.cards), 3)
+        cards = [{"name_short": card_id, "name": self.readings.cards[card_id]["name"],
+                  "orientation": random.choice(["upright", "reversed"])} for card_id in ids]
+        self.spread_cards = cards
+        self.spread_drawn_at = dt_util.now().isoformat()
+        async_dispatcher_send(self.hass, SIGNAL_CARD_UPDATED, {"entry_id": self.entry_id})
 
     async def async_draw_one(self) -> None:
         """Fetch one random card and store it with a random orientation."""

@@ -32,6 +32,20 @@
   const signs=['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces'];
   const date=new Intl.DateTimeFormat('en-CA').format(new Date());
   const states={'sun.sun':{state:'below_horizon',attributes:{}}};
+  states['sensor.tarot_spread']={state:'unknown',attributes:{cards:[]}};
+  states['button.draw_three_tarot_cards']={state:'unknown',attributes:{}};
+  let spreadIndex=0;
+  function updateSpread() {
+    const ids=Object.keys(tarot.cards);
+    const cards=[0,1,2].map((position)=>{
+      const id=ids[(17+spreadIndex+position)%ids.length];
+      const orientation=position===1?'reversed':'upright';
+      const record=tarot.cards[id];
+      return {...record[orientation],name_short:id,card_name:record.name,orientation,position:position+1,artwork_theme:'purple_goddess',artwork_url:`../custom_components/tarot_api/artwork/purple_goddess/${id}.png`};
+    });
+    if(scenario==='spread-escaped') {cards[0].card_name='<img src=x onerror=alert(1)> & Card';cards[0].artwork_url='javascript:alert(1)';cards[0].interpretation='<'+'script>alert(1)</'+'script> & sample text';}
+    states['sensor.tarot_spread']={state:'3 cards',attributes:{cards,source:'bundled deck'}};
+  }
   function update(kind) {
     let record;
     if(kind==='tarot') {
@@ -67,6 +81,7 @@
     if(domain!=='button'||service!=='press') throw new Error('Unexpected service');
     if(scenario==='error') throw new Error('Sample provider failure.');
     if(scenario==='slow') await new Promise(resolve=>setTimeout(resolve,1200));
+    if(entity_id==='button.draw_three_tarot_cards') {spreadIndex++;updateSpread();publish();return;}
     const kind=Object.keys(keys).find(key=>entity_id===`button.${keys[key][1]}`);
     if(!kind) throw new Error('Unknown button entity');
     if(kind!=='horoscope') indexes[kind]++;

@@ -192,6 +192,19 @@ class FrontendTests(unittest.IsolatedAsyncioTestCase):
         await ui.async_register_assets(self.hass)
         self.assertEqual(self.hass.data["test_extra_modules"], {f"{ui.STATIC_URL}/moon-practice-card.js?v={ui.FRONTEND_VERSION}"})
 
+    async def test_spread_entities_are_mapped_and_follow_renames(self):
+        self.hass.registry.add("sensor",tarot_api.DOMAIN,"unique-first_spread","sensor.my_three_cards","first")
+        self.hass.registry.add("button",tarot_api.DOMAIN,"unique-first_draw_three","button.my_three_card_draw","first")
+        manager=ui.PracticeFrontend(self.hass,self.entry)
+        await manager.async_start()
+        self.assertEqual(self.panel(manager).config["card"]["tarot"]["spread_entity"],"sensor.my_three_cards")
+        self.assertEqual(self.panel(manager).config["card"]["tarot"]["spread_button"],"button.my_three_card_draw")
+        record=self.hass.registry.records[("sensor",tarot_api.DOMAIN,"unique-first_spread")]
+        record.entity_id="sensor.renamed_spread"
+        manager._on_registry_update(SimpleNamespace(data={"entity_id":record.entity_id,"old_entity_id":"sensor.my_three_cards"}))
+        self.assertEqual(self.panel(manager).config["card"]["tarot"]["spread_entity"],record.entity_id)
+        manager.stop()
+
 
 if __name__ == "__main__":
     unittest.main()

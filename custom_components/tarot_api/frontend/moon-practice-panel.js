@@ -1,6 +1,6 @@
 /* First-open migration to a persistent, editable native Lovelace dashboard. */
-import "./moon-practice-card.js?v=1.5.0";
-import {ensureDashboard} from "./practice-dashboard.js?v=1.5.0";
+import "./moon-practice-card.js?v=1.6.0";
+import {ensureDashboard} from "./practice-dashboard.js?v=1.6.0";
 class TarotPracticePanel extends HTMLElement {
   constructor() {
     super();

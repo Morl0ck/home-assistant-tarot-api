@@ -13,7 +13,7 @@ from homeassistant.helpers import entity_registry as er
 from .const import DOMAIN
 from .practice import PRACTICES
 
-FRONTEND_VERSION = "1.5.0"
+FRONTEND_VERSION = "1.6.0"
 STATIC_URL = "/tarot_api_static"
 FRONTEND_ROOT = Path(__file__).parent / "frontend"
 _STATIC_KEY = f"{DOMAIN}_frontend_static"
@@ -92,6 +92,10 @@ class PracticeFrontend:
                 "button": self._registry.async_get_entity_id("button", DOMAIN, button_uid)
                 or f"button.tarot_api_missing_{kind}",
             }
+        card["tarot"].update(
+            spread_entity=self._registry.async_get_entity_id("sensor", DOMAIN, f"{uid}_spread") or "sensor.tarot_api_missing_spread",
+            spread_button=self._registry.async_get_entity_id("button", DOMAIN, f"{uid}_draw_three") or "button.tarot_api_missing_spread",
+        )
         card["horoscope"] = {
             "entity": self._registry.async_get_entity_id("sensor", DOMAIN, f"{uid}_horoscope") or "sensor.tarot_api_missing_horoscope",
             "button": self._registry.async_get_entity_id("button", DOMAIN, f"{uid}_horoscope_refresh") or "button.tarot_api_missing_horoscope",

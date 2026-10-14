@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
 import logging
+from uuid import uuid4
 
 from homeassistant.components.image import ImageEntity
 from homeassistant.config_entries import ConfigEntry
@@ -14,7 +15,7 @@ from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from . import TarotHub
-from .artwork import ARTWORK_ROOT, card_id_for, current_theme
+from .artwork import ARTWORK_ROOT, CARD_IDS, card_id_for, current_theme
 from .const import DOMAIN, PLACEHOLDER_CARD_IMAGE, PROVIDER_KRATES, SIGNAL_CARD_UPDATED
 
 _CACHED_PROP_KEYS = frozenset({"image_url", "image_last_updated", "content_type"})
@@ -28,25 +29,36 @@ async def async_setup_entry(
 ) -> None:
     """Set up image platform."""
     hub: TarotHub = hass.data[DOMAIN][entry.entry_id]
-    async_add_entities([TarotCardImage(hass, entry, hub)], True)
+    async_add_entities([TarotCardImage(hass, entry, hub), *(TarotCardImage(hass, entry, hub, index) for index in range(3))], True)
 
 
 class TarotCardImage(ImageEntity):
     """Serves the current card art via HA's image proxy (Picture entity cards accept this)."""
 
-    def __init__(self, hass: HomeAssistant, entry: ConfigEntry, hub: TarotHub) -> None:
+    def __init__(self, hass: HomeAssistant, entry: ConfigEntry, hub: TarotHub, spread_index: int | None = None) -> None:
         super().__init__(hass)
         self._entry = entry
         self._hub = hub
-        hub.face_image = self
+        self._spread_index = spread_index
+        if spread_index is None:
+            hub.face_image = self
+        else:
+            hub.spread_images[spread_index] = self
         self._source_key = None
         self._local_bytes = None
         self._failed_paths = set()
         self._last_proxy_url = None
         uid = entry.unique_id or entry.entry_id
-        self._attr_unique_id = f"{uid}_face"
-        self._attr_name = "Tarot card face"
+        self._attr_unique_id = f"{uid}_face" if spread_index is None else f"{uid}_spread_face_{spread_index + 1}"
+        self._attr_name = "Tarot card face" if spread_index is None else f"Tarot spread card {spread_index + 1}"
         self._apply_image()
+
+    @property
+    def _card(self) -> dict | None:
+        if self._spread_index is None:
+            return self._hub.last_card
+        cards = self._hub.spread_cards
+        return cards[self._spread_index] if self._spread_index < len(cards) else None
 
     def _invalidate_image_cache_props(self) -> None:
         """ImageEntity uses cached_property; refresh after URL/time changes."""
@@ -54,13 +66,16 @@ class TarotCardImage(ImageEntity):
             self.__dict__.pop(key, None)
 
     def _apply_image(self) -> bool:
-        card = self._hub.last_card
+        card = self._card
         theme = current_theme(self._hub.hass)
-        card_id = card_id_for(self._hub)
+        card_id = card_id_for(self._hub) if self._spread_index is None else (card or {}).get("name_short")
+        if card_id not in CARD_IDS:
+            card_id = None
         source_key = (theme, card_id, (card or {}).get("image_url"))
         if source_key == self._source_key:
             return False
         self._source_key = source_key
+        self._image_revision = uuid4().hex
         self._local_path = ARTWORK_ROOT / theme / f"{card_id}.png" if card_id else None
         self._local_bytes = None
         self._attr_content_type = "image/png" if card_id else "image/jpeg"
@@ -74,8 +89,19 @@ class TarotCardImage(ImageEntity):
         return True
 
     @property
+    def entity_picture(self) -> str | None:
+        """Give each artwork change its own URL while retaining HA authentication."""
+        self._apply_image()
+        url = super().entity_picture
+        if not url:
+            return url
+        separator = "&" if "?" in url else "?"
+        return f"{url}{separator}v={self._image_revision}"
+
+    @property
     def artwork_theme(self) -> str | None:
         """The selected custom deck, or None for an unrecognized card."""
+        self._apply_image()
         return self._source_key[0] if self._local_path else None
 
     async def async_image(self) -> bytes | None:
@@ -133,7 +159,9 @@ class TarotCardImage(ImageEntity):
         def _on_solar_update(_event) -> None:
             changed = self._apply_image()
             # Keep the sensor's proxy URL current when HA rotates image tokens.
-            if changed or self.entity_picture != self._last_proxy_url:
+            url = self.entity_picture
+            if changed or url != self._last_proxy_url:
+                self._last_proxy_url = url
                 async_dispatcher_send(
                     self.hass, SIGNAL_CARD_UPDATED, {"entry_id": self._entry.entry_id}
                 )

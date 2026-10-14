@@ -122,3 +122,25 @@ class ArtworkTests(unittest.IsolatedAsyncioTestCase):
             with self.assertLogs("custom_components.tarot_api.image", level="WARNING"):
                 self.assertEqual(await self.face.async_image(), b"provider image")
             self.assertEqual(await self.face.async_image(), b"provider image")
+
+    async def test_redraw_changes_proxy_url_without_waiting_for_token_rotation(self):
+        self.hub.last_card={"name_short":"pequ","name":"Queen of Pentacles"}
+        sensor=TarotCardSensor(self.entry,self.hub)
+        old_url=sensor.extra_state_attributes["artwork_url"]
+        self.hub.last_card={"name_short":"sw03","name":"Three of Swords"}
+        new_attrs=sensor.extra_state_attributes
+        self.assertEqual(new_attrs["card_name"],"Three of Swords")
+        self.assertNotEqual(new_attrs["artwork_url"],old_url)
+        self.assertIn("token=test",new_attrs["artwork_url"])
+        self.assertEqual(new_attrs["artwork_url"],self.face.entity_picture)
+        self.assertEqual(self.face.entity_picture,self.face.entity_picture)
+        self.hub.last_card={"name_short":"pequ","name":"Queen of Pentacles"}
+        self.assertNotEqual(self.face.entity_picture,old_url)
+
+    async def test_sun_changes_proxy_url_without_changing_card_or_orientation(self):
+        old_url=self.face.entity_picture
+        card=dict(self.hub.last_card)
+        self.sun.state="below_horizon"
+        self.assertNotEqual(self.face.entity_picture,old_url)
+        self.assertEqual(self.hub.last_card,card)
+        self.assertEqual(self.hub.orientation,"reversed")

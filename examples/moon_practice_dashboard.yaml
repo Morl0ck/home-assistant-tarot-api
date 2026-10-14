@@ -1,5 +1,5 @@
 # Optional native dashboard example for HA 2024.11+.
-# The integration creates this layout automatically on first admin opening.
+# Existing generated dashboards discover three-card entities automatically.
 # Check Developer tools -> States and adjust entity IDs for your installation.
 # The integration registers its frontend module; no extra resource is needed.
 title: Daily Practice
@@ -33,9 +33,15 @@ views:
       tarot:
         entity: sensor.tarot_card
         button: button.draw_tarot_card
+        spread_entity: sensor.tarot_spread
+        spread_button: button.draw_three_tarot_cards
       grid_options:
         columns: full
         rows: auto
+      spread_labels:
+      - Past
+      - Present
+      - Future
 - title: Oracle
   path: oracle
   type: sections

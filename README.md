@@ -1,17 +1,17 @@
 # Tarot API — Home Assistant
 
-Custom integration: draw a random Rider–Waite–Smith card over HTTP, display **Mother Nature artwork by day and Purple Goddess artwork at night**, and read an original bundled upright/reversed interpretation. Includes a native **`image`** entity for Picture cards, a **`sensor`** for the reading, and a **`button`** to draw again.
+Custom integration: draw a random Rider–Waite–Smith card over HTTP or a three-card spread locally, display **Mother Nature artwork by day and Purple Goddess artwork at night**, and read an original bundled upright/reversed interpretation. Includes a native **`image`** entity for Picture cards, a **`sensor`** for the reading, and a **`button`** to draw again.
 
 **Data sources**
 
 - **Default:** [tarotapi.dev](https://tarotapi.dev) ([ekelen/tarot-api](https://github.com/ekelen/tarot-api)) supplies random card metadata. Recognized cards use the bundled artwork; [metabismuth/tarot-json](https://github.com/metabismuth/tarot-json) scan URLs are retained as a fallback. No image server required.
 - **Optional:** [krates98/tarotcardapi](https://github.com/krates98/tarotcardapi) on your network; set its base URL in the flow (not `tarotapi.dev`).
-- **Readings:** all 156 interpretations are bundled in [`readings.json`](custom_components/tarot_api/readings.json). They load once in a background worker; reading text needs no AI service or additional API request. Providers still supply the random card.
+- **Readings:** all 156 interpretations are bundled in [`readings.json`](custom_components/tarot_api/readings.json). They load once in a background worker; reading text needs no AI service or additional API request. Providers still supply the one-card draw; three-card draws use the bundled deck locally.
 - **Artwork:** two original 78-card decks are bundled locally: Mother Nature by day and Purple Goddess at night. Recognized cards use the original PNGs through Home Assistant's image proxy; external scans are a fallback.
 
-**Requirements:** Home Assistant **2024.11+**, access to your chosen card API, and about **543 MiB** of storage for the artwork. Normal card images and readings load locally. External fallback images need access to their image host; the initial card-back placeholder needs access to Wikimedia.
+**Requirements:** Home Assistant **2024.11+**, access to your chosen card API for one-card draws, and about **543 MiB** of storage for the artwork. Normal card images and readings load locally. External fallback images need access to their image host; the initial card-back placeholder needs access to Wikimedia.
 
-## Daily Practice dashboard (1.5.0)
+## Daily Practice dashboard (1.6.0)
 
 Daily Practice now uses **Home Assistant's native dashboard tabs**: **Affirmations, Tarot, Oracle, Gods, Runes, and Horoscopes**. The Sections views use the available desktop width, with artwork or sign selection on the left and reading content on the right. On phones the same content stacks vertically; horoscope signs use a compact dropdown. The lavender palette, moon scenery, and original Tarot artwork remain. No frontend libraries, card-mod, subscription, or AI account are required. The responsive dashboard requires **Home Assistant 2024.11+**.
 
@@ -35,6 +35,16 @@ Readings are saved per entry in HA's `.storage` and restored after restarts. In 
 
 Automatic retries occur at most hourly. **Refresh horoscopes** retries missing/stale readings, with a five-minute cooldown; it does not replace an already saved reading for today. In an outage the previous reading remains visible with its original date and a clear message. Before any reading has been saved, the card shows a loading or unavailable message. Provider dates are never relabeled as today's date: a provider publishing on another schedule may display a dated reading until its next update. The source link appears beneath the reading. The feed is externally written horoscope content, not locally calculated planetary positions.
 
+### One-card and three-card Tarot draws
+
+In the Tarot tab, choose **One card** or **Three cards**, then press the draw button. The three-card spread is labeled **Past / Present / Future**. Desktop views show all three cards and their readings side by side; phones stack them vertically. Each card has its own upright/reversed orientation, keywords, interpretation, and reflection question. The original artwork switches between Mother Nature by day and Purple Goddess at night for all three positions.
+
+Three-card draws select **three distinct cards without replacement from the bundled 78-card deck** and make **no network requests**. This works with either configured provider; the existing one-card draw retains its provider behavior. The one-card result and three-card spread remain independent when you switch modes. Both Tarot results start empty after a Home Assistant restart.
+
+**Upgrading an existing v1.5.0 dashboard:** update the integration, restart Home Assistant, and refresh your browser or Companion app. The existing Tarot card discovers the new spread sensor and draw button through the entity registry; your dashboard does not need to be deleted, regenerated, or edited. Manually configured cards can set `tarot.spread_entity` and `tarot.spread_button` to their actual entity IDs. Set `spread_labels: [Situation, Action, Outcome]` on a card to use different labels.
+
+The new `sensor.tarot_spread` has state `3 cards` after a draw, with a `cards` attribute containing all three readings, positions, orientations, and authenticated artwork URLs. `button.draw_three_tarot_cards` draws another spread. Its three `image.tarot_spread_card_*` entities serve bundled art through Home Assistant's image proxy. If the local readings catalog is missing or invalid, the spread button is unavailable; repair the catalog and restart.
+
 ### Bundled practices
 
 The other four collections remain bundled in `practices.json`: **32 affirmations**, **18 original Oracle cards**, **12 mixed Greek/Norse/Egyptian deity cards**, and **24 Elder Futhark runes**. Each includes a modern interpretation, a reflection question, and a small practice. Deity cards also contain mythology profiles and reference URLs in their sensor attributes. These collections need no network requests. Tarot continues to use the chosen card provider, original 78-card decks, and bundled upright/reversed readings.
@@ -45,12 +55,13 @@ Affirmations, Oracle, Gods, and Runes automatically rotate through every item be
 
 The complete native dashboard example is [`examples/moon_practice_dashboard.yaml`](examples/moon_practice_dashboard.yaml). Paste it into a dashboard's **Raw configuration editor**, checking the entity IDs against **Developer tools → States**. For a single Manual card, use a `custom:moon-practice-card` block with `section: horoscope` (or `affirmation`, `tarot`, `oracle`, `deity`, `rune`). Omit `section` to keep the internal tabbed card. `default_tab` selects its initial tab, and `sign: leo` supplies a default zodiac choice when no browser preference has been saved.
 
-The integration registers **`/tarot_api_static/moon-practice-card.js?v=1.5.0`** automatically. Remove or update manually registered older resources to avoid loading an older card first. Generated cards contain `entry_id` and `unique_prefix` to follow registry renames; manually configured cards can use explicit sensor and button mappings.
+The integration registers **`/tarot_api_static/moon-practice-card.js?v=1.6.0`** automatically. Remove or update manually registered older resources to avoid loading an older card first. Generated cards contain `entry_id` and `unique_prefix` to follow registry renames; manually configured cards can use explicit sensor and button mappings.
 
 | Practice | Default sensor | Default button |
 |----------|----------------|----------------|
 | Affirmations | `sensor.daily_affirmation` | `button.new_affirmation` |
-| Tarot | `sensor.tarot_card` | `button.draw_tarot_card` |
+| Tarot (one card) | `sensor.tarot_card` | `button.draw_tarot_card` |
+| Tarot (three cards) | `sensor.tarot_spread` | `button.draw_three_tarot_cards` |
 | Oracle | `sensor.oracle_card` | `button.draw_oracle_card` |
 | Gods | `sensor.deity_card` | `button.draw_deity_card` |
 | Runes | `sensor.rune` | `button.draw_rune` |
@@ -78,7 +89,7 @@ For a manual update, copy the **entire** `custom_components/tarot_api` folder, i
 
 **Manual:** Copy the complete [`custom_components/tarot_api`](custom_components/tarot_api) directory to `config/custom_components/tarot_api`, including `readings.json` and both `artwork` subdirectories. Restart Home Assistant, then add the integration.
 
-**Updating an existing installation:** Install the repository update through HACS, or replace the complete integration directory manually. Restart Home Assistant, refresh the browser or Companion app, and open **Daily Practice** in the sidebar. Draw a Tarot card to populate that tab. Existing entity IDs and dashboards remain compatible; automatic artwork switching needs no extra automation. Confirm the integration's `manifest.json` reports version **1.5.0** and set your home location correctly under Home Assistant's system settings. HACS installs the bundled Practice UI along with the integration.
+**Updating an existing installation:** Install the repository update through HACS, or replace the complete integration directory manually. Restart Home Assistant, refresh the browser or Companion app, and open **Daily Practice** in the sidebar. Draw a Tarot card to populate that tab. Existing entity IDs and dashboards remain compatible; automatic artwork switching needs no extra automation. Confirm the integration's `manifest.json` reports version **1.6.0** and set your home location correctly under Home Assistant's system settings. HACS installs the bundled Practice UI along with the integration.
 
 If HACS errors with **`unexpected character: line 1 column 1`**, it’s usually wrong repo URL (repository root only, not `/tree/main` or raw), JSON saved with a **UTF-8 BOM**, bad HACS storage (`config/.storage/hacs.repositories` — backup, delete while HA stopped, restart), or wrong category (**Integration**). This repo keeps JSON UTF-8 without BOM and LF per [`.gitattributes`](.gitattributes).
 
@@ -133,6 +144,7 @@ card_mod:
 |---------|--------|
 | Setup fails | Logs; full `tarot_api` tree under `custom_components`; restart after changes. |
 | Picture card empty / wrong | `entity` is **`image.*`**, not `sensor.*`. |
+| New card title with previous artwork | Update to 1.6.0, restart HA and refresh the browser once. Artwork URLs now change with each card or day/night image, so subsequent draws refresh the image automatically. |
 | No artwork | Copy both bundled artwork directories with the integration; verify API access. External fallback images require access to the provider image host. |
 | Theme stays on day or night | Check `sun.sun` and your configured home location. Without an available Sun entity, allow up to one minute for the location-based check. |
 | Old scans still appear | Restart after updating, draw a card, and confirm both artwork directories are installed. Check logs for missing or invalid bundled PNGs. |

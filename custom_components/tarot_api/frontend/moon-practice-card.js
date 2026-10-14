@@ -91,6 +91,20 @@ const STYLES = `
     .empty { grid-column:1/-1; background:#30293b; border-radius:24px; }
   }
   @container (max-width:699px) { .sign-grid { display:none; } .sign-select { display:block; } }
+  .tarot-controls { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px; }
+  .tarot-controls[hidden] { display:none; }
+  .tarot-mode { background:#27252e; color:#e0d8e6; border:1px solid #494052; border-radius:20px; padding:10px 18px; min-height:44px; font-size:13px; }
+  .tarot-mode[aria-pressed=true] { background:#e9ad70; color:#281c1c; border-color:#e9ad70; }
+  .panel.spread { display:grid; grid-template-columns:1fr; gap:22px; background:transparent; border-radius:0; }
+  .spread-card { min-width:0; border-radius:24px; overflow:hidden; background:#30293b; }
+  .spread-card .hero.tarot { min-height:0; padding:24px 18px; border-radius:0; }
+  .spread-card .hero h2 { font-size:24px; }
+  .spread-card .reading { padding:24px; border-radius:0; }
+  .spread-card .art { max-width:230px; width:80%; }
+  .spread-card .position { color:#f3d5a3; margin-bottom:10px; font-size:12px; }
+  .spread-actions { grid-column:1/-1; }
+  .spread-actions .draw { margin-top:0; }
+  @container (min-width:800px) { .panel.spread { grid-template-columns:repeat(3,minmax(0,1fr)); align-items:start; } }
   @media(max-width:360px) { ha-card { padding:22px 14px 17px; } .reading { padding:22px 19px; } h1 { font-size:40px; } .tab { padding:12px 15px; } }
 `;
 
@@ -101,9 +115,11 @@ class MoonPracticeCard extends HTMLElement {
     this._active = "affirmation";
     this._errors = {};
     this._sign = "aries";
+    this._tarotCount = 1;
     this.shadowRoot.innerHTML = `<style>${STYLES}</style><ha-card>
       <header><div><p class="eyebrow">A little space for yourself</p><h1>Practice</h1></div><span class="header-moon" aria-hidden="true">☾</span></header>
       <nav class="tabs" role="tablist" aria-label="Practice sections"></nav>
+      <div class="tarot-controls" role="group" aria-label="Tarot draw size" hidden><button class="tarot-mode" data-card-count="1">One card</button><button class="tarot-mode" data-card-count="3">Three cards</button></div>
       <section class="panel" id="practice-panel" role="tabpanel" aria-live="polite"></section>
       <footer>A moment to pause, a little room to grow.</footer></ha-card>`;
     const tabs = this.shadowRoot.querySelector(".tabs");
@@ -114,6 +130,8 @@ class MoonPracticeCard extends HTMLElement {
       if (event.target.closest("[data-draw]")) this._draw();
       const sign = event.target.closest("[data-sign]");
       if (sign) this._chooseSign(sign.dataset.sign);
+      const mode = event.target.closest("[data-card-count]");
+      if (mode && !this._busy) { this._tarotCount=Number(mode.dataset.cardCount); this._render(); }
     });
     this.shadowRoot.addEventListener("change", (event) => {
       if (event.target.matches("[data-sign-select]")) this._chooseSign(event.target.value);
@@ -133,6 +151,7 @@ class MoonPracticeCard extends HTMLElement {
       if (key && !PRACTICE_TABS.some((tab) => tab.key === key)) throw new Error("Unknown practice section. Use affirmation, tarot, oracle, deity, rune, or horoscope.");
     }
     if (config.sign && !ZODIAC_SIGNS.includes(config.sign)) throw new Error("Unknown zodiac sign. Use a lowercase sign name such as aries.");
+    if (config.spread_labels && (!Array.isArray(config.spread_labels) || config.spread_labels.length !== 3 || config.spread_labels.some(label => typeof label !== "string" || !label.trim()))) throw new Error("spread_labels must contain three nonempty labels.");
     const mappings = {};
     for (const tab of PRACTICE_TABS) {
       const mapping = config[tab.key] ?? {};
@@ -142,6 +161,11 @@ class MoonPracticeCard extends HTMLElement {
       if (typeof button !== "string" || !/^button\.[a-z0-9_]+$/.test(button)) throw new Error(`${tab.label}: button must be a button entity ID.`);
       mappings[tab.key] = { entity, button };
     }
+    const spreadEntity = config.tarot?.spread_entity ?? "sensor.tarot_spread";
+    const spreadButton = config.tarot?.spread_button ?? "button.draw_three_tarot_cards";
+    if (typeof spreadEntity !== "string" || !/^sensor\.[a-z0-9_]+$/.test(spreadEntity)) throw new Error("Tarot: spread_entity must be a sensor entity ID.");
+    if (typeof spreadButton !== "string" || !/^button\.[a-z0-9_]+$/.test(spreadButton)) throw new Error("Tarot: spread_button must be a button entity ID.");
+    Object.assign(mappings.tarot, {spread_entity:spreadEntity, spread_button:spreadButton});
     this._config = { ...config, ...mappings };
     this._registryResolved = false;
     this._active = config.section || config.default_tab || "affirmation";
@@ -161,6 +185,7 @@ class MoonPracticeCard extends HTMLElement {
     if (!this._config) return;
     const mapping = this._config[this._active];
     const relevant = [mapping.entity, mapping.button, "sun.sun"];
+    if (this._active === "tarot") relevant.push(mapping.spread_entity, mapping.spread_button);
     if (!previous || relevant.some((id) => previous.states[id] !== hass.states[id])) this._render();
   }
 
@@ -185,6 +210,13 @@ class MoonPracticeCard extends HTMLElement {
     const drawButton = this._hass?.states[mapping.button];
     const panel = this.shadowRoot.querySelector(".panel");
     const drawFocused = this.shadowRoot.activeElement?.hasAttribute("data-draw");
+    const spread = this._active === "tarot" && this._tarotCount === 3;
+    panel.classList.toggle("spread", spread);
+    this.shadowRoot.querySelector(".tarot-controls").hidden = this._active !== "tarot";
+    for (const mode of this.shadowRoot.querySelectorAll("[data-card-count]")) {
+      mode.setAttribute("aria-pressed", String(Number(mode.dataset.cardCount) === this._tarotCount));
+      mode.disabled=Boolean(this._busy);
+    }
     for (const button of this.shadowRoot.querySelectorAll("[data-tab]")) {
       const selected = button.dataset.tab === this._active;
       button.setAttribute("aria-selected", String(selected));
@@ -193,6 +225,11 @@ class MoonPracticeCard extends HTMLElement {
     panel.setAttribute("aria-labelledby", `tab-${this._active}`);
     const waiting = this._busy === this._active;
     const canDraw = buttonAvailable(drawButton) && !this._busy;
+    if (spread) {
+      this._renderSpread(panel, mapping);
+      if (drawFocused) panel.querySelector("[data-draw]").focus({preventScroll:true});
+      return;
+    }
     if (this._active === "horoscope") {
       this._renderHoroscope(panel, attrs, state, drawButton, canDraw, waiting);
       if (drawFocused) panel.querySelector("[data-draw]").focus({preventScroll:true});
@@ -235,8 +272,8 @@ class MoonPracticeCard extends HTMLElement {
   async _draw() {
     if (this._busy || !this._hass || !this._config) return;
     const kind = this._active;
-    const restoreFocus = this.shadowRoot.activeElement?.hasAttribute("data-draw");
-    const entityId = this._config[kind].button;
+    const restoreFocus = this.shadowRoot.activeElement?.hasAttribute("data-draw") ? "[data-draw]" : null;
+    const entityId = kind === "tarot" && this._tarotCount === 3 ? this._config.tarot.spread_button : this._config[kind].button;
     if (!buttonAvailable(this._hass.states[entityId])) return;
     this._busy = kind;
     delete this._errors[kind];
@@ -248,8 +285,37 @@ class MoonPracticeCard extends HTMLElement {
     } finally {
       this._busy = null;
       this._render();
-      if (restoreFocus && this._active === kind) this.shadowRoot.querySelector("[data-draw]").focus({ preventScroll: true });
+      if (restoreFocus && this._active === kind) this.shadowRoot.querySelector(restoreFocus)?.focus({ preventScroll: true });
     }
+  }
+
+  _renderSpread(panel, mapping) {
+    const state = this._hass?.states[mapping.spread_entity];
+    const button = this._hass?.states[mapping.spread_button];
+    const cards = state?.attributes?.cards;
+    const labels = this._config.spread_labels || ["Past", "Present", "Future"];
+    const waiting = this._busy === "tarot";
+    const canDraw = buttonAvailable(button) && !this._busy;
+    if (available(state) && Array.isArray(cards) && cards.length === 3) {
+      panel.innerHTML = cards.map((card,index) => {
+        const name=card.card_name || "Unknown card";
+        const art=imageUrl(card.artwork_url || card.entity_picture);
+        const reversed=card.orientation === "reversed";
+        const day=card.artwork_theme === "mother_nature";
+        return `<article class="spread-card" aria-label="${escapeText(labels[index])}: ${escapeText(name)}">
+          <div class="hero tarot ${day ? "day" : ""}"><p class="position">${escapeText(labels[index])}</p><p class="overline">${reversed ? "Reversed" : "Upright"}</p><h2>${escapeText(name)}</h2>
+          ${art ? `<img class="art ${reversed ? "reversed" : ""}" src="${art}" alt="${escapeText(name)}" loading="lazy">` : `<p class="status">Artwork unavailable</p>`}</div>
+          <div class="reading">${Array.isArray(card.keywords) ? `<div class="keywords">${card.keywords.map(word => `<span class="keyword">${escapeText(word)}</span>`).join("")}</div>` : ""}
+          <p>${escapeText(card.interpretation || "A local reading is not available for this card.")}</p>
+          ${card.reflection ? `<div class="block"><h3>A question for you</h3><p class="reflection">${escapeText(card.reflection)}</p></div>` : ""}</div></article>`;
+      }).join("");
+    } else {
+      const message = !state ? `Check the spread sensor ${mapping.spread_entity} in this card's configuration.` : state.state === "unavailable" ? "The three-card spread is unavailable. Check the integration and try again." : `Draw three cards for ${labels.join(", ").toLowerCase()}. Each has its own orientation and reading.`;
+      panel.innerHTML = `<div class="empty"><p class="overline">Three-card spread</p><h2>A little more perspective</h2><p>${escapeText(message)}</p></div>`;
+    }
+    panel.innerHTML += `<div class="spread-actions"><button class="draw" data-draw ${canDraw ? "" : "disabled"}>${waiting ? "Drawing…" : "Draw three cards"}</button>
+      ${!buttonAvailable(button) ? `<p class="status">Three-card draw button unavailable: ${escapeText(mapping.spread_button)}</p>` : ""}
+      ${this._errors.tarot ? `<p class="status" role="alert">${escapeText(this._errors.tarot)}</p>` : ""}</div>`;
   }
 
   _chooseSign(sign) {
@@ -296,6 +362,10 @@ class MoonPracticeCard extends HTMLElement {
           const record = records.find(r => r.config_entry_id === config.entry_id && r.platform === "tarot_api" && r.unique_id === `${config.unique_prefix}_${suffix}` && r.entity_id.startsWith(`${domain}.`));
           config[tab.key][field] = record?.entity_id || `${domain}.tarot_api_missing_${tab.key}`;
         }
+      }
+      for (const [domain,suffix,field] of [["sensor","spread","spread_entity"],["button","draw_three","spread_button"]]) {
+        const record=records.find(r=>r.config_entry_id === config.entry_id && r.platform === "tarot_api" && r.unique_id === `${config.unique_prefix}_${suffix}` && r.entity_id.startsWith(`${domain}.`));
+        config.tarot[field]=record?.entity_id || `${domain}.tarot_api_missing_spread`;
       }
       this._registryResolved = true;
       this._render();
