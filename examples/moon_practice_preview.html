@@ -2,91 +2,96 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Daily Practice — Home Assistant card preview</title>
+<title>Daily Practice — responsive card preview</title>
 <style>
-  * { box-sizing:border-box; } body { margin:0; background:#111017; color:#d8cbdc; font:14px system-ui,sans-serif; }
-  main { max-width:480px; margin:24px auto; padding:0 12px; }
-  .note { font-size:12px; text-align:center; line-height:1.6; margin:18px 10px; color:#a89aae; }
-  @media(min-width:700px) { main { margin-top:48px; } }
+  * {box-sizing:border-box;} body {margin:0;background:#111017;color:#f7f1eb;font:14px system-ui,sans-serif;}
+  header {padding:18px 24px;background:#19181f;border-bottom:1px solid #35313f;font-size:18px;}
+  nav {display:flex;overflow-x:auto;background:#19181f;padding:0 16px;}
+  nav button {font:14px system-ui,sans-serif;background:transparent;color:#bcb1c4;border:0;border-bottom:3px solid transparent;padding:17px 14px;cursor:pointer;flex-shrink:0;}
+  nav button[aria-selected=true] {color:#20bddd;border-bottom-color:#20bddd;}
+  main {max-width:1320px;margin:0 auto;padding:12px;}
+  .note {font-size:12px;text-align:center;line-height:1.6;margin:16px;color:#a89aae;}
+  button:focus-visible {outline:2px solid #e9ad70;outline-offset:-3px;}
 </style>
-<main><moon-practice-card></moon-practice-card><p class="note">Interactive local preview · Sample Home Assistant states<br>Use the tabs and draw buttons to explore.</p></main>
+<header>Daily Practice</header><nav role="tablist" aria-label="Daily Practice views"></nav>
+<main><moon-practice-card id="preview-card" role="tabpanel"></moon-practice-card></main>
+<p class="note">Local preview · Native navigation is simulated here · Sample readings</p>
 <script type="module">
-  import '../custom_components/tarot_api/frontend/moon-practice-panel.js';
+  import '../custom_components/tarot_api/frontend/moon-practice-card.js';
+  import {PRACTICE_VIEWS} from '../custom_components/tarot_api/frontend/practice-dashboard.js';
   const [catalog, tarot] = await Promise.all([
-    fetch('../custom_components/tarot_api/practices.json').then(r => r.json()),
-    fetch('../custom_components/tarot_api/readings.json').then(r => r.json()),
+    fetch('../custom_components/tarot_api/practices.json').then(r=>r.json()),
+    fetch('../custom_components/tarot_api/readings.json').then(r=>r.json()),
   ]);
-  const card = document.querySelector('moon-practice-card');
-  const panelMode = new URLSearchParams(location.search).has('panel');
-  let receiver = card;
-  const mappings = {};
-  for (const kind of ['affirmation','tarot','oracle','deity','rune']) {
-    mappings[kind] = {entity:`sensor.preview_renamed_${kind}`, button:`button.preview_renamed_${kind}`};
-  }
-  if (panelMode) {
-    const panel = document.createElement('tarot-practice-panel');
-    document.querySelector('main').replaceWith(panel);
-    panel.panel = {config:{card:mappings}};
-    const resize = () => { panel.narrow = innerWidth < 870; };
-    resize();
-    window.addEventListener('resize', resize);
-    panel.addEventListener('hass-toggle-menu', () => {
-      document.title = 'Daily Practice — sidebar menu event received';
-    });
-    receiver = panel;
-  } else {
-    card.setConfig({ type:'custom:moon-practice-card' });
-  }
-  const keys = { affirmation:['daily_affirmation','new_affirmation'], oracle:['oracle_card','draw_oracle_card'], deity:['deity_card','draw_deity_card'], rune:['rune','draw_rune'] };
-  const indexes = { affirmation:0, oracle:0, deity:0, rune:0, tarot:17 };
-  const date = new Date().toLocaleDateString('en-CA');
-  const scenario = new URLSearchParams(location.search).get('scenario');
-  const states = { 'sun.sun': { state:'below_horizon', attributes:{} } };
+  const card=document.querySelector('moon-practice-card');
+  const params=new URLSearchParams(location.search);
+  const legacy=params.has('legacy');
+  const scenario=params.get('scenario');
+  const keys={affirmation:['daily_affirmation','new_affirmation'],tarot:['tarot_card','draw_tarot_card'],oracle:['oracle_card','draw_oracle_card'],deity:['deity_card','draw_deity_card'],rune:['rune','draw_rune'],horoscope:['daily_horoscope','refresh_horoscopes']};
+  const indexes={affirmation:0,tarot:17,oracle:0,deity:0,rune:0};
+  const signs=['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces'];
+  const date=new Intl.DateTimeFormat('en-CA').format(new Date());
+  const states={'sun.sun':{state:'below_horizon',attributes:{}}};
   function update(kind) {
-    if (kind === 'tarot') {
-      const id = Object.keys(tarot.cards)[indexes.tarot % 78];
-      const record = tarot.cards[id];
-      states['sensor.tarot_card'] = {state:record.name, attributes:{ ...record.upright, card_name:record.name, orientation:'upright', artwork_url:`../custom_components/tarot_api/artwork/purple_goddess/${id}.png` }};
-      states['button.draw_tarot_card'] = { state:'unknown', attributes:{} };
-    } else {
-      const record = catalog[kind][indexes[kind] % catalog[kind].length];
-      states[`sensor.${keys[kind][0]}`] = { state:record.name, attributes:{...record,date} };
-      states[`button.${keys[kind][1]}`] = { state:'unknown', attributes:{} };
-    }
-  }
-  for (const kind of [...Object.keys(keys),'tarot']) update(kind);
-  if (scenario === 'missing') delete states['sensor.daily_affirmation'];
-  if (scenario === 'unavailable') states['sensor.daily_affirmation'].state = 'unavailable';
-  if (scenario === 'unavailable-button') states['button.new_affirmation'].state = 'unavailable';
-  if (scenario === 'first-tarot') states['sensor.tarot_card'] = {state:'unknown',attributes:{}};
-  if (scenario === 'reversed') states['sensor.tarot_card'].attributes.orientation = 'reversed';
-  if (scenario === 'escaped') {
-    states['sensor.daily_affirmation'].attributes.name = '<img src=x onerror=alert(1)> & a long affirmation that should wrap completely';
-    states['sensor.tarot_card'].attributes.artwork_url = 'javascript:alert(1)';
-  }
-  const hass = { states, async callService(domain, service, {entity_id}) {
-    if (domain !== 'button' || service !== 'press') throw new Error('Unexpected service');
-    if (scenario === 'error') throw new Error('Sample provider failure.');
-    if (scenario === 'slow') await new Promise(resolve => setTimeout(resolve, 1200));
-    const kind = panelMode ? Object.keys(mappings).find(key => entity_id === mappings[key].button)
-      : entity_id === 'button.draw_tarot_card' ? 'tarot' : Object.keys(keys).find(key => entity_id === `button.${keys[key][1]}`);
-    if (!kind) throw new Error('Unknown button entity');
-    indexes[kind]++;
-    update(kind);
-    publish();
-  } };
-  function publish() {
-    let visibleStates = {...states};
-    if (panelMode) {
-      visibleStates = {};
-      for (const kind of Object.keys(mappings)) {
-        const ids = kind === 'tarot' ? ['tarot_card','draw_tarot_card'] : keys[kind];
-        visibleStates[mappings[kind].entity] = states[`sensor.${ids[0]}`];
-        visibleStates[mappings[kind].button] = states[`button.${ids[1]}`];
+    let record;
+    if(kind==='tarot') {
+      const id=Object.keys(tarot.cards)[indexes.tarot%78];
+      record=tarot.cards[id];
+      states['sensor.tarot_card']={state:record.name,attributes:{...record.upright,card_name:record.name,orientation:'upright',artwork_url:`../custom_components/tarot_api/artwork/purple_goddess/${id}.png`}};
+    } else if(kind==='horoscope') {
+      const readings=Object.fromEntries(signs.map(sign=>[sign,{sign,date,stale:false,interpretation:`${sign.charAt(0).toUpperCase()+sign.slice(1)}, make room for one thing that deserves your full attention today. A thoughtful conversation may help you see a familiar situation from a different angle. Give yourself time to listen before deciding what comes next.`}]));
+      states['sensor.daily_horoscope']={state:date,attributes:{date,readings,errors:{}}};
+      if(scenario==='horoscope-outage') {
+        for(const reading of Object.values(readings)){reading.date='2026-10-13';reading.stale=true;}
+        states['sensor.daily_horoscope'].attributes.errors=Object.fromEntries(signs.map(s=>[s,"Latest reading unavailable. We'll try again later."]));
       }
+      if(scenario==='horoscope-empty') states['sensor.daily_horoscope']={state:'unknown',attributes:{readings:{},errors:Object.fromEntries(signs.map(s=>[s,'Latest reading unavailable. Please try again later.']))}};
+    } else {
+      record=catalog[kind][indexes[kind]%catalog[kind].length];
+      states[`sensor.${keys[kind][0]}`]={state:record.name,attributes:{...record,date}};
     }
-    receiver.hass = {...hass,states:visibleStates};
+    states[`button.${keys[kind][1]}`]={state:'unknown',attributes:{}};
   }
-  publish();
+  Object.keys(keys).forEach(update);
+  if(scenario==='missing') delete states['sensor.daily_affirmation'];
+  if(scenario==='unavailable') states['sensor.daily_affirmation'].state='unavailable';
+  if(scenario==='unavailable-button') states['button.new_affirmation'].state='unavailable';
+  if(scenario==='first-tarot') states['sensor.tarot_card']={state:'unknown',attributes:{}};
+  if(scenario==='reversed') states['sensor.tarot_card'].attributes.orientation='reversed';
+  if(scenario==='escaped') {
+    states['sensor.daily_affirmation'].attributes.name='<img src=x onerror=alert(1)> & a long affirmation that should wrap completely';
+    states['sensor.tarot_card'].attributes.artwork_url='javascript:alert(1)';
+    states['sensor.daily_horoscope'].attributes.readings.aries.interpretation='<img src=x onerror=alert(1)> & sample horoscope';
+  }
+  const hass={states,async callService(domain,service,{entity_id}) {
+    if(domain!=='button'||service!=='press') throw new Error('Unexpected service');
+    if(scenario==='error') throw new Error('Sample provider failure.');
+    if(scenario==='slow') await new Promise(resolve=>setTimeout(resolve,1200));
+    const kind=Object.keys(keys).find(key=>entity_id===`button.${keys[key][1]}`);
+    if(!kind) throw new Error('Unknown button entity');
+    if(kind!=='horoscope') indexes[kind]++;
+    update(kind);publish();
+  }};
+  function publish(){card.hass={...hass,states:{...states}};}
+  const nav=document.querySelector('nav');
+  let selected=params.get('tab')||'affirmation';
+  if(!PRACTICE_VIEWS.some(([key])=>key===selected)) selected='affirmation';
+  nav.innerHTML=PRACTICE_VIEWS.map(([key,title])=>`<button id="preview-${key}" role="tab" aria-controls="preview-card" data-tab="${key}">${title}</button>`).join('');
+  function select(key) {
+    selected=key;
+    for(const button of nav.querySelectorAll('button'))button.setAttribute('aria-selected',String(button.dataset.tab===key));
+    card.setAttribute('aria-labelledby',`preview-${key}`);
+    card.setConfig({type:'custom:moon-practice-card',...(legacy?{default_tab:key}:{section:key})});
+    publish();
+  }
+  nav.addEventListener('click',event=>{const button=event.target.closest('[data-tab]');if(button)select(button.dataset.tab);});
+  nav.addEventListener('keydown',event=>{
+    if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+    event.preventDefault();const i=PRACTICE_VIEWS.findIndex(([key])=>key===selected),n=PRACTICE_VIEWS.length;
+    const next=event.key==='Home'?0:event.key==='End'?n-1:(i+(event.key==='ArrowRight'?1:-1)+n)%n;
+    select(PRACTICE_VIEWS[next][0]);nav.querySelectorAll('button')[next].focus();
+  });
+  if(legacy) nav.hidden=true;
+  select(selected);
 </script>
 </html>

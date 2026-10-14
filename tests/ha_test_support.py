@@ -44,7 +44,7 @@ def install_import_stubs():
     sys.modules["homeassistant.core"].HomeAssistant = object
     sys.modules["homeassistant.core"].callback = lambda fn: fn
     sys.modules["homeassistant.exceptions"].HomeAssistantError = type("HomeAssistantError", (Exception,), {})
-    sys.modules["homeassistant.helpers.aiohttp_client"].async_get_clientsession = lambda hass: None
+    sys.modules["homeassistant.helpers.aiohttp_client"].async_get_clientsession = lambda hass: SimpleNamespace(get=lambda url, **kwargs: FakeResponse({"data": {"period": "daily", "sign": kwargs.get("params", {}).get("sign", "aries"), "date": sys.modules["homeassistant.util.dt"].now().date().isoformat(), "horoscope": "Sample daily horoscope."}}))
     sys.modules["homeassistant.helpers.dispatcher"].async_dispatcher_send = lambda *args: None
     sys.modules["homeassistant.helpers.dispatcher"].async_dispatcher_connect = lambda *args: None
     sys.modules["homeassistant.helpers.entity"].DeviceInfo = dict
@@ -55,6 +55,7 @@ def install_import_stubs():
     sys.modules["homeassistant.helpers.entity_registry"].async_get = lambda hass: hass.registry
     frontend = sys.modules["homeassistant.components.frontend"]
     frontend.DATA_PANELS = "frontend_panels"
+    frontend.add_extra_js_url = lambda hass, url: hass.data.setdefault("test_extra_modules", set()).add(url)
 
     def register_panel(hass, **kwargs):
         panels = hass.data.setdefault(frontend.DATA_PANELS, {})

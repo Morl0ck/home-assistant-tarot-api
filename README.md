@@ -9,38 +9,56 @@ Custom integration: draw a random Rider–Waite–Smith card over HTTP, display 
 - **Readings:** all 156 interpretations are bundled in [`readings.json`](custom_components/tarot_api/readings.json). They load once in a background worker; reading text needs no AI service or additional API request. Providers still supply the random card.
 - **Artwork:** two original 78-card decks are bundled locally: Mother Nature by day and Purple Goddess at night. Recognized cards use the original PNGs through Home Assistant's image proxy; external scans are a fallback.
 
-**Requirements:** Home Assistant **2023.8+**, access to your chosen card API, and about **543 MiB** of storage for the artwork. Normal card images and readings load locally. External fallback images need access to their image host; the initial card-back placeholder needs access to Wikimedia.
+**Requirements:** Home Assistant **2024.11+**, access to your chosen card API, and about **543 MiB** of storage for the artwork. Normal card images and readings load locally. External fallback images need access to their image host; the initial card-back placeholder needs access to Wikimedia.
 
-## Daily Practice dashboard (1.4.1)
+## Daily Practice dashboard (1.5.0)
 
-The new **Practice** card brings **Affirmations, Tarot, Oracle, Gods, and Runes** into one mobile dashboard. It uses a dark lavender palette, warm accent buttons, a locally drawn moon landscape, and horizontally scrolling tabs. It is an original interface inspired by a daily practice screen; its content and artwork are not copied from Moonly. No frontend libraries, card-mod, subscription, or AI account are required.
+Daily Practice now uses **Home Assistant's native dashboard tabs**: **Affirmations, Tarot, Oracle, Gods, Runes, and Horoscopes**. The Sections views use the available desktop width, with artwork or sign selection on the left and reading content on the right. On phones the same content stacks vertically; horoscope signs use a compact dropdown. The lavender palette, moon scenery, and original Tarot artwork remain. No frontend libraries, card-mod, subscription, or AI account are required. The responsive dashboard requires **Home Assistant 2024.11+**.
 
-The four new collections are bundled in `practices.json`: **32 affirmations**, **18 original Oracle cards**, **12 mixed Greek/Norse/Egyptian deity cards**, and **24 Elder Futhark runes**. Each contains an original modern interpretation, a reflection question, and a small practice. Deity cards also include a short mythology profile, with a reference URL in their sensor attributes. These profiles were checked against the Bank of Greece's mythology collection, the Metropolitan Museum of Art, and World History Encyclopedia. Deity and rune readings are modern reflective writing rather than ancient prayers or translations. Tarot continues to use the existing provider, 78-card decks, and upright/reversed readings.
+### Open or upgrade Daily Practice
 
-Affirmations, Oracle, Gods, and Runes receive a daily selection automatically. They rotate through every item before repeating, remain the same across devices, and refresh within one minute of midnight in **Home Assistant's configured timezone**. Draw buttons select a different item in that collection. Manual choices survive restarts on the same local day, stored per integration entry in HA's `.storage`; the next day resets them. These four collections need no network requests. Tarot retains its existing manual draw and API behavior, including starting without a card after a restart.
+1. Install the updated integration through HACS or copy the complete `custom_components/tarot_api` directory into Home Assistant, including its `frontend`, catalogs and artwork directories. Restart Home Assistant. New installations also need **Settings → Devices & services → Add integration → Tarot API**.
+2. Refresh your browser or Companion app. **An administrator must open Daily Practice once.** Its first-open page creates a normal, editable dashboard using Home Assistant's authenticated dashboard APIs, then opens the Affirmations view. This requires no API key, resource configuration, or pasted YAML. Other users can use the resulting dashboard.
+3. Use the native tabs to change practices. Desktop views show two columns; phones show one. Use Home Assistant's dashboard editor to rearrange sections, resize the card, or add your own cards.
 
-### Open Daily Practice
+The integration loads its card module automatically. The first-open page uses the old `tarot-practice-<entry_id>` route and the native dashboard uses `daily-practice-<entry_id>`. Once the native layout is saved, the old sidebar page disappears. Update old bookmarks to the new dashboard. Each integration entry has its own dashboard and cache. Existing manually configured Lovelace cards continue working, including their internal practice tabs.
 
-1. Install or update **Tarot API** through HACS and restart Home Assistant. For a manual installation, copy the complete `custom_components/tarot_api` directory, including its `frontend`, catalogs and artwork directories. New installations also need **Settings → Devices & services → Add integration → Tarot API**; existing installations keep their integration entry.
-2. Refresh your browser or Companion app and open **Daily Practice** in the Home Assistant sidebar.
+**Your dashboard edits are preserved.** Creation only seeds a missing dashboard; reloads and integration updates never overwrite an existing layout. The generated cards resolve entities through the registry, including renamed entities. Removing or unloading the integration leaves the native dashboard in place so your edits survive; remove it separately in **Settings → Dashboards** if you no longer need it. If you delete its cache entity from a card configuration or remove the integration, that card shows an unavailable message.
 
-The integration serves its bundled JavaScript, registers the sidebar page, and connects the five tabs to the entity IDs in Home Assistant's registry automatically. No `www` copy, dashboard resource, or YAML setup is needed for this page. Renaming an entity updates its mapping; multiple integration entries each get an independent page. The page is available to regular Home Assistant users, including your wife. Unloading or removing the integration removes its page.
+If the first-open page cannot save the layout, it shows the error and keeps the newly created dashboard. Use the bundled YAML example to populate it manually, or delete the empty dashboard in Settings and retry. Creation honors Home Assistant's administrator permissions. It does not write directly to HA's dashboard storage files.
 
-### Optional: add the card to an existing dashboard
+### Horoscopes with minimal internet use
 
-For a card inside your own Lovelace dashboard, add **`/tarot_api_static/moon-practice-card.js?v=1.4.1`** as a **JavaScript module** dashboard resource and refresh the browser or Companion app. Paste the `custom:moon-practice-card` block from [`examples/moon_practice_dashboard.yaml`](examples/moon_practice_dashboard.yaml) into a Manual card, or use the full example in a dashboard's **Raw configuration editor**. This follows [Home Assistant's custom card installation](https://developers.home-assistant.io/docs/frontend/custom-ui/custom-card/#referencing-your-new-card). Check **Developer tools → States** and adjust its sensor and button IDs, especially with multiple integration entries or name collisions. The bundled file replaces the manual `www` copy used in 1.4.0.
+The Horoscopes view uses [Free Horoscope API](https://freehoroscopeapi.com/), a public daily feed with no account or API key. Select one of the twelve signs; the selection is remembered per browser/device and integration entry. Your zodiac choice stays local and the integration fetches all twelve signs so multiple household members can use different signs.
 
-| Tab | Default sensor | Default button |
-|-----|----------------|----------------|
+Readings are saved per entry in HA's `.storage` and restored after restarts. In normal operation each sign is fetched once per day: **12 requests per entry per day**. Browsing, changing signs, opening another dashboard, and restarting with a complete current cache make no horoscope requests. Only missing or stale signs are fetched; successful signs are retained during partial failures. Requests have a 15-second timeout, with at most three in flight. Startup and local midnight updates run in the background and do not block integration setup or the other practices.
+
+Automatic retries occur at most hourly. **Refresh horoscopes** retries missing/stale readings, with a five-minute cooldown; it does not replace an already saved reading for today. In an outage the previous reading remains visible with its original date and a clear message. Before any reading has been saved, the card shows a loading or unavailable message. Provider dates are never relabeled as today's date: a provider publishing on another schedule may display a dated reading until its next update. The source link appears beneath the reading. The feed is externally written horoscope content, not locally calculated planetary positions.
+
+### Bundled practices
+
+The other four collections remain bundled in `practices.json`: **32 affirmations**, **18 original Oracle cards**, **12 mixed Greek/Norse/Egyptian deity cards**, and **24 Elder Futhark runes**. Each includes a modern interpretation, a reflection question, and a small practice. Deity cards also contain mythology profiles and reference URLs in their sensor attributes. These collections need no network requests. Tarot continues to use the chosen card provider, original 78-card decks, and bundled upright/reversed readings.
+
+Affirmations, Oracle, Gods, and Runes automatically rotate through every item before repeating, stay consistent across devices, and refresh within one minute of midnight in **Home Assistant's configured timezone**. Manual draws survive same-day restarts and reset the following day. Tarot retains manual draws and starts without a drawn card after a restart.
+
+### Optional: create your own dashboard or embed a card
+
+The complete native dashboard example is [`examples/moon_practice_dashboard.yaml`](examples/moon_practice_dashboard.yaml). Paste it into a dashboard's **Raw configuration editor**, checking the entity IDs against **Developer tools → States**. For a single Manual card, use a `custom:moon-practice-card` block with `section: horoscope` (or `affirmation`, `tarot`, `oracle`, `deity`, `rune`). Omit `section` to keep the internal tabbed card. `default_tab` selects its initial tab, and `sign: leo` supplies a default zodiac choice when no browser preference has been saved.
+
+The integration registers **`/tarot_api_static/moon-practice-card.js?v=1.5.0`** automatically. Remove or update manually registered older resources to avoid loading an older card first. Generated cards contain `entry_id` and `unique_prefix` to follow registry renames; manually configured cards can use explicit sensor and button mappings.
+
+| Practice | Default sensor | Default button |
+|----------|----------------|----------------|
 | Affirmations | `sensor.daily_affirmation` | `button.new_affirmation` |
 | Tarot | `sensor.tarot_card` | `button.draw_tarot_card` |
 | Oracle | `sensor.oracle_card` | `button.draw_oracle_card` |
 | Gods | `sensor.deity_card` | `button.draw_deity_card` |
 | Runes | `sensor.rune` | `button.draw_rune` |
+| Horoscopes | `sensor.daily_horoscope` | `button.refresh_horoscopes` |
 
-The default tab is `affirmation`. Set `default_tab` to `tarot`, `oracle`, `deity`, or `rune` to choose another. Names and text wrap rather than truncate; swipe the tab row to reach later sections. Keyboard users can navigate tabs with Left/Right, Home, and End. Missing entities and failed draws show a message inside the card. Tarot uses the image proxy, updates with the existing day/night decks, and rotates reversed cards automatically.
+The horoscope sensor's state is its latest saved provider date. Attributes include a `readings` dictionary keyed by lowercase sign, each containing `sign`, `date`, `interpretation`, and `stale`; `errors` contains messages for unavailable signs. Sensor text is not truncated to fit the state field.
 
-For a local, interactive preview using sample HA states, run `python -m http.server 8766 --bind 127.0.0.1` from the repository root and open `http://127.0.0.1:8766/examples/moon_practice_preview.html`. Append `?panel=1` to exercise the sidebar wrapper with renamed sample entities. The preview exercises the real UI with bundled text and artwork; it is not connected to your live Home Assistant. Install the integration there using the steps above. To customize the writing, edit [`scripts/build-practice-catalog.py`](scripts/build-practice-catalog.py), run it once, then copy the regenerated `practices.json` into HA and restart.
+For a local interactive preview with sample HA states, run `python -m http.server 8766 --bind 127.0.0.1` from the repository root and open `http://127.0.0.1:8766/examples/moon_practice_preview.html`. This exercises the actual cards with simulated native navigation; it is not a live Home Assistant installation. Add `?legacy=1` for the embedded tabbed card, `?tab=horoscope&scenario=horoscope-outage` for saved older readings, or `?tab=horoscope&scenario=horoscope-empty` for an unavailable feed with no cache.
 
 ## Daytime and nighttime artwork
 
@@ -60,7 +78,7 @@ For a manual update, copy the **entire** `custom_components/tarot_api` folder, i
 
 **Manual:** Copy the complete [`custom_components/tarot_api`](custom_components/tarot_api) directory to `config/custom_components/tarot_api`, including `readings.json` and both `artwork` subdirectories. Restart Home Assistant, then add the integration.
 
-**Updating an existing installation:** Install the repository update through HACS, or replace the complete integration directory manually. Restart Home Assistant, refresh the browser or Companion app, and open **Daily Practice** in the sidebar. Draw a Tarot card to populate that tab. Existing entity IDs and dashboards remain compatible; automatic artwork switching needs no extra automation. Confirm the integration's `manifest.json` reports version **1.4.1** and set your home location correctly under Home Assistant's system settings. HACS installs the bundled Practice UI along with the integration.
+**Updating an existing installation:** Install the repository update through HACS, or replace the complete integration directory manually. Restart Home Assistant, refresh the browser or Companion app, and open **Daily Practice** in the sidebar. Draw a Tarot card to populate that tab. Existing entity IDs and dashboards remain compatible; automatic artwork switching needs no extra automation. Confirm the integration's `manifest.json` reports version **1.5.0** and set your home location correctly under Home Assistant's system settings. HACS installs the bundled Practice UI along with the integration.
 
 If HACS errors with **`unexpected character: line 1 column 1`**, it’s usually wrong repo URL (repository root only, not `/tree/main` or raw), JSON saved with a **UTF-8 BOM**, bad HACS storage (`config/.storage/hacs.repositories` — backup, delete while HA stopped, restart), or wrong category (**Integration**). This repo keeps JSON UTF-8 without BOM and LF per [`.gitattributes`](.gitattributes).
 

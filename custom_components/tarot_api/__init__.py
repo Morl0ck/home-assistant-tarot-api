@@ -31,6 +31,7 @@ from .image_util import image_url_for_ekelen_card
 from .readings import ReadingCatalog, async_get_readings
 from .practice import PracticeHub, async_get_practices
 from .frontend import PracticeFrontend
+from .horoscope import HoroscopeHub
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -55,6 +56,7 @@ class TarotHub:
     face_image: Any = field(default=None, repr=False)
     practice: PracticeHub | None = field(default=None, repr=False)
     frontend: PracticeFrontend | None = field(default=None, repr=False)
+    horoscope: HoroscopeHub | None = field(default=None, repr=False)
 
     async def async_draw_one(self) -> None:
         """Fetch one random card and store it with a random orientation."""
@@ -140,10 +142,12 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         provider=provider,
         readings=readings,
         practice=practice,
+        horoscope=HoroscopeHub(hass, entry.entry_id),
     )
     hass.data.setdefault(DOMAIN, {})[entry.entry_id] = hub
 
     try:
+        await hub.horoscope.async_start()
         await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
         hub.frontend = PracticeFrontend(hass, entry)
         await hub.frontend.async_start()
@@ -153,6 +157,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                 hub.frontend.stop()
                 await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
         finally:
+            await hub.horoscope.async_stop()
             practice.stop()
             hass.data[DOMAIN].pop(entry.entry_id, None)
         raise
@@ -185,6 +190,8 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         hub = hass.data[DOMAIN].pop(entry.entry_id, None)
         if hub is not None and hub.practice is not None:
             hub.practice.stop()
+        if hub is not None and hub.horoscope is not None:
+            await hub.horoscope.async_stop()
         if hub is not None and hub.frontend is not None:
             hub.frontend.stop()
     return unload_ok

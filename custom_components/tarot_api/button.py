@@ -21,9 +21,30 @@ async def async_setup_entry(
     """Set up Tarot button from a config entry."""
     hub: TarotHub = hass.data[DOMAIN][entry.entry_id]
     entities = [TarotDrawButton(entry, hub)]
+    if hub.horoscope is not None:
+        entities.append(HoroscopeRefreshButton(entry, hub))
     if hub.practice is not None:
         entities.extend(PracticeDrawButton(entry, hub, kind) for kind in PRACTICES)
     async_add_entities(entities, True)
+
+
+class HoroscopeRefreshButton(ButtonEntity):
+    """Retry missing/stale readings, without re-fetching today's saved signs."""
+
+    _attr_name = "Refresh horoscopes"
+    _attr_icon = "mdi:refresh"
+    _attr_has_entity_name = False
+
+    def __init__(self, entry: ConfigEntry, hub: TarotHub) -> None:
+        self._entry, self._hub = entry, hub
+        self._attr_unique_id = f"{entry.unique_id or entry.entry_id}_horoscope_refresh"
+
+    async def async_press(self) -> None:
+        await self._hub.horoscope.async_refresh(manual=True)
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        return DeviceInfo(identifiers={(DOMAIN, self._entry.entry_id)}, name="Tarot draw")
 
 
 class PracticeDrawButton(ButtonEntity):

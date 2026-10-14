@@ -1,48 +1,33 @@
-/* HACS-installed sidebar panel. HA passes entity mappings from the registry. */
-import "./moon-practice-card.js?v=1.4.1";
-
+/* First-open migration to a persistent, editable native Lovelace dashboard. */
+import "./moon-practice-card.js?v=1.5.0";
+import {ensureDashboard} from "./practice-dashboard.js?v=1.5.0";
 class TarotPracticePanel extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({mode:"open"});
     this.shadowRoot.innerHTML = `<style>
-      :host { display:block; height:100%; background:#111017; color:#f7f1eb; overflow:auto; }
-      header { display:flex; align-items:center; gap:18px; position:sticky; top:0; z-index:10;
-        height:56px; padding:0 20px; background:#19181f; border-bottom:1px solid #35313f;
-        font:500 18px system-ui,sans-serif; }
-      button { background:none; border:0; color:inherit; font-size:25px; width:40px; height:40px; cursor:pointer; }
-      button:focus-visible { outline:2px solid #e9ad70; border-radius:8px; }
-      button[hidden] { display:none; }
-      main { max-width:520px; margin:28px auto; padding:0 12px;
-        padding-bottom:env(safe-area-inset-bottom,0px); }
-      @media(max-width:500px) { main { margin-top:16px; } }
-    </style><header><button aria-label="Open sidebar" hidden>☰</button><span>Daily Practice</span></header><main></main>`;
-    this._card = document.createElement("moon-practice-card");
-    this.shadowRoot.querySelector("main").append(this._card);
-    this.shadowRoot.querySelector("button").addEventListener("click", () => {
-      this.dispatchEvent(new CustomEvent("hass-toggle-menu", {bubbles:true,composed:true}));
-    });
+      :host {display:block; padding:32px; color:var(--primary-text-color);}
+      main {max-width:700px; margin:24px auto;}
+      p {line-height:1.7; white-space:pre-line;}
+      button {font:inherit; padding:12px 20px; min-height:44px; cursor:pointer;}
+    </style><main><h1>Daily Practice</h1><p role="status">Opening your dashboard…</p><button hidden>Try again</button></main>`;
+    this.shadowRoot.querySelector("button").addEventListener("click",()=>{this._started=false;this._open();});
   }
-
-  set panel(panel) {
-    const config = panel?.config?.card;
-    if (!config) return;
-    const signature = JSON.stringify(config);
-    if (this._signature !== signature) {
-      this._signature = signature;
-      this._card.setConfig({type:"custom:moon-practice-card",...config});
+  set panel(panel) {this._panel=panel;this._open();}
+  set hass(hass) {this._hass=hass;this._open();}
+  async _open() {
+    if(this._started || !this._hass || !this._panel?.config) return;
+    this._started=true;
+    const status=this.shadowRoot.querySelector("p");
+    const button=this.shadowRoot.querySelector("button");
+    button.hidden=true;
+    try {
+      const path=await ensureDashboard(this._hass,this._panel.config,text=>{status.textContent=text;});
+      window.location.replace(`/${path}/affirmation`);
+    } catch(error) {
+      status.textContent=error?.message || "Could not open Daily Practice. Please try again.";
+      button.hidden=false;
     }
-    if (this._hass) this._card.hass = this._hass;
-  }
-
-  set hass(hass) {
-    this._hass = hass;
-    this._card.hass = hass;
-  }
-
-  set narrow(narrow) {
-    this.shadowRoot.querySelector("button").hidden = !narrow;
   }
 }
-
-if (!customElements.get("tarot-practice-panel")) customElements.define("tarot-practice-panel", TarotPracticePanel);
+if(!customElements.get("tarot-practice-panel")) customElements.define("tarot-practice-panel",TarotPracticePanel);

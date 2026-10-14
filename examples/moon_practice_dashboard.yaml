@@ -1,31 +1,102 @@
-# The integration now creates a Daily Practice sidebar panel automatically.
-# This optional example embeds the card in a separate Lovelace dashboard.
-# Add /tarot_api_static/moon-practice-card.js?v=1.4.1 as a module resource
-# under Settings -> Dashboards -> Resources (enable Advanced mode if needed).
-# This is a full dashboard for the Raw configuration editor. For a Manual
-# card, copy only the type/config block under cards below.
+# Optional native dashboard example for HA 2024.11+.
+# The integration creates this layout automatically on first admin opening.
+# Check Developer tools -> States and adjust entity IDs for your installation.
+# The integration registers its frontend module; no extra resource is needed.
 title: Daily Practice
 views:
-  - title: Practice
-    path: practice
-    icon: mdi:moon-waning-crescent
-    panel: true
+- title: Affirmations
+  path: affirmation
+  type: sections
+  max_columns: 3
+  sections:
+  - type: grid
+    column_span: 3
     cards:
-      - type: custom:moon-practice-card
-        default_tab: affirmation
-        # Check Developer tools -> States and adjust these entity IDs.
-        affirmation:
-          entity: sensor.daily_affirmation
-          button: button.new_affirmation
-        tarot:
-          entity: sensor.tarot_card
-          button: button.draw_tarot_card
-        oracle:
-          entity: sensor.oracle_card
-          button: button.draw_oracle_card
-        deity:
-          entity: sensor.deity_card
-          button: button.draw_deity_card
-        rune:
-          entity: sensor.rune
-          button: button.draw_rune
+    - type: custom:moon-practice-card
+      section: affirmation
+      affirmation:
+        entity: sensor.daily_affirmation
+        button: button.new_affirmation
+      grid_options:
+        columns: full
+        rows: auto
+- title: Tarot
+  path: tarot
+  type: sections
+  max_columns: 3
+  sections:
+  - type: grid
+    column_span: 3
+    cards:
+    - type: custom:moon-practice-card
+      section: tarot
+      tarot:
+        entity: sensor.tarot_card
+        button: button.draw_tarot_card
+      grid_options:
+        columns: full
+        rows: auto
+- title: Oracle
+  path: oracle
+  type: sections
+  max_columns: 3
+  sections:
+  - type: grid
+    column_span: 3
+    cards:
+    - type: custom:moon-practice-card
+      section: oracle
+      oracle:
+        entity: sensor.oracle_card
+        button: button.draw_oracle_card
+      grid_options:
+        columns: full
+        rows: auto
+- title: Gods
+  path: deity
+  type: sections
+  max_columns: 3
+  sections:
+  - type: grid
+    column_span: 3
+    cards:
+    - type: custom:moon-practice-card
+      section: deity
+      deity:
+        entity: sensor.deity_card
+        button: button.draw_deity_card
+      grid_options:
+        columns: full
+        rows: auto
+- title: Runes
+  path: rune
+  type: sections
+  max_columns: 3
+  sections:
+  - type: grid
+    column_span: 3
+    cards:
+    - type: custom:moon-practice-card
+      section: rune
+      rune:
+        entity: sensor.rune
+        button: button.draw_rune
+      grid_options:
+        columns: full
+        rows: auto
+- title: Horoscopes
+  path: horoscope
+  type: sections
+  max_columns: 3
+  sections:
+  - type: grid
+    column_span: 3
+    cards:
+    - type: custom:moon-practice-card
+      section: horoscope
+      horoscope:
+        entity: sensor.daily_horoscope
+        button: button.refresh_horoscopes
+      grid_options:
+        columns: full
+        rows: auto

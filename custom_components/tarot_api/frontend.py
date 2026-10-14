@@ -1,4 +1,4 @@
-"""Serve the HACS-bundled UI and add entry-scoped Practice sidebar panels."""
+"""Serve cards and a first-open installer for native, user-owned dashboards."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ from homeassistant.helpers import entity_registry as er
 from .const import DOMAIN
 from .practice import PRACTICES
 
-FRONTEND_VERSION = "1.4.1"
+FRONTEND_VERSION = "1.5.0"
 STATIC_URL = "/tarot_api_static"
 FRONTEND_ROOT = Path(__file__).parent / "frontend"
 _STATIC_KEY = f"{DOMAIN}_frontend_static"
@@ -30,6 +30,7 @@ async def _async_register_static(hass: HomeAssistant) -> None:
     else:
         # This API only exists on older HA releases. Modern HA never uses it.
         hass.http.register_static_path(STATIC_URL, str(FRONTEND_ROOT), False)
+    frontend.add_extra_js_url(hass, f"{STATIC_URL}/moon-practice-card.js?v={FRONTEND_VERSION}")
 
 
 async def async_register_assets(hass: HomeAssistant) -> None:
@@ -52,8 +53,10 @@ class PracticeFrontend:
     def __init__(self, hass: HomeAssistant, entry: Any) -> None:
         self.hass, self.entry = hass, entry
         self.path = f"tarot-practice-{entry.entry_id}"
+        self.dashboard_path = f"daily-practice-{entry.entry_id}"
         self._registry = er.async_get(hass)
         self._unsubscribe = None
+        self._unsubscribe_dashboard = None
         self._entity_ids: set[str] = set()
 
     async def async_start(self) -> None:
@@ -62,6 +65,12 @@ class PracticeFrontend:
         self._unsubscribe = self.hass.bus.async_listen(
             "entity_registry_updated", self._on_registry_update
         )
+        self._unsubscribe_dashboard = self.hass.bus.async_listen("lovelace_updated", self._on_dashboard_update)
+
+    @callback
+    def _on_dashboard_update(self, event: Any) -> None:
+        if event.data.get("url_path") == self.dashboard_path:
+            self._refresh_panel()
 
     @callback
     def _on_registry_update(self, event: Any) -> None:
@@ -83,10 +92,20 @@ class PracticeFrontend:
                 "button": self._registry.async_get_entity_id("button", DOMAIN, button_uid)
                 or f"button.tarot_api_missing_{kind}",
             }
+        card["horoscope"] = {
+            "entity": self._registry.async_get_entity_id("sensor", DOMAIN, f"{uid}_horoscope") or "sensor.tarot_api_missing_horoscope",
+            "button": self._registry.async_get_entity_id("button", DOMAIN, f"{uid}_horoscope_refresh") or "button.tarot_api_missing_horoscope",
+        }
         self._entity_ids = {entity_id for mapping in card.values() for entity_id in mapping.values()}
         existing = self.hass.data.get(frontend.DATA_PANELS, {}).get(self.path)
         if existing is not None and (existing.config or {}).get("tarot_api_entry_id") != self.entry.entry_id:
             raise ValueError(f"Sidebar path {self.path} is already owned by another panel")
+        dashboard = self.hass.data.get(frontend.DATA_PANELS, {}).get(self.dashboard_path)
+        if dashboard is not None and dashboard.component_name == "lovelace":
+            # Native dashboards persist independently. Never rewrite their config.
+            if existing is not None:
+                frontend.async_remove_panel(self.hass, self.path)
+            return
         frontend.async_register_built_in_panel(
             self.hass,
             component_name="custom",
@@ -98,6 +117,8 @@ class PracticeFrontend:
             config={
                 "tarot_api_entry_id": self.entry.entry_id,
                 "card": card,
+                "dashboard_path": self.dashboard_path,
+                "unique_prefix": uid,
                 "_panel_custom": {
                     "name": "tarot-practice-panel",
                     "module_url": f"{STATIC_URL}/moon-practice-panel.js?v={FRONTEND_VERSION}",
@@ -109,6 +130,9 @@ class PracticeFrontend:
 
     @callback
     def stop(self) -> None:
+        if self._unsubscribe_dashboard is not None:
+            self._unsubscribe_dashboard()
+            self._unsubscribe_dashboard = None
         if self._unsubscribe is not None:
             self._unsubscribe()
             self._unsubscribe = None

@@ -20,6 +20,8 @@ def entry(key):
 
 
 def populate(hass, config_entry):
+    hass.registry.add("sensor", tarot_api.DOMAIN, f"{config_entry.unique_id}_horoscope", f"sensor.renamed_{config_entry.entry_id}_horoscope", config_entry.entry_id)
+    hass.registry.add("button", tarot_api.DOMAIN, f"{config_entry.unique_id}_horoscope_refresh", f"button.renamed_{config_entry.entry_id}_horoscope", config_entry.entry_id)
     for kind in ("tarot", *practice.PRACTICES):
         for domain, suffix in (
             ("sensor", "card" if kind == "tarot" else f"practice_{kind}"),
@@ -47,7 +49,7 @@ class FrontendTests(unittest.IsolatedAsyncioTestCase):
         second = ui.PracticeFrontend(self.hass, second_entry)
         await asyncio.gather(first.async_start(), second.async_start())
         self.hass.http.async_register_static_paths.assert_awaited_once()
-        self.assertEqual(len(self.hass.listeners), 2)
+        self.assertEqual(len(self.hass.listeners), 4)
         for manager in (first, second):
             panel = self.panel(manager)
             self.assertFalse(panel.require_admin)
@@ -55,7 +57,7 @@ class FrontendTests(unittest.IsolatedAsyncioTestCase):
                 self.assertEqual(config["entity"], f"sensor.renamed_{manager.entry.entry_id}_{kind}")
                 self.assertEqual(config["button"], f"button.renamed_{manager.entry.entry_id}_{kind}")
         first.stop()
-        self.assertEqual(len(self.hass.listeners), 1)
+        self.assertEqual(len(self.hass.listeners), 2)
         self.assertIsNotNone(self.panel(second))
         await first.async_start()
         self.hass.http.async_register_static_paths.assert_awaited_once()
@@ -159,7 +161,7 @@ class FrontendTests(unittest.IsolatedAsyncioTestCase):
         self.hass.config_entries.async_unload_platforms.return_value = False
         self.assertFalse(await tarot_api.async_unload_entry(self.hass, self.entry))
         self.assertIsNotNone(self.panel(manager))
-        self.assertEqual(len(self.hass.listeners), 1)
+        self.assertEqual(len(self.hass.listeners), 2)
         self.hass.config_entries.async_unload_platforms.return_value = True
         self.assertTrue(await tarot_api.async_unload_entry(self.hass, self.entry))
         self.assertNotIn(manager.path, self.hass.data[ui.frontend.DATA_PANELS])
@@ -171,6 +173,24 @@ class FrontendTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("frontend", manifest["dependencies"])
         panel_source = (ui.FRONTEND_ROOT / "moon-practice-panel.js").read_text(encoding="utf-8")
         self.assertIn(f'"./moon-practice-card.js?v={ui.FRONTEND_VERSION}"', panel_source)
+
+    async def test_native_dashboard_is_never_rewritten_or_removed_on_unload(self):
+        manager = ui.PracticeFrontend(self.hass, self.entry)
+        await manager.async_start()
+        native = SimpleNamespace(component_name="lovelace", config={"mode":"storage", "user_edit":"preserve"})
+        self.hass.data[ui.frontend.DATA_PANELS][manager.dashboard_path] = native
+        manager._on_dashboard_update(SimpleNamespace(data={"url_path":manager.dashboard_path}))
+        self.assertNotIn(manager.path, self.hass.data[ui.frontend.DATA_PANELS])
+        manager.stop()
+        await manager.async_start()
+        self.assertNotIn(manager.path, self.hass.data[ui.frontend.DATA_PANELS])
+        self.assertIs(self.hass.data[ui.frontend.DATA_PANELS][manager.dashboard_path], native)
+        manager.stop()
+
+    async def test_card_module_is_loaded_globally_once(self):
+        await ui.async_register_assets(self.hass)
+        await ui.async_register_assets(self.hass)
+        self.assertEqual(self.hass.data["test_extra_modules"], {f"{ui.STATIC_URL}/moon-practice-card.js?v={ui.FRONTEND_VERSION}"})
 
 
 if __name__ == "__main__":
